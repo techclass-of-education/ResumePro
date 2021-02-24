@@ -1,0 +1,179 @@
+<script src="external/jquery/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<style>
+    .main-body {
+        background-color: grey;
+        padding: 30px;
+    }
+    
+    .main-container {
+        background-color: white;
+        padding: 30px;
+    }
+</style>
+
+<body class="main-body">
+    <div class="container main-container">
+        <div class="row">
+            <div class="col">
+                <select id="select-social" class="form-control">
+                    <option value="Facebook">
+                        Facebook
+                    </option>
+                    <option value="Linkendin">
+                        Linkendin
+                    </option>
+                    <option value="Instagram">
+                        Instagram
+                    </option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="add-link-txt">
+            </div>
+            <div class="col-2">
+                <button id="add-social-btn" class="btn btn-block btn-info">Add</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <select id="select-social-edit" class="form-control">
+                    <option value="Sel">
+                        Select to Edit
+                    </option>
+                   
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="edit-link-txt">
+            </div>
+            <div class="col-2">
+                <button id="edit-social-btn" class="btn btn-block btn-info">Edit</button>
+            </div>
+            <div class="col-2">
+                <button id="remove-social-btn" class="btn btn-block btn-info">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-container mt-3 social-div">
+        <div class="row social-row">
+            <div class="col">
+                <span class="social-link-img-span"><img src='imgs/social/Facebook.png' height='100' width='100'></span>
+            </div>
+            <div class="col social-link">
+                <span class="social-link-span">https://www.facebook.com</span>
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+    $(document).ready(function() {
+        $("#add-social-btn").click(function(e) {
+            e.preventDefault();
+            addSocialRow()
+        });
+
+        $("#edit-social-btn").click(function(e) {
+            e.preventDefault();
+            editSocialRow()
+        });
+
+        $("#remove-social-btn").click(function(e) {
+            e.preventDefault();
+
+            removeSocialRow()
+
+        });
+
+        $("#select-social-edit").change(function(e) {
+            e.preventDefault();
+            setEditSocialSelect()
+        });
+    });
+
+    function removeSocialRow() {
+        var socialRows = $(".social-row")
+        var socialEditSelVal = "." + $("#select-social-edit").val()
+        var socialSelIndex = socialEditSelVal.split("-")[1]
+        alert(socialSelIndex)
+        socialSelIndex = parseInt(socialSelIndex.trim()) - 1
+        if (socialRows.length > 1) {
+
+
+            var socialRow = $(socialEditSelVal)[0]
+            $(socialRow).remove()
+        } else if (socialRows.length == 1) {
+            var socialLinkImgSpan = $(socialRows[0]).find(".social-link-img-span");
+            var socialLinkSpan = $(socialRows[0]).find(".social-link-span");
+            socialLinkImgSpan.html("<img src='imgs/social/Facebook.png' height='100' width='100'>")
+            socialLinkSpan.html("https://www.facebook.com");
+        }
+        var selectSocialEditOp = $("#select-social-edit option[value='" + $("#select-social-edit").val() + "']");
+        selectSocialEditOp.remove()
+            // $(selectSocialEditOp[socialSelIndex]).remove()
+
+    }
+
+    function setEditSocialSelect() {
+        var socialSelArr = $("#select-social-edit").val().split("-")
+        var socialSelIndex = socialSelArr[1]
+        socialSelIndex = parseInt(socialSelIndex.trim()) - 1
+        var socialRows = $(".social-row")
+        var socialLinkSpan = $(socialRows[socialSelIndex]).find(".social-link-span");
+        $("#edit-link-txt").val(socialLinkSpan.html())
+    }
+
+
+    function editSocialRow() {
+        var socialSelArr = $("#select-social-edit").val().split("-")
+        var socialSelIndex = socialSelArr[1]
+        socialSelIndex = parseInt(socialSelIndex.trim()) - 1
+        var socialRows = $(".social-row")
+        var socialLinkSpan = $(socialRows[socialSelIndex]).find(".social-link-span");
+        var linkText = $("#edit-link-txt").val()
+        socialLinkSpan.html(linkText);
+    }
+
+
+    function addSocialRow() {
+        var socialSel = $("#select-social").val();
+        var socialFile = socialSel;
+        var socialFinalPath = "imgs/social/" + socialFile + ".png";
+        var linkText = $("#add-link-txt").val()
+        var selectSocialEditOp = $("#select-social-edit option");
+        var selectSocialEditOpLength = selectSocialEditOp.length;
+        var socialRow = $(".social-row")
+        if (selectSocialEditOpLength == 1) {
+            var socialLinkImgSpan = $(socialRow[0]).find(".social-link-img-span");
+            var socialLinkSpan = $(socialRow[0]).find(".social-link-span");
+            socialLinkImgSpan.html("<img src='" + socialFinalPath + "' height='100' width='100'>")
+            socialLinkSpan.html(linkText);
+            $("#select-social-edit").append("<option value='" + $("#select-social").val() + "-1'> " + $("#select-social").val() + "</option>")
+            $(socialRow[0]).addClass($("#select-social").val() + "-1")
+        } else if (selectSocialEditOpLength > 1) {
+            var socialSel = $("#select-social").val()
+            var socialFile = socialSel;
+            var socialFinalPath = "imgs/social/" + socialFile + ".png"
+            var linkText = $("#add-link-txt").val()
+            var socialDiv = $(".social-div")
+            var row = $(".social-div .social-row:first-child")
+            $(socialDiv[0]).append(row.clone().wrap("<p>").parent().html())
+            socialRows = $(".social-row")
+            var socialLinkImgSpan = $(socialRows[selectSocialEditOpLength - 1]).find(".social-link-img-span")
+            var socialLinkSpan = $(socialRows[selectSocialEditOpLength - 1]).find(".social-link-span")
+                // alert(socialLinkImgSpan.html() + " " + socialLinkSpan.html())
+            $("#select-social-edit").append("<option value='" + $("#select-social").val() + "-" + selectSocialEditOpLength + "'> " + $("#select-social").val() + "</option>")
+            socialLinkImgSpan.html("<img src='" + socialFinalPath + "' height='100' width='100'>")
+            socialLinkSpan.html(linkText)
+            $(socialRows[selectSocialEditOpLength - 1]).addClass($("#select-social").val() + "-" + selectSocialEditOpLength)
+        }
+    }
+</script>

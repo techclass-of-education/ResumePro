@@ -1,0 +1,287 @@
+<!--<script src="external/jquery/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+
+
+<br>
+<div class="row">
+    <div class="col px-5">
+        <input type="text" id="skillName" class="form-control" placeholder="Name">
+    </div>
+    <div class="col px-5">
+        <select id="skillRate" class="form-control">
+           <option>Select Rate</option>
+           <option value="1">One</option>
+           <option value="2">Two</option>
+           <option value="3">Three</option>
+           <option value="4">Four</option>
+           <option value="5">Five</option>
+       </select>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-2 container justify-content-center d-flex">
+        <button id="add-skill-btn" class="btn btn-info">Add</button>
+    </div>
+</div>
+<hr>
+<br>
+<div class="row">
+    <div class="col-4 container form-group">
+        <select id="added-skill-sel" class="form-control">
+            <option value="0"> Select to Edit</option>
+        </select>
+    </div>
+
+</div>
+
+<hr>
+<div class="row">
+
+    <div class="col px-5">
+        <input type="text" id="skillNameEdit" class="form-control" placeholder="Name">
+    </div>
+    <div class="col px-5">
+        <select id="skillRateEdit" class="form-control">
+           <option>Select Rate</option>
+           <option value="1">One</option>
+           <option value="2">Two</option>
+           <option value="3">Three</option>
+           <option value="4">Four</option>
+           <option value="5">Five</option>
+       </select>
+    </div>
+
+
+
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-2 container justify-content-center d-flex">
+        <button id="edit-skill-btn" class="btn btn-info">Edit</button>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col container display-4 text-center">---Skills---</div>
+</div>
+<hr>
+<div class="skill-div">
+    <div class='row text-center skill-row'>
+        <div class='col border'>
+            <span class='skill-name-span'></span>
+        </div>
+        <div class='col border skill-rate-show-col'>
+            <span class='skill-rate-span'></span>
+        </div>
+
+    </div>
+
+
+</div>
+<div class="container m-5">
+    <div class="row">
+        <div class="col">
+            Select Rate Design
+        </div>
+
+    </div>
+    <style>
+        .skill-rate-show-col {
+            background-color: cadetblue;
+        }
+        
+        .skill-bar-img {
+            height: 30px;
+        }
+        
+        .select-bar-type img {
+            height: 40px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .select-bar-type img:hover {
+            border: 2px solid burlywood;
+        }
+        
+        .select-bar-type {
+            background-color: brown;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+    <div class="row">
+        <div class="col select-bar-type">
+            <img src="imgs/bars/type1/r3.png" class="select-bar-type" alt="type1" id="type1">
+        </div>
+        <div class="col select-bar-type">
+            <img src="imgs/bars/type2/r3.png" class="select-bar-type" alt="type2" id="type2">
+        </div>
+
+
+    </div>
+</div>
+<script>
+    var skillRatesArr = [];
+    var folder = "type1"
+    $(document).ready(function() {
+        $("#type1").click(function() {
+            folder = $(this).attr("alt")
+            var skillLen = skillRatesArr.length
+            var finalPath = ""
+            var skillRateImgSrc = ""
+            var skillAddedImgTags = $(".skill-bar-img")
+
+            var i = 0
+            while (i < skillLen) {
+                finalPath = (folder + "/r" + skillRatesArr[i] + ".png")
+                skillRateImgSrc = "imgs/bars/" + finalPath
+                skillRateImgAlt = folder
+                skillAddedImgTags[i].src = skillRateImgSrc
+                skillAddedImgTags[i].alt = skillRateImgAlt
+                i++
+            }
+
+
+            // var skillRateImages = $(".skill-bar-img");
+            // alert(skillRateImages.length + " " + folder)
+
+
+
+        });
+        $("#type2").click(function() {
+            folder = $(this).attr("alt")
+            var skillLen = skillRatesArr.length
+            var finalPath = ""
+            var skillRateImgSrc = ""
+            var skillAddedImgTags = $(".skill-bar-img")
+
+            var i = 0
+            while (i < skillLen) {
+                finalPath = (folder + "/r" + skillRatesArr[i] + ".png")
+                skillRateImgSrc = "imgs/bars/" + finalPath
+                skillRateImgAlt = folder
+                skillAddedImgTags[i].src = skillRateImgSrc
+                skillAddedImgTags[i].alt = skillRateImgAlt
+                i++
+            }
+
+
+
+        });
+        $("#add-skill-btn").click(function(e) {
+            e.preventDefault();
+            addNewSkillRows()
+        });
+
+
+        $("#added-skill-sel").change(function(e) {
+            e.preventDefault();
+            setSkillRowEdit()
+
+        });
+
+        $('#edit-skill-btn').click(function(e) {
+            e.preventDefault();
+            editSkillSelRow()
+
+        });
+
+        function addNewSkillRows() {
+            var skillNameTxt = $("#skillName").val()
+            var skillRateTxt = $("#skillRate").val()
+            var skillRows = $(".skill-row");
+            var addedSkillSel = $("#added-skill-sel")
+            var addedSkillOp = addedSkillSel.find("option")
+                // alert(addedSkillOp.length)
+            var opLength = addedSkillOp.length;
+            if (opLength == 1) {
+                var skillNameSpan = $(skillRows[0]).find(".skill-name-span");
+                var skillRateSpan = $(skillRows[0]).find(".skill-rate-span");
+
+                var addedSkillSel = $("#added-skill-sel")
+                addedSkillSel.append("  <option value='1'> " + skillNameTxt + "</option>")
+                    // alert(skillNameSpan.html() + skillRateSpan.html())
+                var skillRateImgTag = "<img class='skill-bar-img' src='imgs/bars/" + folder + "/r" + skillRateTxt + ".png' alt='" + folder + "'>"
+                alert(skillRateImgTag)
+                skillNameSpan.html(skillNameTxt)
+                skillRateSpan.html(skillRateImgTag)
+                skillRatesArr.push(parseInt(skillRateTxt.trim()))
+
+
+
+            } else if (opLength > 1) {
+                // alert($(skillRows[0]).html())
+                var skillDiv = $(".skill-div");
+                var row = $(".skill-div .skill-row:first-child");
+                // alert("Row=" + row.length);
+                // alert(row.clone().wrap("<p>").parent().html())
+                // console.log("Parent=" + row.parent().length)
+                $(skillDiv[0]).append(row.clone().wrap("<p>").parent().html())
+
+
+                skillRows = $(".skill-row")
+                    // alert("Edu rows=" + eduRows.length)
+                var skillNameSpan = $(skillRows[opLength - 1]).find(".skill-name-span");
+                var skillRateSpan = $(skillRows[opLength - 1]).find(".skill-rate-span");
+                alert(skillNameSpan.html() + skillRateSpan.html())
+
+                // var nameEduSpan = $(eduRows[]).find(".skill-name-span");
+                // var ageEduSpan = $(eduRows[]).find(".skill-rate-span");
+
+                var addedSkillSel = $("#added-skill-sel")
+                addedSkillSel.append("<option value='" + opLength + "'> " + skillNameTxt + "</option>")
+                    // alert(nameEduSpan + ageEduSpan + mobileEduSpan.length)
+                var skillRateImgTag = "<img class='skill-bar-img' src='imgs/bars/" + folder + "/r" + skillRateTxt + ".png' alt='" + folder + "'>"
+                alert(skillRateImgTag)
+                skillNameSpan.html(skillNameTxt)
+                skillRateSpan.html(skillRateImgTag)
+                skillRatesArr.push(parseInt(skillRateTxt.trim()))
+
+            } else {
+                alert("something wrong")
+            }
+
+
+        }
+
+        function setSkillRowEdit() {
+
+            var skillSelVal = parseInt($("#added-skill-sel").val())
+
+            var skillRows = $(".skill-row:nth-child(" + (skillSelVal) + ")")
+
+            var skillNameSpan = $(skillRows).find(".skill-name-span");
+            // var skillRateSpan = $(skillRows).find(".skill-rate-span");
+
+
+            $("#skillNameEdit").val(skillNameSpan.html())
+            $("#skillRateEdit").val(skillRatesArr[skillSelVal - 1])
+
+
+
+        }
+
+
+        function editSkillSelRow() {
+            var skillNameEditTxt = $("#skillNameEdit").val()
+            var skillRateEditTxt = $("#skillRateEdit").val()
+            var skillRateImgTag = "<img class='skill-bar-img' src='imgs/bars/" + folder + "/r" + skillRateEditTxt + ".png' alt='" + folder + "'>"
+                // alert(skillRateImgTag)
+            var skillSelVal = parseInt($("#added-skill-sel").val())
+            skillRatesArr[skillSelVal - 1] = parseInt(skillRateEditTxt.trim())
+            var skillRows = $(".skill-row:nth-child(" + (skillSelVal) + ")")
+            var skillNameSpan = $(skillRows).find(".skill-name-span");
+            var skillRateSpan = $(skillRows).find(".skill-rate-span");
+
+            skillNameSpan.html(skillNameEditTxt)
+            skillRateSpan.html(skillRateImgTag)
+        }
+
+    });
+</script>-->

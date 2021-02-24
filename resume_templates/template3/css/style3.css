@@ -1,0 +1,142 @@
+.resume-image img {
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    margin-left: 7px;
+    margin-top: 6px;
+}
+
+.resume-image {
+    border: 1px solid wheat;
+    height: 185px;
+    width: 185px;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cv-card-col {
+    padding: 25px;
+    background-color: black;
+    /* border: 2px solid black; */
+    /* background-image: url("../imgs/backprofile.png"); */
+    background-repeat: no-repeat;
+    margin-left: 0;
+}
+
+.cv-card-name-col {
+    background-color: white;
+    padding-left: 0;
+    /* border-left: 2px solid black; */
+    background-image: url("../imgs/backprofile1.png");
+    background-repeat: no-repeat;
+}
+
+.firstname-div {
+    margin-left: 40px;
+    font-size: 40px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding-bottom: 0;
+    line-height: 50px;
+}
+
+.lastname-div {
+    margin-left: 40px;
+    font-weight: bolder;
+    font-size: 40px;
+    text-transform: uppercase;
+    padding-top: 0;
+    line-height: 40px;
+}
+
+.personl-info-row {
+    padding: 0 15px;
+    /* height: 250px; */
+}
+
+.designation-div {
+    margin-left: 40px;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    color: #fff;
+    background-color: black;
+    text-transform: uppercase;
+}
+
+.resume-image-div {
+    border-radius: 50%;
+}
+
+.resume-personal-div {
+    padding: 50px 0;
+    text-align: justify;
+}
+
+.resume-main {
+    background-color: white;
+    /* padding: 0 15px; */
+    text-align: justify;
+}
+
+.resume_contact {
+    background-color: white;
+    padding: 0 15px;
+}
+
+.resume_education {
+    background-color: white;
+    padding: 0 15px;
+}
+
+.contact-details-row {
+    margin-top: -6px;
+}
+
+.gap-bar {
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0 5px;
+    text-align: justify;
+}
+
+.ver-hr {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+.contact-sub-div {
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.p-details-row {
+    padding-right: 10px;
+    height: 100%;
+}
+
+.p-details-col {
+    background-color: black;
+    color: white;
+    font-size: 11px;
+}
+
+.address-div {
+    display: inline;
+    /* padding-left: 20px; */
+    text-align: right;
+}
+
+.heading-div {
+    font-size: large;
+    font-weight: bolder;
+    line-height: 61px;
+}
+
+.heading-nest-hr-bar {
+    font-weight: 900;
+    padding-left: 15px;
+}

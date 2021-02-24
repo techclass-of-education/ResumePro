@@ -1,0 +1,70 @@
+<style>
+    div {
+        width: 300px;
+        height: 300px;
+        border: 1px solid;
+        position: absolute;
+    }
+    
+    .drag {}
+    
+    .drop {
+        right: 20px;
+    }
+    
+    .borderred {
+        border: 3px solid red;
+    }
+</style>
+
+
+
+
+
+<div class="drag" ondrag="drag(event)" ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true">Drag me!</div>
+
+<div class="drop" ondrop="drop(event)" ondragover="dragover(event)" ondragenter="dragenter()" ondragleave="dragleave()"></div>
+
+
+<p id="r"></p>
+
+<script>
+    var drg = document.querySelector("drag");
+    var drp = document.querySelector(".drop");
+    var r = document.getElementById("r");
+    //drag events start
+    function drag(e) {
+        r.innerHTML += "ondrag<br>";
+    }
+
+    function dragStart(e) {
+        r.innerHTML += "ondragStart<br>";
+    }
+
+    function dragEnd(e) {
+        r.innerHTML += "ondragEnd<br>";
+    }
+
+    //drag events end
+
+    //drop events start
+
+    function drop(e) {
+        e.preventDefault();
+        r.innerHTML += "ondrop<br>";
+    }
+
+    function dragover(e) {
+        e.preventDefault()
+        r.innerHTML += "ondragover<br>";
+    }
+
+    function dragleave(e) {
+        r.innerHTML += "ondragleave<br>";
+    }
+
+    function dragenter(e) {
+        r.innerHTML += "ondragenter<br>";
+    }
+    //drop events end
+</script>

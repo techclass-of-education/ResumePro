@@ -1,0 +1,139 @@
+<script src="external/jquery/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<style>
+    .main-body {
+        background-color: grey;
+        padding: 30px;
+    }
+
+    .main-container {
+        background-color: white;
+        padding: 30px;
+    }
+</style>
+
+<body class="main-body">
+    <div class="container main-container">
+        <div class="row">
+
+            <div class="col">
+                <input type="text" class="form-control" id="add-experties-txt">
+            </div>
+            <div class="col-2">
+                <button id="add-experties-btn" class="btn btn-block btn-info">Add</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <select id="select-experties-remove" class="form-control">
+                    <option value="Sel">
+                        Select to Remove
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="col-2">
+                <button id="remove-experties-btn" class="btn btn-block btn-info">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-container mt-3 experties-div">
+        <div class="row experties-row bg-dark">
+            <div class="col">
+                <span class="experties-img-span"><img src='imgs/expert/dot.png' height='10' width='10'></span>
+            </div>
+            <div class="col experties-link">
+                <span class="experties-txt-span text-white">MS Word</span>
+            </div>
+            <div class="col-2">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+    $(document).ready(function () {
+        $("#add-experties-btn").click(function (e) {
+            e.preventDefault();
+            addExpertiesRow()
+        });
+
+
+
+        $("#remove-experties-btn").click(function (e) {
+            e.preventDefault();
+
+            removeExpertiesRow()
+
+        });
+
+
+    });
+
+    function removeExpertiesRow() {
+        var expertiesRows = $(".experties-row")
+        var expertiesEditSelVal = "." + $("#select-experties-remove").val()
+        var expertiesSelIndex = expertiesEditSelVal.split("-")[1]
+        alert(expertiesSelIndex)
+        expertiesSelIndex = parseInt(expertiesSelIndex.trim()) - 1
+        if (expertiesRows.length > 1) {
+
+
+            var expertiesRow = $(expertiesEditSelVal)[0]
+            $(expertiesRow).remove()
+        } else if (expertiesRows.length == 1) {
+            var expertiesLinkImgSpan = $(expertiesRows[0]).find(".experties-img-span");
+            var expertiesLinkSpan = $(expertiesRows[0]).find(".experties-txt-span");
+            expertiesLinkImgSpan.html("<img src='imgs/expert/dot.png' height='10' width='10'>")
+            expertiesLinkSpan.html("MS Word");
+        }
+        var selectExpertiesRemoveOp = $("#select-experties-remove option[value='" + $("#select-experties-remove").val() + "']");
+        selectExpertiesRemoveOp.remove()
+
+
+    }
+
+
+
+
+
+// var expertiesText=""
+
+    function addExpertiesRow() {
+
+
+        var expertiesFinalPath = "imgs/expert/dot.png";
+        var expertiesText = $("#add-experties-txt").val().trim()
+        var selectExpertiesRemoveOp = $("#select-experties-remove option");
+        var selectExpertiesRemoveOpLength = selectExpertiesRemoveOp.length;
+        var expertiesRow = $(".experties-row")
+        if (selectExpertiesRemoveOpLength == 1) {
+            var expertiesLinkImgSpan = $(expertiesRow[0]).find(".experties-img-span");
+            var expertiesLinkSpan = $(expertiesRow[0]).find(".experties-txt-span");
+            expertiesLinkImgSpan.html("<img src='" + expertiesFinalPath + "' height='10' width='10'>")
+            expertiesLinkSpan.html(expertiesText);
+            $("#select-experties-remove").append("<option value='" + expertiesText + "-1'>" + expertiesText + "</option>")
+            $(expertiesRow[0]).addClass(expertiesText + "-1")
+        } else if (selectExpertiesRemoveOpLength > 1) {
+
+            expertiesText = $("#add-experties-txt").val().trim()
+            var expertiesDiv = $(".experties-div")
+            var row = $(".experties-div .experties-row:first-child")
+            $(expertiesDiv[0]).append(row.clone().wrap("<p>").parent().html())
+            var expertiesRows = $(".experties-row")
+            var expertiesLinkImgSpan = $(expertiesRows[selectExpertiesRemoveOpLength - 1]).find(".experties-img-span")
+            expertiesLinkSpan = $(expertiesRows[selectExpertiesRemoveOpLength - 1]).find(".experties-txt-span")
+            // alert(expertiesLinkImgSpan.html() + " " + expertiesLinkSpan.html())
+            $("#select-experties-remove").append("<option value='" + expertiesText + "-" + selectExpertiesRemoveOpLength + "'>" + expertiesText + "</option>")
+            expertiesLinkImgSpan.html("<img src='" + expertiesFinalPath + "' height='10' width='10'>")
+            expertiesLinkSpan.html(expertiesText)
+            $(expertiesRows[selectExpertiesRemoveOpLength - 1]).addClass(expertiesText + "-" + selectExpertiesRemoveOpLength)
+        }
+    }
+</script>

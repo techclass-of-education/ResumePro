@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="jquery-ui.css" rel="stylesheet">
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #draggable {
+            width: 150px;
+            height: 150px;
+            padding: 0.5em;
+            background: #eee;
+        }
+    </style>
+
+    <script>
+        // $(function() {
+        //     $("#draggable").draggable();
+        // });
+    </script>
+    </head>
+
+    <body>
+        <div class="draggable ui-widget-content">
+            <p>Drag me !!!</p>
+        </div>
+
+
+        <hr>
+        <style>
+            .draggable {
+                width: 100px;
+                height: 50px;
+                padding: 0.5em;
+                float: left;
+                margin: 22px 5px 10px 0;
+                cursor: pointer;
+            }
+            
+            .droppable-1 {
+                width: 120px;
+                height: 90px;
+                padding: 0.5em;
+                float: left;
+                margin: 10px;
+            }
+        </style>
+
+        <script>
+            $(function() {
+                $(".draggable").draggable({
+                    revert: true
+                });
+                $(".droppable-1").droppable({
+                    tolerance: "fit"
+                });
+            });
+        </script>
+        </head>
+
+        <body>
+            <div id="" class="draggable ui-widget-content">
+                <p>Drag me to my target</p>
+            </div>
+            <div id="droppable-1" class="droppable-1 ui-widget-header">
+                <p>Drop here</p>
+            </div>
+            <div id="droppable-1" class="droppable-1 ui-widget-header">
+                <p>Drop here</p>
+            </div>
+            <div id="droppable-1" class="droppable-1 ui-widget-header">
+                <p>Drop here</p>
+            </div>
+            <div id="droppable-1" class="droppable-1 ui-widget-header">
+                <p>Drop here</p>
+            </div>
+        </body>
+
+</html>
+</body>
+
+</html>
+</body>
+
+</html>

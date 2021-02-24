@@ -1,0 +1,73 @@
+.resume-image {
+    height: 100px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: darkgray;
+    border-radius: 50%;
+}
+
+.resume-image img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.p-details {
+    font-size: small;
+    height: auto;
+    /* text-align: center; */
+}
+
+.cv-img {
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cv-card {
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+}
+
+.cv-card-body {
+    font-family: 'Poppins', sans-serif;
+    color: blanchedalmond;
+    border: 2px solid lawngreen;
+    text-align: center;
+    padding: 15px;
+}
+
+.cv-card-header {
+    padding-bottom: 0;
+}
+
+.resume_sec {
+    background-color: black;
+    padding: 20px 0;
+}
+
+.resume_contact {
+    background-color: lemonchiffon;
+    padding: 20px;
+}
+
+.resume-main {
+    background-color: white;
+    padding-bottom: 15px;
+}
+
+.resume-main>div {
+    padding: 7px;
+    cursor: pointer;
+}
+
+.resume-header-hr {
+    margin: 0;
+    height: 1px;
+    background-color: gray;
+}

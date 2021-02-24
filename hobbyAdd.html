@@ -1,0 +1,445 @@
+<script src="external/jquery/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+
+
+<style>
+    .h1, .h2, .h3, .h4, .h5, .h6{
+        border: 1px solid red;
+        padding: 15px;
+        margin:auto;
+        display: block;
+    }
+    .h1 img, .h2 img, .h3 img, .h4 img, .h5 img, .h6 img{
+
+        margin:auto;
+        display: block;
+    }
+
+    .h1:hover, .h2:hover, .h3:hover, .h4:hover, .h5:hover, .h6:hover{
+        border: 3px solid red;
+        padding: 15px;
+    }
+    .selected-symbol
+    {
+        border: 2px blue solid;
+    }
+
+    .hobby-row
+    {
+        color: white;
+    }
+</style>
+
+<script>
+    var selectedSymbolObj = ""
+    var selectedSymbolImgFile = ""
+    var editSelectedSymbolObj = ""
+    var editSelectedSymbolImgFile = ""
+    var svgColor = "b";
+    var userEditRowOptionVal = ""
+    $(document).ready(function () {
+        $("#add-hobby-btn").click(function (e) {
+            e.preventDefault();
+            addHobbyRow()
+        });
+
+        $("#svg-color").change(function () {
+            svgColor = $(this).val()
+        });
+
+        var oldSelectedSymbolObj = ""
+
+        var selectedSymbol = false
+        $(".row .h-span img").click(function () {
+            var classes = ""
+            if (selectedSymbol)
+            {
+                $(oldSelectedSymbolObj).removeClass("selected-symbol")
+                selectedSymbol = false
+            }
+            classes = $(this).attr("alt").split(/\s+/);
+            selectedSymbolImgFile = classes[0]
+            var sel = $(this);
+            $(sel).addClass("selected-symbol");
+            selectedSymbol = true
+            oldSelectedSymbolObj = sel;
+            selectedSymbolObj = sel
+        });
+
+
+        $("#edit-hobby-btn").click(function () {
+            editSocialRow();
+
+        });
+        
+         $("#remove-hobby-btn").click(function () {
+             removeHobbyRow()
+        });
+
+
+        $("#hobbyEditSel").change(function () {
+            userEditRowOptionVal = $(this).val()
+        });
+
+
+        var oldEditSelectedSymbolObj = ""
+        var editSelectedSymbol = false
+        $(".row .h-span-edit img").click(function () {
+            var classes = ""
+            if (editSelectedSymbol)
+            {
+                $(oldEditSelectedSymbolObj).removeClass("selected-symbol")
+                editSelectedSymbol = false
+            }
+            classes = $(this).attr("alt").split(/\s+/);
+            editSelectedSymbolImgFile = classes[0]
+            var sel = $(this);
+            $(sel).addClass("selected-symbol");
+            editSelectedSymbol = true
+            oldEditSelectedSymbolObj = sel;
+            editSelectedSymbolObj = sel
+        });
+    });
+
+
+    function editSocialRow() {
+        var editRowClass = userEditRowOptionVal
+        var hobbyEditRow = $("." + editRowClass)
+        var hobbySvgEditSpan = $(hobbyEditRow[0]).find(".hobby-svg-span");
+
+        var hobbySymbol = editSelectedSymbolObj;
+        var srcImg = $(hobbySymbol).attr("src")
+        var index = srcImg.indexOf("type")
+        var folder = srcImg.substring(index, index + 5)
+        var file = editSelectedSymbolImgFile
+        var hobbyImgFinalPath = "imgs/hobby/" + folder + "/" + svgColor + "/" + file + ".png";
+        hobbySvgEditSpan.html("<img src='" + hobbyImgFinalPath + "' height='100' width='100'>")
+
+    }
+    function addHobbyRow() {
+        var hobbyEditSelOp = $("#hobbyEditSel option");
+        var hobbyEditSelOpLength = hobbyEditSelOp.length;
+
+        if (hobbyEditSelOpLength == 1) {
+            var hobbyText = $("#hobby-text").val();
+            var hobbySymbol = selectedSymbolObj;
+            var srcImg = $(hobbySymbol).attr("src")
+            var index = srcImg.indexOf("type")
+            var folder = srcImg.substring(index, index + 5)
+            var file = selectedSymbolImgFile
+            var hobbyImgFinalPath = "imgs/hobby/" + folder + "/" + svgColor + "/" + file + ".png";
+            var hobbyRow = $(".hobby-row")
+            var hobbyNameSpan = $(hobbyRow[0]).find(".hobby-name-span");
+            var hobbySvgSpan = $(hobbyRow[0]).find(".hobby-svg-span");
+
+            hobbySvgSpan.html("<img src='" + hobbyImgFinalPath + "' height='100' width='100'>")
+            hobbyNameSpan.html(hobbyText);
+            $("#hobbyEditSel").append("<option value='" + hobbyText + "-1'> " + hobbyText + "</option>")
+            $(hobbyRow[0]).addClass(hobbyText + "-1")
+        } else if (hobbyEditSelOpLength > 1) {
+
+            hobbyText = $("#hobby-text").val();
+            hobbySymbol = selectedSymbolObj;
+            srcImg = $(hobbySymbol).attr("src")
+            index = srcImg.indexOf("type")
+            folder = srcImg.substring(index, index + 5)
+            file = selectedSymbolImgFile
+            hobbyImgFinalPath = "imgs/hobby/" + folder + "/" + svgColor + "/" + file + ".png";
+            hobbyEditSelOpLength = hobbyEditSelOp.length;
+            allHobbyDiv = $(".all-hobby-div")
+            row = $(".all-hobby-div .hobby-row:first-child")
+            $(allHobbyDiv[0]).append(row.clone().wrap("<p>").parent().html())
+            hobbyRow = $(".hobby-row")
+            hobbyNameSpan = $(hobbyRow[hobbyEditSelOpLength - 1]).find(".hobby-name-span");
+            hobbySvgSpan = $(hobbyRow[hobbyEditSelOpLength - 1]).find(".hobby-svg-span");
+            hobbySvgSpan.html("<img src='" + hobbyImgFinalPath + "' height='100' width='100'>")
+            hobbyNameSpan.html(hobbyText);
+            $("#hobbyEditSel").append("<option value='" + hobbyText + "-" + hobbyEditSelOpLength + "'> " + hobbyText + "</option>")
+            $(hobbyRow[hobbyEditSelOpLength - 1]).addClass(hobbyText + "-" + hobbyEditSelOpLength)
+
+        }
+    }
+
+    function removeHobbyRow() {
+        var removeRowClass = userEditRowOptionVal
+        var hobbyRemoveRow = $("." + removeRowClass)
+        hobbyRow = $(".hobby-row")
+        if (hobbyRow.length > 1) {
+
+
+            var hobbyRowRemove = $(hobbyRemoveRow)[0]
+            $(hobbyRowRemove).remove()
+        } else if (hobbyRow.length == 1) {
+            var hobbyNameSpan = $(hobbyRow[0]).find(".hobby-name-span");
+            var hobbySvgSpan = $(hobbyRow[0]).find(".hobby-svg-span");
+
+            hobbySvgSpan.html("<img src='imgs/hobby/type1/b/h2.png' height='100' width='100'>")
+            hobbyNameSpan.html("Your Hobby Name");
+        }
+        var selectHobbtRemoveOp = $("#hobbyEditSel option[value='" + removeRowClass + "']");
+        selectHobbtRemoveOp.remove()
+        // $(selectSocialEditOp[socialSelIndex]).remove()
+
+    }
+
+</script>
+
+
+<!-- ----------------Add Hobby---------------------------------------- -->
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3">
+            <input type="text" id="hobby-text" class="form-control" placeholder="Hobby Text">
+        </div>
+
+        <div class="col-2">
+            <select id="svg-color" class="form-control">
+                <option value="b">Black</option>
+                <option value="w">White</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <div id="main-accordion">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#maincollapseOne">
+                            Select Symbol
+                        </a>
+                    </div>
+                    <div id="maincollapseOne" class="collapse" data-parent="#main-accordion">
+                        <div class="card-body">
+                            <div id="accordion">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link" data-toggle="collapse" href="#t1-collapseOne">
+                                            Sports
+                                        </a>
+                                    </div>
+                                    <div id="t1-collapseOne" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="row type1">
+                                                <div class="col">
+                                                    <span class="h-span">
+                                                        <img src="imgs/hobby/type1/b/h1.png" width="50" height="50" alt="h1"/>
+                                                    </span>
+                                                </div>
+                                                <div class="col">
+
+                                                    <span class="h-span">
+                                                        <img src="imgs/hobby/type1/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#t1-collapseTwo">
+                                            Fashion
+
+                                        </a>
+                                    </div>
+                                    <div id="t1-collapseTwo" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="row type2">
+                                                <div class="col">
+                                                    <span class="h-span">
+                                                        <img src="imgs/hobby/type2/b/h1.png" width="50" height="50" alt="h1"/>
+                                                    </span>
+                                                </div>
+                                                <div class="col">
+
+                                                    <span class="h-span">
+                                                        <img src="imgs/hobby/type2/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#t1-collapseThree">
+                                            Artist
+                                        </a>
+                                    </div>
+                                    <div id="t1-collapseThree" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="row type3">
+                                                <div class="col">
+                                                    <span class="h-span">
+                                                        <img src="imgs/hobby/type3/b/h1.png" width="50" height="50" alt="h1"/>
+                                                    </span>
+                                                </div>
+                                                <div class="col">
+
+                                                    <span class="h-span">
+                                                        <img src="imgs/hobby/type3/b/h2.png" width="50" height="50" alt="h2"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2">
+            <button class="btn btn-danger" id="add-hobby-btn">Add Hobby</button>
+        </div>
+    </div>
+</div>
+<!-- ----------------Edit Hobby---------------------------------------- -->
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <select id="hobbyEditSel" class="form-control">
+                <option value="">Select to Edit</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <div id="main-accordion1">
+
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#maincollapseOne1">
+                            Select Symbol
+                        </a>
+                    </div>
+                    <div id="maincollapseOne1" class="collapse" data-parent="#main-accordion1">
+                        <div class="card-body">
+                            <div id="accordion1">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link" data-toggle="collapse" href="#t2-collapseOne">
+                                            Sports
+                                        </a>
+                                    </div>
+                                    <div id="t2-collapseOne" class="collapse" data-parent="#accordion1">
+                                        <div class="card-body">
+                                            <div class="row type1">
+                                                <div class="col">
+                                                    <span class="h-span-edit">
+                                                        <img src="imgs/hobby/type1/b/h1.png" width="50" height="50" alt="h1"/>
+                                                    </span>
+                                                </div>
+                                                <div class="col">
+
+                                                    <span class="h-span-edit">
+                                                        <img src="imgs/hobby/type1/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#t2-collapseTwo">
+                                            Fashion
+
+                                        </a>
+                                    </div>
+                                    <div id="t2-collapseTwo" class="collapse" data-parent="#accordion1">
+                                        <div class="card-body">
+                                            <div class="row type2">
+                                                <div class="col">
+                                                    <span class="h-span-edit">
+                                                        <img src="imgs/hobby/type2/b/h1.png" width="50" height="50" alt="h1"/>
+                                                    </span>
+                                                </div>
+                                                <div class="col">
+
+                                                    <span class="h-span-edit">
+                                                        <img src="imgs/hobby/type2/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#t2-collapseThree">
+                                            Artist
+
+                                        </a>
+                                    </div>
+                                    <div id="t2-collapseThree" class="collapse" data-parent="#accordion1">
+                                        <div class="card-body">
+                                            <div class="row type3">
+                                                <div class="col">
+                                                    <span class="h-span-edit">
+                                                        <img src="imgs/hobby/type3/b/h1.png" width="50" height="50" alt="h1"/>
+                                                    </span>
+                                                </div>
+                                                <div class="col">
+                                                    <span class="h-span-edit">
+                                                        <img src="imgs/hobby/type3/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="col-2">
+            <button class="btn btn-danger" id="edit-hobby-btn">Edit Hobby</button>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-danger" id="remove-hobby-btn">Remove Hobby</button>
+        </div>
+    </div>
+</div>
+
+<div class="container py-3 bg-dark mt-5 all-hobby-div">
+    <div class="row hobby-row">
+        <div class="col">
+            <span class="hobby-name-span">
+                Your Hobby Name
+            </span>
+        </div>
+        <div class="col">
+            <span class="hobby-svg-span">
+                <img src="imgs/hobby/type1/b/h2.png" height="100" width="100">
+            </span>
+        </div>
+    </div>
+</div>
+

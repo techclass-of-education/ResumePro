@@ -1,0 +1,42 @@
+.topbar
+{
+background-color: #1b1e61;
+height: 90px;
+font-size: 18px;
+font-weight: bold;
+}
+
+.topbar a:hover
+{
+    /* border-bottom: 1px solid; */
+    transition: ease-in;
+    transform: scaleX(1.1);
+}
+
+.slider
+{
+    position: relative;
+}
+
+
+/* .slider1
+{
+    background-color: orange;
+    width: 100%;
+    height: 350px;
+}
+
+.slider2
+{
+    background-color: orange;
+    width: 100%;
+    height: 350px;
+}
+
+.slider3
+{
+    background-color: orange;
+    width: 100%;
+    height: 350px;
+}
+ */

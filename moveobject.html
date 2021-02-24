@@ -1,0 +1,118 @@
+<button onclick="startRight()">Start Right</button>
+<button onclick="startLeft()">Start Left</button>
+<button onclick="startTop()">Start Top</button>
+<button onclick="startBottom()">Start Bottom</button>
+<button onclick="stop()">Stop</button>
+
+
+
+<div id="demo">
+    <div id="move"></div>
+</div>
+
+
+
+
+
+<style>
+    #move {
+        height: 50px;
+        width: 50px;
+        background-color: red;
+        position: relative;
+    }
+    
+    #demo {
+        height: 500px;
+        width: 500px;
+        border: solid 2px;
+        overflow: auto;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<script>
+    function overflow() {
+        alert("Overflow");
+    }
+    var div = document.getElementById("move");
+    var box = document.getElementById("demo");
+    var lInterval = 0;
+    var rInterval = 0;
+    var tInterval = 0;
+    var bInterval = 0;
+    var l = 1;
+    var r = 1;
+    var t = 1;
+    var b = 1;
+
+    function startRight() {
+        stop();
+
+        lInterval = setInterval(function() {
+
+            if (l >= 450) {
+                // alert("Scroll");
+                stop();
+            }
+            div.style.left = l + "px";
+            l++;
+
+        }, 1);
+    }
+
+    function startLeft() {
+        stop();
+
+
+        rInterval = setInterval(function() {
+            if (l <= 0) {
+                // alert("Scroll");
+                stop();
+            }
+            div.style.left = l + "px";
+            l--;
+
+        }, 1);
+    }
+
+    function startTop() {
+        stop();
+
+
+        tInterval = setInterval(function() {
+            if (t <= 0) {
+                // alert("Scroll");
+                stop();
+            }
+            div.style.top = t + "px";
+            t--;
+
+        }, 1);
+    }
+
+    function startBottom() {
+
+        stop();
+
+        bInterval = setInterval(function() {
+            if (t >= 450) {
+                // alert("Scroll");
+                stop();
+            }
+            div.style.top = t + "px";
+            t++;
+
+        }, 1);
+    }
+
+
+    function stop() {
+        clearInterval(lInterval);
+        clearInterval(rInterval);
+        clearInterval(bInterval);
+        clearInterval(tInterval);
+    }
+</script>

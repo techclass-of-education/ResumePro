@@ -1,0 +1,130 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="js/jquery-ui.css" rel="stylesheet">
+    <script src="external/jquery/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/resume.js"></script>
+    <script src="js/jspdf.min.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+
+    </script>
+    <title>Resume Builder</title>
+</head>
+
+<div id="place">
+    <ul>
+        <li>One</li>
+        <li>One</li>
+        <li>One</li>
+        <li>One</li>
+        <li class="sub">Sub
+            <ul>
+                <li>two</li>
+                <li>two</li>
+                <li>two</li>
+                <li>two</li>
+                <li>two</li>
+                <li>two</li>
+            </ul>
+        </li>
+        <li>One</li>
+        <li>One</li>
+    </ul>
+    <h1>Hello this is a Heading after Menus</h1>
+    <h1>Hello this is a Heading after Menus</h1>
+    <h1>Hello this is a Heading after Menus</h1>
+    <h1>Hello this is a Heading after Menus</h1>
+    <h1>Hello this is a Heading after Menus</h1>
+    <h1>Hello this is a Heading after Menus</h1>
+</div>
+
+<style type="text/css">
+    li {
+        border: 2px solid red;
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+    }
+    
+    ul~h1 {
+        border: 2px solid blue;
+        margin-top: 50px;
+        background-color: aqua;
+    }
+    
+    li>ul {
+        display: none;
+    }
+    
+    .sub:hover>ul {
+        margin-top: 0px;
+        display: block;
+        position: absolute;
+    }
+    
+    .sub li {
+        display: block;
+    }
+</style>
+
+<button id="savePage">Save</button>
+
+<script>
+    html2canvas(document.getElementById("place"), {
+        allowTaint: true
+    }).then(function(canvas) {
+        // document.getElementById("output2").appendChild(canvas);
+        var imgData = canvas.toDataURL();
+        // saveAs(imgData, 'file-name.png');
+        var doc = new jsPDF('p', 'mm');
+        doc.addImage(imgData, 'PNG', 1, 1, 200, 300);
+        doc.save('sample-file.pdf');
+    });
+    // html2canvas($("#place")[0], {
+    //     onrendered: function(canvas) {
+    //         theCanvas = canvas;
+
+
+    //         canvas.toBlob(function(blob) {
+    //             saveAs(blob, "Dashboard.png");
+    //         });
+    //     }
+    // });
+
+    function saveAs(uri, filename) {
+
+        var link = document.createElement('a');
+
+        if (typeof link.download === 'string') {
+
+            link.href = uri;
+            link.download = filename;
+
+            //Firefox requires the link to be in the body
+            document.body.appendChild(link);
+
+            //simulate click
+            link.click();
+
+            //remove the link when done
+            document.body.removeChild(link);
+
+        } else {
+
+            window.open(uri);
+
+        }
+    }
+</script>
+
+<div id="output2"></div>

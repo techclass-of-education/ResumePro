@@ -1,0 +1,232 @@
+<script src="external/jquery/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+
+
+<br>
+<div class="row">
+    <div class="col px-5">
+        <input type="text" id="name" class="form-control" placeholder="Name">
+    </div>
+    <div class="col px-5">
+        <input type="number" id="age" class="form-control" placeholder="Age">
+    </div>
+    <div class="col px-5">
+        <input type="text" id="mobile" class="form-control" placeholder="Mobile No.">
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-2 container justify-content-center d-flex">
+        <button id="add-edu-btn" class="btn btn-info">Add</button>
+    </div>
+</div>
+<hr>
+<br>
+<div class="row">
+    <div class="col-4 container form-group">
+        <select id="added-edu-sel" class="form-control">
+            <option value="0"> Select to Edit</option>
+        </select>
+    </div>
+
+</div>
+
+<hr>
+<div class="row">
+    <div class="col px-5">
+        <input type="text" id="name-edit" class="form-control" placeholder="Name">
+    </div>
+    <div class="col px-5">
+        <input type="number" id="age-edit" class="form-control" placeholder="Age">
+    </div>
+    <div class="col px-5">
+        <input type="text" id="mobile-edit" class="form-control" placeholder="Mobile No.">
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-2 container justify-content-center d-flex">
+        <button id="edit-edu-btn" class="btn btn-info">Edit</button>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col container display-4 text-center">---Education---</div>
+</div>
+<hr>
+<div class="education-div">
+    <div class='row text-center edu-row'>
+        <div class='col border'>
+            <span>Name:</span> <span class='name-span'></span>
+        </div>
+        <div class='col border'>
+            <span>Age:</span><span class='age-span'></span>
+        </div>
+        <div class='col border'>
+            <span>Mobile No.:</span><span class='mobile-span'></span>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#add-edu-btn").click(function(e) {
+            e.preventDefault();
+            addNewEduRows()
+        });
+
+
+        $("#added-edu-sel").change(function(e) {
+            e.preventDefault();
+            setEduRowEdit()
+
+        });
+
+        $('#edit-edu-btn').click(function(e) {
+            e.preventDefault();
+            editEduSelRow()
+
+        });
+
+        function addNewEduRows() {
+            var nameTxt = $("#name").val()
+            var ageTxt = $("#age").val()
+            var mobileTxt = $("#mobile").val()
+
+
+            var eduRows = $(".edu-row");
+            var addedEduSel = $("#added-edu-sel")
+            var addedEduOp = addedEduSel.find("option")
+                // alert(addedEduOp.length)
+            var opLength = addedEduOp.length;
+            if (opLength == 1) {
+                var nameEduSpan = $(eduRows[0]).find(".name-span");
+                var ageEduSpan = $(eduRows[0]).find(".age-span");
+                var mobileEduSpan = $(eduRows[0]).find(".mobile-span");
+                var addedEduSel = $("#added-edu-sel")
+                addedEduSel.append("  <option value='1'> " + nameTxt + "</option>")
+                alert(nameEduSpan.html() + ageEduSpan.html() + mobileEduSpan.html())
+                nameEduSpan.html(nameTxt)
+                ageEduSpan.html(ageTxt)
+                mobileEduSpan.html(mobileTxt)
+
+
+
+            } else if (opLength > 1) {
+                // alert($(eduRows[0]).html())
+                var eduDiv = $(".education-div");
+                var row = $(".education-div .edu-row:first-child");
+                // alert(row.clone().wrap("<p>").parent().html())
+                // console.log("Parent=" + row.parent().length)
+                $(eduDiv[0]).append(row.clone().wrap("<p>").parent().html())
+
+
+                eduRows = $(".edu-row")
+                    // alert("Edu rows=" + eduRows.length)
+                var nameEduSpan = $(eduRows[opLength - 1]).find(".name-span");
+                var ageEduSpan = $(eduRows[opLength - 1]).find(".age-span");
+                var mobileEduSpan = $(eduRows[opLength - 1]).find(".mobile-span");
+                var addedEduSel = $("#added-edu-sel")
+                addedEduSel.append("  <option value='" + opLength + "'> " + nameTxt + "</option>")
+                    // alert(nameEduSpan + ageEduSpan + mobileEduSpan.length)
+                nameEduSpan.html(nameTxt)
+                ageEduSpan.html(ageTxt)
+                mobileEduSpan.html(mobileTxt)
+
+            } else {
+                alert("something wrong")
+            }
+
+
+        }
+
+        function setEduRowEdit() {
+
+            var eduSelVal = parseInt($("#added-edu-sel").val())
+            var eduRows = $(".edu-row:nth-child(" + (eduSelVal) + ")")
+
+            var nameEduSpan = $(eduRows).find(".name-span");
+            var ageEduSpan = $(eduRows).find(".age-span");
+            var mobileEduSpan = $(eduRows).find(".mobile-span");
+
+            $("#name-edit").val(nameEduSpan.html())
+            $("#age-edit").val(ageEduSpan.html())
+            $("#mobile-edit").val(mobileEduSpan.html())
+
+
+        }
+
+
+        function editEduSelRow() {
+            var nameTxt = $("#name-edit").val()
+            var ageTxt = $("#age-edit").val()
+            var mobileTxt = $("#mobile-edit").val()
+
+
+            var eduSelVal = parseInt($("#added-edu-sel").val())
+            var eduRows = $(".edu-row:nth-child(" + (eduSelVal) + ")")
+            var nameEduSpan = $(eduRows).find(".name-span");
+            var ageEduSpan = $(eduRows).find(".age-span");
+            var mobileEduSpan = $(eduRows).find(".mobile-span");
+
+
+            nameEduSpan.html(nameTxt)
+            ageEduSpan.html(ageTxt)
+            mobileEduSpan.html(mobileTxt)
+
+        }
+
+    });
+</script>
+
+
+
+
+<!-- <div class="row row-div">
+    <div class="col-1 col-div">
+
+    </div>
+    <div class="col text-col">
+        <span class="text-span">Hello</span>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<style>
+    .row-div {
+        height: 40px;
+        margin: 0;
+    }
+    
+    .text-col {
+        border: 2px solid;
+        border-left: 0;
+    }
+    
+    .text-span {
+        background-color: white;
+        margin-top: -20px;
+        position: absolute;
+        padding: 0 30px;
+        font-size: 20px;
+        font-weight: 900;
+    }
+    
+    .col-div {
+        border: 2px solid;
+        border-right: 0;
+    }
+</style> -->

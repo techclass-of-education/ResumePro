@@ -1,0 +1,64 @@
+<link href="jquery-ui.css" rel="stylesheet">
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<style>
+    div {
+        border: 1px solid;
+        position: absolute;
+        cursor: pointer;
+        padding: 20px 0;
+    }
+    
+    p {
+        border: 1px solid gray;
+        padding: 10px;
+        margin: 10px;
+        color: black;
+        background-color: aqua;
+    }
+    
+    #list2 {
+        right: 10px;
+        width: 300px;
+        text-align: right;
+    }
+    
+    #list1 {
+        width: 200px;
+        text-align: center;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+
+
+        $("#list1").sortable({
+            connectWith: '#list2',
+        });
+        $("#list2").sortable({
+            connectWith: '#list1',
+        });
+
+
+    });
+</script>
+
+<div id="list1">
+    <p>One</p>
+    <p>Two</p>
+    <p>Three</p>
+    <p>Four</p>
+    <p>Five</p>
+    <p>Six</p>
+</div>
+
+
+<div id="list2">
+    <p>One1</p>
+    <p>Two1</p>
+    <p>Three1</p>
+    <p>Four1</p>
+    <p>Five1</p>
+    <p>Six1</p>
+</div>

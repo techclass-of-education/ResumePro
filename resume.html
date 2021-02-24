@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="js/jquery-ui.css" rel="stylesheet">
+        <script src="external/jquery/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-route.js"></script>
+        <script src="js/resume.js"></script>
+        <script src="js/jspdf.min.js"></script>
+        <script src="js/html2canvas.min.js"></script>
+        <script src="js/html2pdf.js"></script>
+        <script src="js/cropper.js"></script>
+        <script src="js/resumeEdit.js"></script>
+        <link href="css/cropper.min.css" rel="stylesheet">
+
+
+        <title>Resume Builder</title>
+    </head>
+
+    <body>
+        <div class="container-fluid no-print">
+            <div class="alert alert-secondary rounded-0">
+                <div class="row">
+                    <div class="col">
+
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-primary rounded-0">Primary</button>
+
+                        <button type="button" class="btn btn-outline-primary rounded-0">Primary</button>
+
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-warning rounded-0">Primary</button>
+                        <button type="button" class="btn btn-outline-danger rounded-0">Primary</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-0">Primary</button>
+
+                    </div>
+                    <div class="col">
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="container no-print">
+            <div class="alert alert-secondary rounded-0">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        hello
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" ng-app="myApp">
+            <div class="alert rounded-0">
+                <div class="row">
+                    <div class="col-8 p-0" ng-view>
+                    </div>
+                    <div class="col-4 pr-0 no-print">
+                        <section class="edit-cv-options">
+                            <div id="accordion">
+                                <h3>Templates</h3>
+                                <div class="p-0 h-100">
+                                    <section class="template-select text-center">
+                                        <div class="alert alert-success rounded-0 mb-0 select-template-head">
+                                            <strong>Select Template</strong>
+                                        </div>
+                                        <div class="alert alert-success rounded-0 select-template-main">
+                                            <div class="row nogutters">
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <a href="#/!"> <img src="imgs/resume_select_img1.jpg" class="template-select-img"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 2 </div>
+                                                        <div class="card-body p-0">
+                                                            <a href="#!template2"> <img src="imgs/resume_select_img1.jpg" class="template-select-img"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- ................................ -->
+                                            <div class="row nogutters">
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 3</div>
+                                                        <div class="card-body p-0">
+                                                            <a href="#!template3"> <img src="imgs/resume_select_img1.jpg" class="template-select-img"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 299-67</div>
+                                                        <div class="card-body p-0">
+                                                            <a href="#!template299-67"> <img src="imgs/resume_select_img1.jpg" class="template-select-img"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- .............................. -->
+                                            <div class="row nogutters">
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- ................................ -->
+                                            <div class="row nogutters">
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <!--......................................Personal Details................................  -->
+                                <h3>Personal Details</h3>
+                                <div class="p-0 h-100">
+                                    <ul class="list-group">
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group m-0">
+                                                        <label for="usr">Father Name:</label>
+                                                        <input type="text" class="form-control" id="father-name">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Mother Name:</label>
+                                                        <input type="text" class="form-control" id="mother-name">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Address Present & Permanent :</label>
+                                                        <select class="form-control" id="personal-address-sel">
+                                                            <option value="Address Present & Permanent">Present & Permanent</option>
+                                                            <option value="Address Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+
+                                                        <textarea placeholder="Address" class="form-control" id="personal-address-txt"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group m-0">
+                                                        <label for="usr">DOB (dd-mm-yyyy):</label>
+                                                        <input type="date" class="form-control" id="dobDate" min="1950-01-01">
+
+                                                        <!-- <span id="datalistYearDOB"></span> -->
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Date format:</label>
+                                                        <select>
+                                                            <option>Select Format</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group m-0">
+                                                        <label for="usr">Marital Status :</label>
+                                                        <input type="text" class="form-control" id="marital-status">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group m-0">
+                                                        <label for="usr">Nationality :</label>
+                                                        <input type="text" class="form-control" id="nationality">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- ...........Education..................................................................................... -->
+                                <h3>Education</h3>
+                                <div class="p-0 h-100">
+                                    <div class="added-edu-div">
+                                        <ul class="list-group">
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="usr"><b> School/Diploma/College :</b></label>
+                                                    <input type="text" id="edu-name" class="form-control" placeholder="Education Name">
+                                                </div>
+
+                                            </li>
+
+
+                                            <li class="list-group-item">
+
+
+
+                                                <div class="form-group">
+                                                    <label for="usr">School Board/Affiliation:</label>
+                                                    <input type="text" class="form-control" id="edu-affil">
+                                                </div>
+
+
+                                            </li>
+                                            <li class="list-group-item">
+
+                                                <div class="form-group">
+                                                    <label for="usr">Degree Type:</label>
+                                                    <input type="text" class="form-control" id="edu-degree-type">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="usr">City:</label>
+                                                    <input type="text" class="form-control" id="edu-city">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="usr">State:</label>
+                                                    <input type="text" class="form-control" id="edu-state">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="sel1">School/Graduation Status:</label>
+                                                    <select class="form-control" id="edu-degree-status">
+                                                        <option>Completed</option>
+                                                        <option>Pursuing</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+
+                                                <div class="form-group">
+                                                    <label for="sel1">Date MM:</label>
+                                                    <input type="month" class="form-control" id="edu-m-date">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sel1">Date YYYY:</label>
+                                                    <input type="month" class="form-control" id="edu-y-date">
+                                                </div>
+
+                                            </li>
+
+
+
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-10">
+
+                                                        <div class="form-group">
+                                                            <label for="sel1">Marks:</label>
+                                                            <select class="form-control" id="edu-marks-sel">
+                                                                <option>Percentage</option>
+                                                                <option>CGPA</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col">
+
+                                                        <div class="form-group">
+                                                            <span id="edu-marks-sym">%</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-12">
+
+                                                        <div class="form-group">
+                                                            <label for="sel1">IMP:</label>
+                                                            <input type="number" class="form-control" id="edu-marks-imp">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="sel1">Division:</label>
+                                                    <select class="form-control" id="edu-division-sel">
+                                                        <option>Division I</option>
+                                                        <option>Division II</option>
+                                                        <option>Division III</option>
+                                                        <option>Division IV</option>
+                                                    </select>
+
+                                                </div>
+
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <button type="button" class="btn btn-warning" id="add-edu-btn">Add</button>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <hr style="background-color: red;height: 2px;">
+
+                                    <div class="add-new-edu-div">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+
+                                                <div class="form-group">
+                                                    <label for="S-C-Name">School/College Name</label>
+                                                    <select id="added-edu-sel" class="form-control">
+                                                        <option value="School">Select to Edit</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="usr">School Board/Affiliation:</label>
+                                                    <input type="text" class="form-control" id="edu-affil-edit">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="usr">Degree Type:</label>
+                                                    <input type="text" class="form-control" id="edu-degree-type-edit">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="usr">City:</label>
+                                                    <input type="text" class="form-control" id="edu-city-edit">
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="usr">State:</label>
+                                                    <input type="text" class="form-control" id="edu-state-edit">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+
+
+
+                                                <div class="form-group">
+                                                    <label for="sel1">School/Graduation Status:</label>
+                                                    <select class="form-control" id="edu-degree-status-edit">
+                                                        <option>Completed</option>
+                                                        <option>Pursuing</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+
+                                                <div class="form-group">
+                                                    <label for="sel1">Date Month:</label>
+                                                    <input type="text" class="form-control" id="edu-date-m-edit">
+                                                </div>
+
+                                            </li>
+
+                                            <li class="list-group-item">
+
+                                                <div class="form-group">
+                                                    <label for="sel1">Date Year:</label>
+                                                    <input type="text" class="form-control" id="edu-date-y-edit">
+                                                </div>
+
+                                            </li>
+
+
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-10">
+
+                                                        <div class="form-group">
+                                                            <label for="sel1">Marks:</label>
+                                                            <select class="form-control" id="edu-marks-sel-edit">
+                                                                <option>Percentage</option>
+                                                                <option>CGPA</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col">
+
+                                                        <div class="form-group">
+                                                            <span id="edu-marks-sym-edit">%</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-12">
+
+                                                        <div class="form-group">
+                                                            <label for="sel1">IMP:</label>
+                                                            <input type="number" class="form-control" id="edu-marks-imp-edit">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="sel1">Division:</label>
+                                                    <select class="form-control" id="edu-division-sel-edit">
+                                                        <option>Division I</option>
+                                                        <option>Division II</option>
+                                                        <option>Division III</option>
+                                                        <option>Division IV</option>
+                                                    </select>
+
+                                                </div>
+
+                                            </li>
+                                            <li class="list-group-item">
+                                                <button type="button" class="btn btn-warning" id="edit-edu-btn">Edit</button>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <button type="button" class="btn btn-danger" id="remove-edu-btn">Remove</button>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3>Contact Details</h3>
+                                <div class="p-0 h-100">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="usr">First Name:</label>
+                                                <input type="text" class="form-control" id="firstName">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="usr">Last Name:</label>
+                                                <input type="text" class="form-control" id="lastName">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="usr">Address 1:</label>
+                                                <input type="text" class="form-control" id="address1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="usr">Address 2:</label>
+                                                <input type="text" class="form-control" id="address2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="usr">Country :</label>
+                                                <input type="text" class="form-control" id="country">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="usr">City :</label>
+                                                <input type="text" class="form-control" id="city">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="usr">State :</label>
+                                                <input type="text" class="form-control" id="state">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="usr">Pincode :</label>
+                                                <input type="text" class="form-control" id="pincode">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="usr">Mobile No.:</label>
+                                                <input type="text" class="form-control" id="mobile">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="usr">Email-id:</label>
+                                                <input type="text" class="form-control" id="email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ...........About Me..................................................................................... -->
+                                <h3>About Me</h3>
+                                <div class="p-0 h-100">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="abt">About Me</label>
+                                                <textarea cols="30" rows="10" class="form-control" id="aboutMe">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ...........Work Experience Me..................................................................................... -->
+                                <h3>Work Experience</h3>
+                                <div class="p-0 h-100">
+                                    <ul class="list-group">
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group m-0">
+                                                        <label for="usr">Company Name:</label>
+                                                        <input type="text" class="form-control" id="wrk-name-inp">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Position (job title):</label>
+                                                        <input type="text" class="form-control" id="wrk-job-inp">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">City:</label>
+                                                        <input type="text" class="form-control" id="wrk-city-inp">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">State:</label>
+                                                        <input type="text" class="form-control" id="wrk-state-inp">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Start Date:</label>
+                                                        <select class="form-control" id="wrk-start-inp">
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">End Date:</label>
+                                                        <select class="form-control" id="wrk-end-inp">
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Job Description:</label>
+                                                        <textarea cols="20" rows="5 " class="form-control" id="wrk-desc-inp"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Pre - written phrases:</label>
+                                                        <textarea cols="20" rows="5" class="form-control" id="wrk-phrs-inp"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="btn">
+                                                <button type="button" class="btn btn-warning" id="add-wrk-btn">Add</button>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                    <ul class="list-group">
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group m-0">
+                                                        <label for="usr">Company Name:</label>
+                                                        <select class="form-control" id="added-wrk-sel">
+                                                            <option>Select to Edit</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Position (job title):</label>
+                                                        <input type="text" class="form-control" id="wrk-job-edit">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">City:</label>
+                                                        <input type="text" class="form-control" id="wrk-city-edit">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">State:</label>
+                                                        <input type="text" class="form-control" id="wrk-state-edit">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Start Date:</label>
+                                                        <select class="form-control" id="wrk-start-edit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">End Date:</label>
+                                                        <select class="form-control" id="wrk-end-edit">
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Job Description:</label>
+                                                        <textarea cols="20" rows="5 " class="form-control" id="wrk-desc-edit"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="usr">Pre - written phrases:</label>
+                                                        <textarea cols="20" rows="5" class="form-control" id="wrk-phrs-edit"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </li>
+
+                                        <li class="list-group-item p-1">
+                                            <div class="row">
+
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="form-group col-6">
+                                                            <button type="button" class="btn btn-warning" id="edit-wrk-btn">Edit</button>
+                                                        </div>
+                                                        <div class="form-group col-6">
+                                                            <button type="button" class="btn btn-danger" id="rmv-wrk-btn">Remove</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </li>
+
+                                </div>
+
+
+                                <!-- ...........Work Experience end .............................................................................. -->
+                                <!-- ...........Hobby Section..................................................................................... -->
+
+                                <h3>Hobby</h3>
+                                <div class="p-0 h-100">
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <select id="svg-color" class="form-control">
+                                                <option value="b">Black</option>
+                                                <option value="w">White</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" id="hobby-text" class="form-control" placeholder="Hobby Text">
+                                        </div>
+                                        <div class="col-12">
+                                            <div id="main-accordion">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#maincollapseOne">
+                                                            Select Symbol
+                                                        </a>
+                                                    </div>
+                                                    <div id="maincollapseOne" class="collapse" data-parent="#main-accordion">
+                                                        <div class="card-body">
+                                                            <div id="accordion1">
+
+                                                                <div class="card">
+                                                                    <div class="card-header">
+                                                                        <a class="card-link" data-toggle="collapse" href="#t1-collapseOne">
+                                                                            Sports
+                                                                        </a>
+                                                                    </div>
+                                                                    <div id="t1-collapseOne" class="collapse" data-parent="#accordion1">
+                                                                        <div class="card-body">
+                                                                            <div class="row type1">
+                                                                                <div class="col">
+                                                                                    <span class="h-span">
+                                                                                        <img src="imgs/hobby/type1/b/h1.png" width="50" height="50" alt="h1"/>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="col">
+
+                                                                                    <span class="h-span">
+                                                                                        <img src="imgs/hobby/type1/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                                                    </span>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="card">
+                                                                    <div class="card-header">
+                                                                        <a class="collapsed card-link" data-toggle="collapse" href="#t1-collapseTwo">
+                                                                            Fashion
+
+                                                                        </a>
+                                                                    </div>
+                                                                    <div id="t1-collapseTwo" class="collapse" data-parent="#accordion1">
+                                                                        <div class="card-body">
+                                                                            <div class="row type2">
+                                                                                <div class="col">
+                                                                                    <span class="h-span">
+                                                                                        <img src="imgs/hobby/type2/b/h1.png" width="50" height="50" alt="h1"/>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="col">
+
+                                                                                    <span class="h-span">
+                                                                                        <img src="imgs/hobby/type2/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                                                    </span>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="card">
+                                                                    <div class="card-header">
+                                                                        <a class="collapsed card-link" ng-click="$event.preventDefault();" data-toggle="collapse" href="#t1-collapseThree">
+                                                                            Artist
+                                                                        </a>
+                                                                    </div>
+                                                                    <div id="t1-collapseThree" class="collapse" data-parent="#accordion1">
+                                                                        <div class="card-body">
+                                                                            <div class="row type3">
+                                                                                <div class="col">
+                                                                                    <span class="h-span">
+                                                                                        <img src="imgs/hobby/type3/b/h1.png" width="50" height="50" alt="h1"/>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="col">
+
+                                                                                    <span class="h-span">
+                                                                                        <img src="imgs/hobby/type3/b/h2.png" width="50" height="50" alt="h2"/>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <button class="btn btn-danger" id="add-hobby-btn">Add Hobby</button>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <!-- ----------------Edit Hobby---------------------------------------- -->
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <select id="hobbyEditSel" class="form-control">
+                                                <option value="">Select to Edit</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div id="main-accordion1">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <a class="card-link" data-toggle="collapse" href="#maincollapseOne1">
+                                                            Select Symbol
+                                                        </a>
+                                                    </div>
+                                                    <div id="maincollapseOne1" class="collapse" data-parent="#main-accordion1">
+                                                        <div class="card-body">
+                                                            <div id="accordion2">
+
+                                                                <div class="card">
+                                                                    <div class="card-header">
+                                                                        <a class="card-link" data-toggle="collapse" href="#t2-collapseOne">
+                                                                            Sports
+                                                                        </a>
+                                                                    </div>
+                                                                    <div id="t2-collapseOne" class="collapse" data-parent="#accordion2">
+                                                                        <div class="card-body">
+                                                                            <div class="row type1">
+                                                                                <div class="col">
+                                                                                    <span class="h-span-edit">
+                                                                                        <img src="imgs/hobby/type1/b/h1.png" width="50" height="50" alt="h1"/>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="col">
+
+                                                                                    <span class="h-span-edit">
+                                                                                        <img src="imgs/hobby/type1/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                                                    </span>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="card">
+                                                                    <div class="card-header">
+                                                                        <a class="collapsed card-link" data-toggle="collapse" href="#t2-collapseTwo">
+                                                                            Fashion
+
+                                                                        </a>
+                                                                    </div>
+                                                                    <div id="t2-collapseTwo" class="collapse" data-parent="#accordion2">
+                                                                        <div class="card-body">
+                                                                            <div class="row type2">
+                                                                                <div class="col">
+                                                                                    <span class="h-span-edit">
+                                                                                        <img src="imgs/hobby/type2/b/h1.png" width="50" height="50" alt="h1"/>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="col">
+
+                                                                                    <span class="h-span-edit">
+                                                                                        <img src="imgs/hobby/type2/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                                                    </span>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="card">
+                                                                    <div class="card-header">
+                                                                        <a class="collapsed card-link" data-toggle="collapse" href="#t2-collapseThree">
+                                                                            Artist
+
+                                                                        </a>
+                                                                    </div>
+                                                                    <div id="t2-collapseThree" class="collapse" data-parent="#accordion2">
+                                                                        <div class="card-body">
+                                                                            <div class="row type3">
+                                                                                <div class="col">
+                                                                                    <span class="h-span-edit">
+                                                                                        <img src="imgs/hobby/type3/b/h1.png" width="50" height="50" alt="h1"/>
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="col">
+                                                                                    <span class="h-span-edit">
+                                                                                        <img src="imgs/hobby/type3/b/h2.png" width="50" height="50" alt="h2"/>
+
+                                                                                    </span>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <button class="btn btn-danger" id="edit-hobby-btn">Edit Hobby</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-danger" id="remove-hobby-btn">Remove Hobby</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- ...........Hobby Section end..................................................................................... -->
+
+                                <!-- ...........Skill..................................................................................... -->
+                                <h3>Skills</h3>
+                                <div class="p-0 h-100">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="text" id="skillName" class="form-control" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <select id="skillRate" class="form-control">
+                                                <option>Select Rate</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <div class="row">
+                                        <div class="col-2 container justify-content-center d-flex">
+                                            <button id="add-skill-btn" class="btn btn-info">Add</button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <select id="added-skill-sel" class="form-control">
+                                                <option value="0"> Select to Edit</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <hr>
+                                    <div class="row">
+
+                                        <div class="col-12">
+                                            <input type="text" id="skillNameEdit" class="form-control" placeholder="Name">
+                                        </div>
+                                        <div class="col-12">
+                                            <select id="skillRateEdit" class="form-control">
+                                                <option>Select Rate</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                            </select>
+                                        </div>
+
+
+
+                                    </div>
+                                    <hr>
+
+                                    <div class="row">
+                                        <div class="col-2 container justify-content-center d-flex">
+                                            <button id="edit-skill-btn" class="btn btn-info">Edit</button>
+                                            <button id="rmv-skill-btn" class="btn btn-info">Remove</button>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col select-bar-type">
+                                            <img src="imgs/bars/type1/r3.png" class="select-bar-type" alt="type1" id="type1">
+                                        </div>
+                                        <div class="col select-bar-type">
+                                            <img src="imgs/bars/type2/r3.png" class="select-bar-type" alt="type2" id="type2">
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+
+                                <!-- ...........Designation..................................................................................... -->
+                                <h3>Designation</h3>
+                                <div class="p-0 h-100">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group m-0">
+                                                <label for="dgn">Designation</label>
+                                                <input type="text" class="form-control" id="designation">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <h3>Experties</h3>
+                                <div class="p-0 h-100">
+                                    <div class="row">
+
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="add-experties-txt">
+                                        </div>
+                                        <div class="col-2">
+                                            <button id="add-experties-btn" class="btn btn-block btn-info">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col">
+                                            <select id="select-experties-remove" class="form-control">
+                                                <option value="Sel">
+                                                    Select to Remove
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="col-2">
+                                            <button id="remove-experties-btn" class="btn btn-block btn-info">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--....................................Social Link...............-->
+
+                                <h3>Social Link</h3>
+                                <div class="p-0 h-100">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <select id="select-social" class="form-control">
+                                                <option value="Facebook">
+                                                    Facebook
+                                                </option>
+                                                <option value="Linkendin">
+                                                    Linkendin
+                                                </option>
+                                                <option value="Instagram">
+                                                    Instagram
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" id="add-link-txt">
+                                        </div>
+                                        <div class="col-12">
+                                            <button id="add-social-btn" class="btn btn-block btn-info">Add</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col">
+                                            <select id="select-social-edit" class="form-control">
+                                                <option value="Sel">
+                                                    Select to Edit
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control" id="edit-link-txt">
+                                        </div>
+                                        <div class="col-6">
+                                            <button id="edit-social-btn" class="btn btn-block btn-info">Edit</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button id="remove-social-btn" class="btn btn-block btn-info">Remove</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <!--........................................end Social......................-->
+                                <!-- Training and Certification-->
+
+                                <h3>Training OR Certification</h3>
+                                <div class="p-0 h-100">
+                                    <div class="added-training-div"> </div>
+                                    <hr>
+
+                                    <div class="add-new-training-div">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="training">Name / Type of Training or Certification :</label>
+                                                    <input type="text" class="form-control" id="tc-name-inp">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="institute">Bostowing Institute (optional) :</label>
+                                                    <input type="text" class="form-control" id="tc-bost-inp">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="status">Status :</label>
+                                                    <select class="form-control" id="tc-status-sel">
+                                                        <option>Status</option>
+                                                        <option>Completed</option>
+                                                        <option>To be Completed by</option>
+                                                        <option>Not Applicable</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="year">Year :</label>
+                                                    <select id="tc-year-sel" class="form-control">
+                                                        <option>Select year</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <button type="button" class="btn btn-warning" id="add-new-tc-btn">Add</button>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="add-new-training-div-edit">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="training">Name / Type of Training or Contribution :</label>
+                                                    <select class="form-control" id="added-tc-sel">
+                                                        <option>Select</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="institute">Bostowing Institute (optional) :</label>
+                                                    <input type="text" class="form-control" id="tc-bost-inp-edit">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="status">Status :</label>
+                                                    <select class="form-control" id="tc-status-sel-edit">
+                                                        <option>Edit Status</option>
+                                                        <option>Completed</option>
+                                                        <option>To be Completed by</option>
+                                                        <option>Not Applicable</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="year">Year :</label>
+                                                    <select id="tc-year-sel-edit" class="form-control">
+                                                        <option>Select Edit year</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-warning" id="edit-tc-btn">Edit</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-danger" id="remove-tc-btn">Remove</button>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <!-- Training and Certification end-->
+
+                                <!-- Awards and Owners -->
+
+                                <h3>Awards and Achievements</h3>
+                                <div class="p-0 h-100">
+                                    <div class="added-awards-div"> </div>
+                                    <hr>
+
+                                    <div class="add-new-awards-div">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="awards">Title </label>
+                                                    <input type="text" class="form-control" id="aw-name-inp">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="year">Year :</label>
+                                                    <select id="aw-year-sel" class="form-control">
+                                                        <option>Select Edit year</option>
+                                                    </select>
+
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="company">Company</label>
+                                                    <input type="text" class="form-control" id="aw-cmp-inp">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="status">Status :</label>
+                                                    <textarea name="awards" class="form-control" id="aw-status-inp" cols="30" rows="5"></textarea>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="list-group-item">
+                                                <button type="button" class="btn btn-warning" id="add-new-aw-btn">Add</button>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="add-new-awards-div-edit">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="awards">Title </label>
+                                                    <select class="form-control" id="added-aw-sel">
+                                                        <option>Select</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="year">Year :</label>
+                                                    <select id="aw-year-edit" class="form-control">
+                                                        <option>Select Edit year</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="company">Company</label>
+                                                    <input type="text" class="form-control" id="aw-cmp-edit">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="status">Status :</label>
+                                                    <textarea name="awards" class="form-control" id="aw-status-edit" cols="30" rows="5" ></textarea>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-warning" id="edit-aw-btn">Edit</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-danger" id="rmv-aw-btn">Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <!-- Awards and Owners end-->
+
+
+                                <!-- ...........Internship..................................................................................... -->
+                                <h3>Internship</h3>
+
+                                <div class="p-0 h-100">
+                                    <div class="added-int-div"> </div>
+                                    <hr>
+
+                                    <div class="add-new-int-div">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="companyname">Company Name :</label>
+                                                    <input type="text" class="form-control" id="company-name-inp">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="internposition">Intern Position (Job title):</label>
+                                                    <input type="text" class="form-control" id="company-pos-name-inp">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="city">City:</label>
+                                                        <input type="text" class="form-control" id="city-intern-inp">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="state">State:</label>
+                                                        <input type="text" class="form-control" id="state-intern-inp">
+                                                    </div>
+                                                </div>
+
+                                            </li>
+
+                                            <li class="list-group-item">
+
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <label for="sd">Start Date:</label>
+                                                        <input type="date" class="form-control" id="date-intern-str-inp">
+                                                    </div>
+                                                    <div class="form-group col-12">
+                                                        <label for="ed">End Date:</label>
+                                                        <input type="date" class="form-control" id="date-intern-end-inp">
+                                                    </div>
+                                                </div>
+
+
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="eds">Experience Description Summary:</label>
+                                                    <textarea cols="30" rows="5" class="form-control" id="exp-desc-intern-inp">
+                                                    </textarea>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <button type="button" class="btn btn-warning" id="add-new-int-btn">Add</button>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="edit-int-div">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="cnEdit">Company Name :</label>
+                                                            <select class="form-control" id="added-intern-sel">
+                                                                <option>Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </li>
+                                            <li class="list-group-item">
+
+                                                <div class="form-group">
+                                                    <label for="internposition">Intern Position (Job title):</label>
+                                                    <input type="text" class="form-control" id="company-pos-name-inp-edit">
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="city">City:</label>
+                                                        <input type="text" class="form-control" id="city-intern-inp-edit">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="state">State:</label>
+                                                        <input type="text" class="form-control" id="state-intern-inp-edit">
+                                                    </div>
+                                                </div>
+
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="form-group col-12">
+                                                        <label for="sd">Start Date:</label>
+                                                        <input type="date" class="form-control" id="date-intern-str-inp-edit">
+                                                    </div>
+                                                    <div class="form-group col-12">
+                                                        <label for="ed">End Date:</label>
+                                                        <input type="date" class="form-control" id="date-intern-end-inp-edit">
+                                                    </div>
+                                                </div>
+
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="eds">Experience Description Summary:</label>
+                                                    <textarea cols="30" rows="5" class="form-control" id="exp-desc-intern-inp-edit">
+                                                    </textarea>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-warning" id="edit-intern-btn">Edit</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-danger" id="remove-intern-btn">Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- ...........Internship end..................................................................................... -->
+                                <h3>Project</h3>
+                                <div class="p-0 h-100">
+                                    <div class="added-project-div"> </div>
+                                    <hr>
+
+                                    <div class="add-new-project-div">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+
+
+                                                <div class="form-group">
+                                                    <label for="pn">Project Name :</label>
+                                                    <input type="text" class="form-control" id="name-pro-inp">
+                                                </div>
+
+
+                                            </li>
+
+
+                                            <li class="list-group-item">
+                                                <h6>Project Period :</h6>
+
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="df">Date From</label>
+                                                        <input type="date" class="form-control" id="date-pro-str-inp">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="dt">Date To</label>
+                                                        <input type="date" class="form-control" id="date-pro-end-inp">
+                                                    </div>
+                                                </div>
+
+
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-12">
+
+                                                        <div class="form-group">
+                                                            <label for="cnEdit">Add a Label :</label>
+                                                            <select class="form-control" id="pro-lable">
+                                                                <option selected>Project Type</option>
+                                                                <option>Role</option>
+                                                                <option>Team Size</option>
+                                                                <option>Technology</option>
+                                                                <option>Other</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-12">
+
+                                                        <div class="form-group">
+                                                            <label for="ab">About Label :</label>
+                                                            <input type="text" class="form-control" id="lable-pro-about">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+
+                                                <div class="form-group">
+                                                    <label for="eds-pro">Experience Description Summary:</label>
+                                                    <textarea cols="30" rows="5" class="form-control" id="exp-desc-pro-inp">
+                                                    </textarea>
+                                                </div>
+
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <button type="button" class="btn btn-warning" id="add-new-pro-btn">Add</button>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="edit-pro-div">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="pn">Project Name :</label>
+                                                    <select class="form-control" id="added-project-sel">
+                                                        <option selected>Select Project</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+
+
+                                            <li class="list-group-item">
+                                                <h6>Project Period :</h6>
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="df">Date From</label>
+                                                        <input type="date" class="form-control" id="date-pro-str-inp-edit">
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        <label for="dt">Date To</label>
+                                                        <input type="date" class="form-control" id="date-pro-end-inp-edit">
+                                                    </div>
+                                                </div>
+
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="cnEdit">Add a label :</label>
+                                                            <select class="form-control" id="pro-lable-edit">
+                                                                <option selected>Project Type</option>
+                                                                <option>Role</option>
+                                                                <option>Team Size</option>
+                                                                <option>Technology</option>
+                                                                <option>Other</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="ab">About Label :</label>
+                                                            <input type="text" class="form-control" id="lable-pro-about-edit">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="form-group">
+                                                    <label for="eds-pro">Experience Description Summary:</label>
+                                                    <textarea cols="30" rows="5" class="form-control" id="exp-desc-pro-inp-edit">
+                                                    </textarea>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-warning" id="edit-pro-btn">Edit</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button type="button" class="btn btn-danger" id="remove-project-btn">Remove</button>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </section>
+
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Image Setting</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <p>
+                                <!-- Below are a series of inputs which allow file selection and interaction with the cropper api -->
+                                <input type="file" id="fileInput" accept="image/*" />
+                                <input type="button" id="btnCrop" value="Crop" />
+                                <input type="button" id="btnRestore" value="Restore" />
+                            </p>
+                            <div>
+                                <canvas id="canvas">
+                                    Your browser does not support the HTML5 canvas element.
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+
+</html>
+
+<script>
+</script>
+
+<style>
+    img {
+        max-width: 100%;
+        /* This rule is very important, please do not ignore this! */
+    }
+
+    #canvas {
+        height: 400px;
+        width: 470px;
+        background-color: #ffffff;
+        cursor: default;
+        border: 1px solid black;
+    }
+</style>

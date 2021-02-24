@@ -1,0 +1,92 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="js/jquery-ui.css" rel="stylesheet">
+<script src="external/jquery/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+<link href="css/style.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="js/resume.js"></script>
+<script src="js/jspdf.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+<script src="js/html2pdf.js"></script>
+<script src="js/cropper.js"></script>
+<link href="css/cropper.min.css" rel="stylesheet">
+
+
+<p>
+    <!-- Below are a series of inputs which allow file selection and interaction with the cropper api -->
+    <input type="file" id="fileInput" accept="image/*" />
+    <input type="button" id="btnCrop" value="Crop" />
+    <input type="button" id="btnRestore" value="Restore" />
+</p>
+<div>
+    <canvas id="canvas">
+        Your browser does not support the HTML5 canvas element.
+      </canvas>
+</div>
+
+<div id="result"></div>
+
+<br />
+<br />
+<hr />
+
+<style>
+    img {
+        max-width: 100%;
+        /* This rule is very important, please do not ignore this! */
+    }
+    
+    #canvas {
+        height: 600px;
+        width: 600px;
+        background-color: #ffffff;
+        cursor: default;
+        border: 1px solid black;
+    }
+</style>
+
+<script>
+    var canvas = $("#canvas"),
+        context = canvas.get(0).getContext("2d"),
+        $result = $('#result');
+
+    $('#fileInput').on('change', function() {
+        if (this.files && this.files[0]) {
+            if (this.files[0].type.match(/^image\//)) {
+                var reader = new FileReader();
+                reader.onload = function(evt) {
+                    var img = new Image();
+                    img.onload = function() {
+                        context.canvas.height = img.height;
+                        context.canvas.width = img.width;
+                        context.drawImage(img, 0, 0);
+                        var cropper = canvas.cropper({
+                            aspectRatio: 16 / 9
+                        });
+                        $('#btnCrop').click(function() {
+                            // Get a string base 64 data url
+                            var croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png");
+                            $result.append($('<img>').attr('src', croppedImageDataURL));
+                        });
+                        $('#btnRestore').click(function() {
+                            canvas.cropper('reset');
+                            $result.empty();
+                        });
+                    };
+                    img.src = evt.target.result;
+                };
+                reader.readAsDataURL(this.files[0]);
+            } else {
+                alert("Invalid file type! Please select an image file.");
+            }
+        } else {
+            alert('No file(s) selected.');
+        }
+    });
+</script>
