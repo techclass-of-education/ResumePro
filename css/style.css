@@ -82,3 +82,62 @@ body {
   border:none;
   outline:none;
 }
+
+/*.........................Add skills..................*/
+.add-skill-mark-type{
+    text-align: center;
+    padding: 10px;
+}
+
+.add-skill-mark-type img{
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+}
+/*....................collage involvement......................*/
+.clg-inv-mark-type{
+    text-align: center;
+    padding: 10px;
+}
+
+.clg-inv-mark-type img{
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+}
+
+/*....................proffesional affiliation......................*/
+.pro-affi-mark-type{
+    text-align: center;
+    padding: 10px;
+}
+
+.pro-affi-mark-type img{
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+}
+
+/*....................office involvement......................*/
+.off-inv-mark-type{
+    text-align: center;
+    padding: 10px;
+}
+
+.off-inv-mark-type img{
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+}
+
+/*....................expertise.....................*/
+.exp-mark-type{
+    text-align: center;
+    padding: 10px;
+}
+
+.exp-mark-type img{
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+}
