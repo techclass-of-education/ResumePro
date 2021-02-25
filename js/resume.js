@@ -5,21 +5,41 @@ app.config(function ($routeProvider) {
                 templateUrl: "./resume_templates/template1/template1.html",
                 controller: 'Temp1Controller'
             })
-            .when("/template2", {
-                templateUrl: "./resume_templates/template2/template2.html",
-                controller: 'Temp2Controller'
+            .when("/template199-classic", {
+                templateUrl: "./resume_templates/template199-classic/resumeClassic.html",
+                controller: 'Temp199-classicController'
             })
-            .when("/template299-67", {
+            .when("/template3", {
+                templateUrl: "./resume_templates/template3/template3.html",
+                controller: 'Temp3Controller'
+            })
+            .when("/template29920", {
+                templateUrl: "./resume_templates/template299-20/resume20.html",
+                controller: 'Temp29920Controller'
+            })
+            .when("/template29918", {
+                templateUrl: "./resume_templates/template299-18/resume18.html",
+                controller: 'Temp29918Controller'
+            })
+            .when("/template29987", {
+                templateUrl: "./resume_templates/template299-87/resume87.html",
+                controller: 'Temp29987Controller'
+            })
+            .when("/template2993", {
+                templateUrl: "./resume_templates/template299-3/Template299-3.html",
+                controller: 'Temp2993Controller'
+            })
+            .when("/template29967", {
                 templateUrl: "./resume_templates/template299-67/resume67.html",
                 controller: 'Temp29967Controller'
-
-            }).when("/template3", {
-        templateUrl: "./resume_templates/template3/template3.html",
-        controller: 'Temp3Controller'
-    })
-            .when("/template2", {
-                templateUrl: "./resume_templates/template2/template2.html",
-                controller: 'Temp2Controller'
+            })
+            .when("/template29928", {
+                templateUrl: "./resume_templates/template299-28/resume28.html",
+                controller: 'Temp29928Controller'
+            })
+            .when("/template29946", {
+                templateUrl: "./resume_templates/template299-46/resume46.html",
+                controller: 'Temp29946Controller'
             });
 });
 
@@ -40,7 +60,7 @@ app.controller('Temp1Controller', function ($scope, $http) {
                 function (data, status) {
                     window.location.href = "downloadResume.html";
 
-        });
+                });
 
     }
 
@@ -59,12 +79,12 @@ app.controller('Temp1Controller', function ($scope, $http) {
 
 //Remove seperator
 
-function removePageSep(){
+function removePageSep() {
     $(".page-sep").remove()
 }
 
 
-app.controller('Temp29967Controller', function ($scope, $http) {
+app.controller('Temp1Controller', function ($scope, $http) {
     $(document).ready(function () {
         $(".resume-main").sortable({});
     });
@@ -82,27 +102,40 @@ app.controller('Temp29967Controller', function ($scope, $http) {
 
                 });
 
+
+
+
     }
 
+    // if (localStorage) {
+    //     return localStorage.getItem(key);
+    // } else {
+    //     return $.cookies.get(key);
+    // }
+
     if (localStorage.getItem("persistData")) {
+        // alert("Find Local");
         $result = $('#result');
 
         var imageData = localStorage.getItem("persistData");
+        // alert(imageData);
         $result.empty();
         $result.append($('<img>').attr('src', imageData));
     }
 
 });
 
-app.controller('Temp2Controller', function ($scope) {
+app.controller('Temp199-classicController', function ($scope, $http) {
+   
 
+    // alert("Hello")
     $(document).ready(function () {
         $(".resume-main").sortable({});
     });
 
-
-
     $scope.downloadResume = function () {
+            removePageSep()
+
 
         var pageData = $('#resume').html();
 
@@ -111,15 +144,13 @@ app.controller('Temp2Controller', function ($scope) {
         },
                 function (data, status) {
                     window.location.href = "downloadResume.html";
+
                 });
     }
 
 
-
-
     if (localStorage.getItem("persistData")) {
         $result = $('#result');
-
         var imageData = localStorage.getItem("persistData");
         $result.empty();
         $result.append($('<img>').attr('src', imageData));
@@ -129,11 +160,13 @@ app.controller('Temp2Controller', function ($scope) {
 
 
 app.controller('Temp3Controller', function ($scope, $http) {
+    // alert("Hello")
     $(document).ready(function () {
         $(".resume-main").sortable({});
     });
 
     $scope.downloadResume = function () {
+        removePageSep()
 
         var pageData = $('#resume').html();
 
@@ -150,6 +183,244 @@ app.controller('Temp3Controller', function ($scope, $http) {
 
     }
 
+
+
+    if (localStorage.getItem("persistData")) {
+        $result = $('#result');
+        var imageData = localStorage.getItem("persistData");
+        $result.empty();
+        $result.append($('<img>').attr('src', imageData));
+    }
+
+});
+
+app.controller('Temp29920Controller', function ($scope, $http) {
+    // alert("Hello")
+    $(document).ready(function () {
+        $(".resume-main").sortable({});
+    });
+
+    $scope.downloadResume = function () {
+        removePageSep()
+
+        var pageData = $('#resume').html();
+
+        $.post("savePage.php", {
+            pData: pageData
+        },
+                function (data, status) {
+                    window.location.href = "downloadResume.html";
+
+                });
+
+
+
+
+    }
+
+
+
+    if (localStorage.getItem("persistData")) {
+        $result = $('#result');
+        var imageData = localStorage.getItem("persistData");
+        $result.empty();
+        $result.append($('<img>').attr('src', imageData));
+    }
+
+});
+
+
+
+app.controller('Temp29918Controller', function ($scope, $http) {
+   
+
+    // alert("Hello")
+    $(document).ready(function () {
+        $(".resume-main").sortable({});
+    });
+
+    $scope.downloadResume = function () {
+            removePageSep()
+
+
+        var pageData = $('#resume').html();
+
+        $.post("savePage.php", {
+            pData: pageData
+        },
+                function (data, status) {
+                    window.location.href = "downloadResume.html";
+
+                });
+    }
+
+
+    if (localStorage.getItem("persistData")) {
+        $result = $('#result');
+        var imageData = localStorage.getItem("persistData");
+        $result.empty();
+        $result.append($('<img>').attr('src', imageData));
+    }
+
+});
+
+app.controller('Temp29987Controller', function ($scope, $http) {
+   
+
+    // alert("Hello")
+    $(document).ready(function () {
+        $(".resume-main").sortable({});
+    });
+
+    $scope.downloadResume = function () {
+            removePageSep()
+
+
+        var pageData = $('#resume').html();
+
+        $.post("savePage.php", {
+            pData: pageData
+        },
+                function (data, status) {
+                    window.location.href = "downloadResume.html";
+
+                });
+    }
+
+
+    if (localStorage.getItem("persistData")) {
+        $result = $('#result');
+        var imageData = localStorage.getItem("persistData");
+        $result.empty();
+        $result.append($('<img>').attr('src', imageData));
+    }
+
+});
+
+app.controller('Temp2993Controller', function ($scope, $http) {
+    
+    
+    // alert("Hello")
+    $(document).ready(function () {
+        
+        $(".resume-main").sortable({});
+    });
+
+    $scope.downloadResume = function () {
+        removePageSep()
+
+        var pageData = $('#resume').html();
+
+        $.post("savePage.php", {
+            pData: pageData
+        },
+                function (data, status) {
+                    window.location.href = "downloadResume.html";
+
+                });
+    }
+
+
+    if (localStorage.getItem("persistData")) {
+        $result = $('#result');
+        var imageData = localStorage.getItem("persistData");
+        $result.empty();
+        $result.append($('<img>').attr('src', imageData));
+    }
+
+});
+
+
+
+
+app.controller('Temp29967Controller', function ($scope, $http) {
+   
+
+    // alert("Hello")
+    $(document).ready(function () {
+        $(".resume-main").sortable({});
+    });
+
+    $scope.downloadResume = function () {
+            removePageSep()
+
+
+        var pageData = $('#resume').html();
+
+        $.post("savePage.php", {
+            pData: pageData
+        },
+                function (data, status) {
+                    window.location.href = "downloadResume.html";
+
+                });
+    }
+
+
+    if (localStorage.getItem("persistData")) {
+        $result = $('#result');
+        var imageData = localStorage.getItem("persistData");
+        $result.empty();
+        $result.append($('<img>').attr('src', imageData));
+    }
+
+});
+
+app.controller('Temp29928Controller', function ($scope, $http) {
+   
+
+    // alert("Hello")
+    $(document).ready(function () {
+        $(".resume-main").sortable({});
+    });
+
+    $scope.downloadResume = function () {
+            removePageSep()
+
+
+        var pageData = $('#resume').html();
+
+        $.post("savePage.php", {
+            pData: pageData
+        },
+                function (data, status) {
+                    window.location.href = "downloadResume.html";
+
+                });
+    }
+
+
+    if (localStorage.getItem("persistData")) {
+        $result = $('#result');
+        var imageData = localStorage.getItem("persistData");
+        $result.empty();
+        $result.append($('<img>').attr('src', imageData));
+    }
+
+});
+
+app.controller('Temp29946Controller', function ($scope, $http) {
+   
+
+    // alert("Hello")
+    $(document).ready(function () {
+        $(".resume-main").sortable({});
+    });
+
+    $scope.downloadResume = function () {
+            removePageSep()
+
+
+        var pageData = $('#resume').html();
+
+        $.post("savePage.php", {
+            pData: pageData
+        },
+                function (data, status) {
+                    window.location.href = "downloadResume.html";
+
+                });
+    }
 
 
     if (localStorage.getItem("persistData")) {
