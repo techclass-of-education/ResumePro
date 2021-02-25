@@ -690,7 +690,44 @@ $(document).ready(function () {
     }
 
 //....................................................Experties Code............................................
+
+    var imgExp = "d1"
+    var folderExp = "expert";
+
+    function changeAllExpImgs(alt)
+    {
+        var expImg = $(".experties-row img")
+        var expAddedImgTags = $(".exp-bar-img")
+
+        var i = 0
+        while (i < expImg.length) {
+            finalPath = alt + ".png"
+            expRateImgSrc = "imgs/expert/" + finalPath
+            expImg[i].src = expRateImgSrc
+            expImg[i].alt = alt
+            i++
+        }
+    }
     $(document).ready(function () {
+        $("#expert_d1").click(function () {
+
+            imgExp = $(this).attr("alt")
+            changeAllExpImgs(imgExp)
+
+        });
+        $("#expert_d2").click(function () {
+            imgExp = $(this).attr("alt")
+            changeAllExpImgs(imgExp)
+        });
+        $("#expert_r1").click(function () {
+            imgExp = $(this).attr("alt")
+            changeAllExpImgs(imgExp)
+        });
+        $("#expert_r2").click(function () {
+            imgExp = $(this).attr("alt")
+            changeAllExpImgs(imgExp)
+        });
+
         $("#add-experties-btn").click(function (e) {
             e.preventDefault();
             addExpertiesRow()
@@ -708,6 +745,7 @@ $(document).ready(function () {
 
     });
 
+
     function removeExpertiesRow() {
         var expertiesRows = $(".experties-row")
         var expertiesEditSelVal = "." + $("#select-experties-remove").val()
@@ -722,7 +760,7 @@ $(document).ready(function () {
         } else if (expertiesRows.length == 1) {
             var expertiesLinkImgSpan = $(expertiesRows[0]).find(".experties-img-span");
             var expertiesLinkSpan = $(expertiesRows[0]).find(".experties-txt-span");
-            expertiesLinkImgSpan.html("<img src='imgs/expert/dot.png' height='10' width='10'>")
+            expertiesLinkImgSpan.html("<img src='imgs/expert/" + imgExp + ".png' height='10' width='10'>")
             expertiesLinkSpan.html("MS Word");
         }
         var selectExpertiesRemoveOp = $("#select-experties-remove option[value='" + $("#select-experties-remove").val() + "']");
@@ -731,16 +769,10 @@ $(document).ready(function () {
 
     }
 
-
-
-
-
-// var expertiesText=""
-
     function addExpertiesRow() {
 
 
-        var expertiesFinalPath = "imgs/expert/dot.png";
+        var expertiesFinalPath = "imgs/expert/" + imgExp + ".png";
         var expertiesText = $("#add-experties-txt").val().trim()
         var selectExpertiesRemoveOp = $("#select-experties-remove option");
         var selectExpertiesRemoveOpLength = selectExpertiesRemoveOp.length;
@@ -769,6 +801,7 @@ $(document).ready(function () {
         }
     }
 //....................................................Experties Code End............................................
+
 
 
 
