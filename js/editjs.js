@@ -5,13 +5,18 @@
  */
 
 //hide show resume blocker
-$(document).ready(function () {
-    $(#socialBtnHideShow).click(function(){
-        
-    });
-    
-});
+ $(document).ready(function() {
+        $("#socialBtnHideShow").click(function() {
+            $("#social-hide-show").toggle("fast");
+            if ($("#socialBtnHideShow").text() == "HIDE THIS SECTION") {
+                $("#socialBtnHideShow").text("SHOW THIS SECTION");
+            } else {
+                $("#socialBtnHideShow").text("HIDE THIS SECTION");
+            }
 
+        });
+
+    });
 
 
 $(document).ready(function () {
