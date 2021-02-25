@@ -4,6 +4,19 @@
  * and open the template in the editor.
  */
 
+//hide show resume blocker
+$(document).ready(function() {
+        $("#socialBtnHideShow").click(function() {
+            $("#social-hide-show").toggle("fast");
+            if ($("#socialBtnHideShow").text().trim() == "hide") {
+                $("#socialBtnHideShow").text("show");
+            } else {
+                $("#socialBtnHideShow").html("hide");
+            }
+        });
+    });
+    
+
 
 $(document).ready(function () {
 
