@@ -6,6 +6,7 @@ $(function () {
 
 
 
+
 var contact = ["fname", "lname", "phone", "email", "address1",
     "address2", "city", "state", "country", "pincode"]
 
@@ -15,17 +16,17 @@ var personalInfo = ["father", "mother", "otherAddress", "dob",
 var aboutMe = [""]
 var dsg = [""]
 
+//persist data
 
-
-function setLocalStorage(key, value)
-{
-    localStorage.setItem(key, JSON.stringify(value))
-}
-
-function getLocalStorage(key)
-{
-    alert(JSON.parse(localStorage.getItem(key)));
-}
+//function setLocalStorage(key, value)
+//{
+//    localStorage.setItem(key, JSON.stringify(value))
+//}
+//
+//function getLocalStorage(key)
+//{
+//    alert(JSON.parse(localStorage.getItem(key)));
+//}
 $(document).ready(function () {
 
 
@@ -38,8 +39,8 @@ $(document).ready(function () {
     });
 
 
-    getLocalStorage("dsg")
-    getLocalStorage("personalInfo")
+//    getLocalStorage("dsg")
+//    getLocalStorage("personalInfo")
 
     $("#designation").keyup(function (e) {
         e.preventDefault();
