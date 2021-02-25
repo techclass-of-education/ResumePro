@@ -5,30 +5,25 @@
  */
 
 //hide show resume blocker
-$(document).ready(function() {
-        $("#socialBtnHideShow").click(function() {
-            $("#social-hide-show").toggle("fast");
-            if ($("#socialBtnHideShow").text().trim() == "hide") {
-                $("#socialBtnHideShow").text("show");
-            } else {
-                $("#socialBtnHideShow").html("hide");
-            }
-        });
+$(document).ready(function () {
+    $(#socialBtnHideShow).click(function(){
+        
     });
     
+});
+
 
 
 $(document).ready(function () {
 
     $("#btn-contact-edit").click(function () {
-        if ($("#contact-h-edit").attr("contenteditable")=="false")
+        if ($("#contact-h-edit").attr("contenteditable") == "false")
         {
             $("#contact-h-edit").attr("contenteditable", "true")
-        }
-        else
+        } else
         {
             $("#contact-h-edit").attr("contenteditable", "false")
-            
+
         }
 //        $('#contact-h-edit').trigger('contentchanged');
     })
