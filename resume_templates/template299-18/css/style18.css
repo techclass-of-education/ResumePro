@@ -1,0 +1,866 @@
+* {
+    line-height: 1;
+}
+
+.resume_secTop {
+    background-color: #ffffff;
+}
+
+.resume_sec1 {
+    background-color: #ffffff;
+}
+
+.resume_sec2 {
+    background-color: #ffffff;
+}
+
+.left-side-first{
+    background-color: lightgray;
+}
+
+.template-container {
+    margin: 20px;
+    /* background-color: #ffffff; */
+    /* border: 5px solid red; */
+}
+
+.top-border-left {
+    height: 30px;
+    background-color: lightgray;
+}
+
+.top-border-right {
+    height: 30px;
+    background-color: #000000;
+}
+
+.row-div {
+    height: 110px;
+    margin: 0;
+    padding-left: 15px;
+    margin-right: 15px;
+}
+
+.text-col {
+    border: 5px solid;
+    border-left: 0;
+    top: 45px;
+    padding-left: 0px;
+}
+
+.col-div {
+    border: 5px solid;
+    border-right: 0;
+    top: 45px;
+    padding-left: 0px;
+}
+
+.first-name {
+    background-color: white;
+    margin-top: -20px;
+    position: absolute;
+    padding: 0 10px;
+    font-size: 30px;
+    font-weight: 900;
+    left: 0px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.last-name {
+    position: absolute;
+    padding: 0 10px;
+    padding-top: 15px;
+    font-size: 30px;
+    font-weight: 900;
+    left: 0px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.designation-div {
+    margin-top: 65px;
+    margin-right: 15px;
+    margin-left: 10px;
+    position: absolute;
+    padding-left: 0px;
+    padding-top: 5px;
+    font-size: 15px;
+    left: 0px;
+    right: -15px;
+    width: 90%;
+    border-top: 2px solid gray;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cv-card-col {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: lightgray;
+    /* background-image: url(../images/drop-down-arrow\ copy.png); */
+    /* background-repeat: no-repeat; */
+    /* background-position-x: center; */
+}
+
+.resume-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid #f5f5f5;
+}
+
+
+/* left side details about me */
+
+.about-me-header {
+    display: block;
+    height: 36px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.aboutMeRow {
+    margin-right: 1px;
+    margin-left: 2px;
+}
+
+.aboutMeHeadingCol {
+    padding-left: 0px;
+    line-height: 2;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.aboutMeIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.aboutMeIcon img {
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
+}
+
+.about-detail {
+    padding: 15px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+
+/* left side education */
+
+.education-header {
+    margin-bottom: 15px;
+    display: block;
+    height: 36px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.educationRow {
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-bottom: 15px;
+}
+
+.educationHeadingCol {
+    padding-left: 0px;
+    line-height: 2;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.educationIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.educationIcon img {
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
+}
+
+.education-details-row {
+    margin-right: 1px;
+    margin-left: 2px;
+}
+
+.year-div {
+    padding-top: 2px;
+    background-image: url("../images/vr-bar.png");
+    background-repeat: no-repeat;
+}
+
+.education-year {
+    font-size: 12px;
+    text-align: justify;
+    padding-left: 0px;
+    line-height: 1.5;
+}
+
+.education-degree-type {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-graduation-status {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    line-height: 1.2;
+}
+
+.education-collage-name {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-board {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-city {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-state {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+}
+
+.education-percentage {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-division {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+}
+
+
+/* left side internship */
+
+.intern-header {
+    margin-top: 15px;
+    display: block;
+    height: 36px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.internRow {
+    margin-right: 1px;
+    margin-left: 2px;
+}
+
+.internHeadingCol {
+    padding-left: 0px;
+    line-height: 2;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.internIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.internIcon img {
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
+}
+
+.intern-details-row {
+    margin-right: 1px;
+    margin-left: 2px;
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
+}
+
+.intern-div-css{
+    margin-top: 15px;
+}
+
+.intern-job-position {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
+
+.intern-company-name {
+    font-size: 12px;
+    line-height: 2;
+}
+
+.intern-year {
+    font-size: 12px;
+    text-align: justify;
+    padding-left: 0px;
+    line-height: 1.5;
+    padding-top: 0px;
+}
+
+.intern-details {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+.intern-div-detail {
+    padding-left: 0px;
+}
+
+.intern-div {
+    padding-top: 2px;
+    background-image: url("../images/vr-bar.png");
+}
+
+/* left side project */
+
+.project-header {
+    margin-top: 15px;
+    display: block;
+    height: 36px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.projectRow {
+    margin-right: 1px;
+    margin-left: 2px;
+}
+
+.projectHeadingCol {
+    padding-left: 0px;
+    line-height: 2;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.projectIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.internIcon img {
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
+}
+
+.intern-details-row {
+    margin-right: 1px;
+    margin-left: 2px;
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
+}
+
+.intern-div-css{
+    margin-top: 15px;
+}
+
+.intern-job-position {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
+
+.intern-company-name {
+    font-size: 12px;
+    line-height: 2;
+}
+
+.intern-year {
+    font-size: 12px;
+    text-align: justify;
+    padding-left: 0px;
+    line-height: 1.5;
+    padding-top: 0px;
+}
+
+.intern-details {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+.intern-div-detail {
+    padding-left: 0px;
+}
+
+.intern-div {
+    padding-top: 2px;
+    background-image: url("../images/vr-bar.png");
+}
+
+
+/* Right Side Details contact me*/
+
+.contactMeIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.contactMeIcon img {
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
+}
+
+.contactMeHeadingCol {
+    padding-left: 0px;
+    line-height: 2;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.contactMeRow {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.contact-me-header {
+    display: block;
+    background-color: lightgray;
+    height: 36px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.contact-me-details {
+    background-color: lightgray;
+    background-repeat: no-repeat;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.col-img-div {
+    text-align: center;
+}
+
+.contactDetailsSpan img {
+    width: 15px;
+    height: 15px;
+}
+
+.contactDetailsSpan {
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+.conatct-number {
+    font-size: 12px;
+    text-align: justify;
+}
+
+.contact-number-div {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.contact-email {
+    font-size: 12px;
+    text-align: justify;
+}
+
+.contact-email-div {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.address-line {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.2;
+}
+
+.contact-address-div {
+    padding-right : 0px;
+    padding-left: 0px;
+}
+
+/*.address-line2 {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.2;
+}*/
+
+/*.contact-address-div-2 {
+    padding-right: 0px;
+    padding-left: 0px;
+}*/
+
+
+/* right side skill details */
+
+.skillIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.skillIcon img {
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
+}
+
+.skillHeadingCol {
+    padding-left: 0px;
+    line-height: 2;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.skillRow {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.skill-header {
+    display: block;
+    background-color: lightgray;
+    height: 36px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.skill-details {
+    background-color: lightgray;
+    background-repeat: no-repeat;
+    padding-top: 10px;
+    /* padding-left: 20px; */
+    padding-bottom: 10px;
+}
+
+.skillDetailsSpan {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+    margin-left: 0px;
+}
+
+.skill-dot {
+    padding-left: 5px;
+    padding-right: 0px;
+    padding-top: 2px;
+}
+
+.skill-dot img {
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.skill-name {
+    font-size: 12px;
+    line-height: 2;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.skill-star {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+}
+
+.skill-star img {
+    width: 70px;
+    height: 8px;
+    margin-top: 5px;
+}
+
+
+/*right side expertise details */
+
+.expertiseIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.expertiseIcon img {
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
+}
+
+.expertiseHeadingCol {
+    padding-left: 0px;
+    line-height: 2;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.expertiseRow {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.expertise-header {
+    display: block;
+    background-color: lightgray;
+    height: 36px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.expertise-details {
+    background-color: lightgray;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    /* padding-left: 20px; */
+}
+
+.expertiseDetailsSpan {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-right: 5px;
+    margin-left: 0px;
+}
+
+.expertise-img-div {
+    padding-left: 5px;
+    padding-right: 0px;
+}
+
+.expertiseDetailsSpan img {
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.expertise-div {
+    padding-left: 0px;
+}
+
+.expertise-list {
+    font-size: 12px;
+}
+
+
+/* right side intrest */
+
+.intrestIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.intrestIcon img {
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
+}
+
+.intrestHeadingCol {
+    padding-left: 0px;
+    line-height: 2;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.intrestRow {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.intrest-header {
+    display: block;
+    background-color: lightgray;
+    height: 36px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.intrest-details {
+    background-color: lightgray;
+    background-repeat: no-repeat;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.intrest-details-row {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-bottom: 25px;
+}
+
+.intrest-col-row{
+    padding-bottom: 10px;
+}
+
+.intrest-img {
+    /* margin-left: 10px; */
+    background-color: #ffffff;
+    /* width: 150px; */
+    /* height: 50px; */
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intrest-img img {
+    width: 25px;
+    height: 25px;
+}
+
+.intrest-name {
+    /* margin-left: 10px; */
+    background-color: #ffffff;
+    /* width: 120px; */
+    /* height: 60px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 15px;
+    /* margin-bottom: 20px; */
+}
+
+
+/*....................Second page CSS...........................*/
+
+.second-page-div{
+    background-color: lightgray;
+}
+
+/*second page person name*/
+.col-div-second {
+    border: 5px solid;
+    border-right: 0;
+    top: 30px;
+    padding-left: 0px;
+}
+
+.row-div-second {
+    height: 80px;
+    margin: 0;
+    padding-left: 5px;
+    margin-right: 5px;
+}
+
+.text-col-second {
+    border: 5px solid;
+    border-left: 0;
+    top: 30px;
+    padding-left: 0px;
+}
+
+.first-name-second {
+    background-color: lightgray;
+    margin-top: -10px;
+    position: absolute;
+    padding: 0 5px;
+    font-size: 20px;
+    font-weight: 900;
+    left: 0px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.last-name-second {
+    position: absolute;
+    padding: 0 5px;
+    padding-top: 15px;
+    font-size: 20px;
+    font-weight: 900;
+    left: 0px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.designation-div-second {
+    margin-top: 40px;
+    /*margin-right: 15px;*/
+    margin-left: 5px;
+    position: absolute;
+    padding-left: 0px;
+    padding-top: 5px;
+    font-size: 15px;
+    left: 0px;
+    right: -15px;
+    width: 90%;
+    border-top: 2px solid gray;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cv-card-name-col-second{
+    margin-bottom: 80px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: lightgray;
+}

@@ -1,0 +1,490 @@
+* {
+    line-height: 1;
+}
+
+.resume_sec1 {
+    background-color: #f2f0f6;
+}
+
+.resume_sec2 {
+    background-color: #f2f0f6;
+}
+
+.template-container {
+    margin: 20px;
+}
+
+.cv-card-name-col {
+    padding-left: 30px;
+    padding-right: 0px;
+}
+
+.full-name-div {
+    box-sizing: border-box;
+    top: 40px;
+    height: 140px;
+    position: relative;
+    padding-left: 20px !important;
+    font-size: 30px;
+    font-weight: bold;
+    border: 2px solid #505052;
+    border-right: 0px;
+}
+
+.firstname-div {
+    color: #000000;
+    margin-top: 18px;
+    height: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.lastname-div {
+    color: #000000;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.designation-div {
+    /* margin-left: 30px; */
+    margin-top: 2px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+    background-color: black;
+    text-transform: uppercase;
+    font-size: 10px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cv-card-col {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 220px;
+    background-color: #322c30;
+    border-color: #f2f0f6;
+    background-image: url(../images/profileBack.png);
+    background-size: auto 100%;
+    /* background-position: -2px 1px; */
+    background-repeat: no-repeat;
+}
+
+.cv-card-header {
+    border: 3px solid #f5f5f5;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resume-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+/* left side details */
+
+.about-me-div {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.aboutMeSpan {
+    height: 40px;
+    font-size: 15px;
+    line-height: 3;
+    display: block;
+    border-bottom: 3px solid;
+}
+
+.aboutMeSpan img {
+    width: 20px;
+    height: 20px;
+}
+
+.about-heading {
+    margin-left: 10px;
+}
+
+.about-detail {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.education-div {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.educationSpan {
+    height: 30px;
+    font-size: 15px;
+    display: block;
+    border-bottom: 3px solid;
+}
+
+.educationSpan img {
+    width: 20px;
+    height: 20px;
+}
+
+.education-heading {
+    margin-left: 10px;
+}
+
+.education-year {
+    font-size: 12px;
+    text-align: justify;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-degree-type {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-graduation-status {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-collage-name {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-board {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-city {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-state {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-percentage {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.education-details-div {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.intern-div {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+
+.internSpan {
+    height: 40px;
+    font-size: 15px;
+    line-height: 3;
+    display: block;
+    border-bottom: 3px solid;
+}
+
+.internSpan img {
+    width: 20px;
+    height: 20px;
+}
+
+.intern-heading {
+    margin-left: 10px;
+}
+
+.intern-details-div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.intern-job-position {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.intern-company-name {
+    font-size: 12px;
+    line-height: 2;
+}
+
+.intern-year {
+    font-size: 12px;
+    text-align: end;
+    line-height: 2;
+}
+
+.intern-details {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+
+/* Right Side Details */
+
+.contactMeIcon {
+    padding-left: 15px;
+    padding-right: 0px;
+}
+
+.contactMeIcon img {
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+}
+
+.contact-me-row {
+    color: white;
+}
+
+.contactMeHeadingCol {
+    padding-left: 0px;
+    line-height: 35px;
+}
+
+.contact-me-header {
+    display: block;
+    background-color: #322c30;
+    height: 36px;
+    font-size: 15px;
+    margin-top: 2px;
+    text-transform: uppercase;
+    background-image: url(../images/headingBack.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.contact-me-details {
+    background-color: #322c30;
+    background-image: url(../images/detail1-back.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.col-number-img-div {
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+.contactDetailsSpan img {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+
+.contactDetailsSpan {
+    margin-bottom: 10px;
+}
+
+.contact-number-heading {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 10px;
+    height: 22px;
+}
+
+.conatct-number {
+    font-size: 12px;
+}
+
+.contact-email-heading {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 10px;
+    height: 22px;
+}
+
+.conatct-email {
+    font-size: 12px;
+}
+
+.contact-address-heading {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 10px;
+    height: 22px;
+}
+
+.conatct-address {
+    font-size: 12px;
+}
+
+.contact-address-div {
+    padding-right: 0px;
+}
+
+
+/* skill details */
+
+.skillIcon {
+    padding-left: 15px;
+    padding-right: 0px;
+}
+
+.skillIcon img {
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+}
+
+.skill-row {
+    color: white;
+}
+
+.skillHeadingCol {
+    padding-left: 0px;
+    line-height: 35px;
+}
+
+.skill-header {
+    display: block;
+    background-color: #322c30;
+    height: 36px;
+    font-size: 15px;
+    margin-top: 2px;
+    text-transform: uppercase;
+    background-image: url(../images/headingBack.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.skill-details {
+    background-color: #322c30;
+    background-image: url(../images/detail2Back.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.skillDetailsSpan {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.skill-name {
+    font-size: 12px;
+    line-height: 2;
+}
+
+.skill-star {
+    padding-left: 0px;
+}
+
+.skill-star img {
+    width: 70px;
+    height: 8px;
+    margin-top: 5px;
+}
+
+
+/* expertise details */
+
+.expertiseIcon {
+    padding-left: 15px;
+    padding-right: 0px;
+}
+
+.expertiseIcon img {
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+}
+
+.expertise-row {
+    color: white;
+}
+
+.expertiseHeadingCol {
+    padding-left: 0px;
+    line-height: 35px;
+}
+
+.expertise-header {
+    display: block;
+    background-color: #322c30;
+    height: 36px;
+    font-size: 15px;
+    margin-top: 2px;
+    text-transform: uppercase;
+    background-image: url(../images/headingBack.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.expertise-details {
+    background-color: #322c30;
+    background-image: url(../images/detail3Back.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.expertiseDetailsSpan {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.expertise-img-div {
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-right: 0px;
+}
+
+.expertiseDetailsSpan img {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.expertise-list {
+    font-size: 12px;
+}
