@@ -2018,6 +2018,586 @@ $(document).ready(function () {
 //....................... Awards and Owners End........................
 
 
+// ......languages...............................................
+
+    var languageRatesArr = [];
+    var folder = "type1"
+    $(document).ready(function () {
+        $("#typel1").click(function () {
+            folder = $(this).attr("alt")
+            var languageLen = languageRatesArr.length
+            var finalPath = ""
+            var languageRateImgSrc = ""
+            var languageAddedImgTags = $(".language-bar-img")
+
+            var i = 0
+            while (i < languageLen) {
+                finalPath = (folder + "/r" + languageRatesArr[i] + ".png")
+                languageRateImgSrc = "imgs/bars/" + finalPath
+                languageRateImgAlt = folder
+                languageAddedImgTags[i].src = languageRateImgSrc
+                languageAddedImgTags[i].alt = languageRateImgAlt
+                i++
+            }
+        });
+        $("#typel2").click(function () {
+            folder = $(this).attr("alt")
+            var languageLen = languageRatesArr.length
+            var finalPath = ""
+            var languageRateImgSrc = ""
+            var languageAddedImgTags = $(".language-bar-img")
+
+            var i = 0
+            while (i < languageLen) {
+                finalPath = (folder + "/r" + languageRatesArr[i] + ".png")
+                languageRateImgSrc = "imgs/bars/" + finalPath
+                languageRateImgAlt = folder
+                languageAddedImgTags[i].src = languageRateImgSrc
+                languageAddedImgTags[i].alt = languageRateImgAlt
+                i++
+            }
+        });
+
+
+        $("#add-language-btn").click(function (e) {
+            e.preventDefault();
+            addNewLanguageRows()
+        });
+        $("#added-language-sel").change(function (e) {
+            e.preventDefault();
+            setLanguageRowEdit()
+
+        });
+        $("#edit-language-btn").click(function (e) {
+            e.preventDefault();
+            editLanguageSelRow()
+
+        });
+        function addNewLanguageRows() {
+            var languageNameTxt = $("#languageName").val()
+            var languageRateTxt = $("#languageRate").val()
+            var languageRows = $(".languages-row");
+            var addedLanguageSel = $("#added-language-sel")
+            var addedLanguageOp = addedLanguageSel.find("option")
+            // alert(addedSkillOp.length)
+            var opLength = addedLanguageOp.length;
+            if (opLength == 1) {
+                var languageNameSpan = $(languageRows[0]).find(".languages-name-span");
+                var languageRateSpan = $(languageRows[0]).find(".languages-rate-span");
+                var addedLanguageSel = $("#added-language-sel")
+                addedLanguageSel.append("  <option value='1'> " + languageNameTxt + "</option>")
+                // alert(skillNameSpan.html() + skillRateSpan.html())
+                var languageRateImgTag = "<img class='language-bar-img' src='imgs/bars/" + folder + "/r" + languageRateTxt + ".png' alt='" + folder + "'>"
+//                alert(languageRateImgTag)
+                languageNameSpan.html(languageNameTxt)
+                languageRateSpan.html(languageRateImgTag)
+                languageRatesArr.push(parseInt(languageRateTxt.trim()))
+
+
+
+            } else if (opLength > 1) {
+                // alert($(skillRows[0]).html())
+                var languageDiv = $(".languages-div");
+                var row = $(".languages-div .languages-row:first-child");
+                // alert("Row=" + row.length);
+                // alert(row.clone().wrap("<p>").parent().html())
+                // console.log("Parent=" + row.parent().length)
+                $(languageDiv[0]).append(row.clone().wrap("<p>").parent().html())
+
+
+                languageRows = $(".languages-row")
+                // alert("Edu rows=" + eduRows.length)
+                var languageNameSpan = $(languageRows[opLength - 1]).find(".languages-name-span");
+                var languageRateSpan = $(languageRows[opLength - 1]).find(".languages-rate-span");
+//                alert(languageNameSpan.html() + languageRateSpan.html())
+
+                // var nameEduSpan = $(eduRows[]).find(".skill-name-span");
+                // var ageEduSpan = $(eduRows[]).find(".skill-rate-span");
+
+                var addedLanguageSel = $("#added-language-sel")
+                addedLanguageSel.append("<option value='" + opLength + "'>" + languageNameTxt + "</option>")
+                // alert(nameEduSpan + ageEduSpan + mobileEduSpan.length)
+                var languageRateImgTag = "<img class='language-bar-img' src='imgs/bars/" + folder + "/r" + languageRateTxt + ".png' alt='" + folder + "'>"
+//                alert(languageRateImgTag)
+                languageNameSpan.html(languageNameTxt)
+                languageRateSpan.html(languageRateImgTag)
+                languageRatesArr.push(parseInt(languageRateTxt.trim()))
+
+            } else {
+                alert("something wrong")
+            }
+
+
+        }
+
+        function setLanguageRowEdit() {
+
+            var languageSelVal = parseInt($("#added-language-sel").val())
+
+            var languagesRows = $(".languages-row:nth-child(" + (languageSelVal) + ")")
+
+            var languageNameSpan = $(languagesRows).find(".languages-name-span");
+//            alert(languageNameSpan.html())
+            // var langRateSpan = $(langRows).find(".languages-rate-span");
+
+
+            $("#languageNameEdit").val(languageNameSpan.html())
+            $("#languageRateEdit").val(languageRatesArr[languageSelVal - 1])
+
+
+
+        }
+
+
+        function editLanguageSelRow() {
+            var languageNameEditTxt = $("#languageNameEdit").val()
+            var languageRateEditTxt = $("#languageRateEdit").val()
+            var languageRateImgTag = "<img class='language-bar-img' src='imgs/bars/" + folder + "/r" + languageRateEditTxt + ".png' alt='" + folder + "'>"
+            // alert(skillRateImgTag)
+            var languageSelVal = parseInt($("#added-language-sel").val())
+            languageRatesArr[languageSelVal - 1] = parseInt(languageRateEditTxt.trim())
+            var languageRows = $(".languages-row:nth-child(" + (languageSelVal) + ")")
+            var languageNameSpan = $(languageRows).find(".languages-name-span");
+            var languageRateSpan = $(languageRows).find(".languages-rate-span");
+            languageNameSpan.html(languageNameEditTxt)
+            languageRateSpan.html(languageRateImgTag)
+        }
+
+
+    });
+    // ......languages end...............................................
+
+
+    // ..........add skils.................................................
+
+    var imgAdSkill = "d1"
+    var folderAS = "add_skills";
+
+    function changeAllAdSkillImgs(alt)
+    {
+        var addSkillImg = $(".addSkills-row img")
+        var addSkillAddedImgTags = $(".add-skill-bar-img")
+
+        var i = 0
+        while (i < addSkillImg.length) {
+            finalPath = alt + ".png"
+            addSkillRateImgSrc = "imgs/add_skills/" + finalPath
+            addSkillImg[i].src = addSkillRateImgSrc
+            addSkillImg[i].alt = alt
+            i++
+        }
+    }
+
+    $(document).ready(function () {
+
+        $("#add_skills_d1").click(function () {
+
+            imgAdSkill = $(this).attr("alt")
+            changeAllAdSkillImgs(imgAdSkill)
+
+        });
+        $("#add_skills_d2").click(function () {
+            imgAdSkill = $(this).attr("alt")
+            changeAllAdSkillImgs(imgAdSkill)
+        });
+        $("#add_skills_r1").click(function () {
+            imgAdSkill = $(this).attr("alt")
+            changeAllAdSkillImgs(imgAdSkill)
+        });
+        $("#add_skills_r2").click(function () {
+            imgAdSkill = $(this).attr("alt")
+            changeAllAdSkillImgs(imgAdSkill)
+        });
+
+        $("#add-skills-btn").click(function (e) {
+            e.preventDefault();
+            addSkillsRow()
+        });
+        $("#remove-add-skills-btn").click(function (e) {
+            e.preventDefault();
+            removeAddSkillsRow()
+        });
+
+        function removeAddSkillsRow() {
+            var addSkillsRows = $(".addSkills-row")
+            var addSkillsEditSelVal = "." + $("#select-add-skills-remove").val()
+            var addSkillsSelIndex = addSkillsEditSelVal.split("-")[1]
+//        alert(addSkillsSelIndex)
+            addSkillsSelIndex = parseInt(addSkillsSelIndex.trim()) - 1
+            if (addSkillsRows.length > 1) {
+
+
+                var addSkillsRow = $(addSkillsEditSelVal)[0]
+                $(addSkillsRow).remove()
+            } else if (addSkillsRows.length == 1) {
+                var addSkillsLinkImgSpan = $(addSkillsRows[0]).find(".add-skills-img-span");
+                var addSkillsLinkSpan = $(addSkillsRows[0]).find(".add-skills-txt-span");
+                addSkillsLinkImgSpan.html("<img src='imgs/add_skills/" + imgAdSkill + ".png' height='10' width='10'>")
+                addSkillsLinkSpan.html("MS Word");
+            }
+            var selectAddSkillsRemoveOp = $("#select-add-skills-remove option[value='" + $("#select-add-skills-remove").val() + "']");
+            selectAddSkillsRemoveOp.remove()
+
+
+        }
+
+        function addSkillsRow() {
+
+
+            var addSkillsFinalPath = "imgs/add_skills/" + imgAdSkill + ".png";
+            var addSkillsText = $("#add-skills-txt").val().trim()
+            var selectAddSkillsRemoveOp = $("#select-add-skills-remove option");
+            var selectAddSkillsRemoveOpLength = selectAddSkillsRemoveOp.length;
+            var addSkillsRow = $(".addSkills-row")
+            if (selectAddSkillsRemoveOpLength == 1) {
+                var addSkillsLinkImgSpan = $(addSkillsRow[0]).find(".add-skills-img-span");
+                var addSkillsLinkSpan = $(addSkillsRow[0]).find(".add-skills-txt-span");
+                addSkillsLinkImgSpan.html("<img src='" + addSkillsFinalPath + "' height='10' width='10'>")
+                addSkillsLinkSpan.html(addSkillsText);
+                $("#select-add-skills-remove").append("<option value='" + addSkillsText + "-1'>" + addSkillsText + "</option>")
+                $(addSkillsRow[0]).addClass(addSkillsText + "-1")
+            } else if (selectAddSkillsRemoveOpLength > 1) {
+
+                addSkillsText = $("#add-skills-txt").val().trim()
+                var addSkillsDiv = $(".addSkills-div")
+                var row = $(".addSkills-div .addSkills-row:first-child")
+                $(addSkillsDiv[0]).append(row.clone().wrap("<p>").parent().html())
+                var addSkillsRows = $(".addSkills-row")
+                var addSkillsLinkImgSpan = $(addSkillsRows[selectAddSkillsRemoveOpLength - 1]).find(".add-skills-img-span")
+                addSkillsLinkSpan = $(addSkillsRows[selectAddSkillsRemoveOpLength - 1]).find(".add-skills-txt-span")
+                // alert(expertiesLinkImgSpan.html() + " " + expertiesLinkSpan.html())
+                $("#select-add-skills-remove").append("<option value='" + addSkillsText + "-" + selectAddSkillsRemoveOpLength + "'>" + addSkillsText + "</option>")
+                addSkillsLinkImgSpan.html("<img src='" + addSkillsFinalPath + "' height='10' width='10'>")
+                addSkillsLinkSpan.html(addSkillsText)
+                $(addSkillsRows[selectAddSkillsRemoveOpLength - 1]).addClass(addSkillsText + "-" + selectAddSkillsRemoveOpLength)
+            }
+        }
+    });
+// ..........add skils end.................................................
+
+
+// ..........collage involvement.................................................
+
+    var imgClgInv = "d1"
+    var folderCI = "clg-inv";
+
+    function changeAllClgInvImgs(alt)
+    {
+        var clgInvImg = $(".clg-inv-row img")
+        var clgInvAddedImgTags = $(".clg-inv-bar-img")
+
+        var i = 0
+        while (i < clgInvImg.length) {
+            finalPath = alt + ".png"
+            clgInvRateImgSrc = "imgs/clg-inv/" + finalPath
+            clgInvImg[i].src = clgInvRateImgSrc
+            clgInvImg[i].alt = alt
+            i++
+        }
+    }
+
+    $(document).ready(function () {
+
+        $("#clg_inv_d1").click(function () {
+
+            imgClgInv = $(this).attr("alt")
+            changeAllClgInvImgs(imgClgInv)
+
+        });
+        $("#clg_inv_d2").click(function () {
+            imgClgInv = $(this).attr("alt")
+            changeAllClgInvImgs(imgClgInv)
+        });
+        $("#clg_inv_r1").click(function () {
+            imgClgInv = $(this).attr("alt")
+            changeAllClgInvImgs(imgClgInv)
+        });
+        $("#clg_inv_r2").click(function () {
+            imgClgInv = $(this).attr("alt")
+            changeAllClgInvImgs(imgClgInv)
+        });
+
+        $("#add-clg-inv-btn").click(function (e) {
+            e.preventDefault();
+            addClgInvsRow()
+        });
+        $("#remove-clg-inv-btn").click(function (e) {
+            e.preventDefault();
+            removeClgInvsRow()
+        });
+
+        function removeClgInvsRow() {
+            var addClgInvsRows = $(".clg-inv-row")
+            var addClgInvsEditSelVal = "." + $("#select-clg-inv-remove").val()
+            var addClgInvsSelIndex = addClgInvsEditSelVal.split("-")[1]
+//        alert(addClgInvsSelIndex)
+            addClgInvsSelIndex = parseInt(addClgInvsSelIndex.trim()) - 1
+            if (addClgInvsRows.length > 1) {
+
+
+                var addClgInvsRow = $(addClgInvsEditSelVal)[0]
+                $(addClgInvsRow).remove()
+            } else if (addClgInvsRows.length == 1) {
+                var addClgInvsLinkImgSpan = $(addClgInvsRows[0]).find(".clg-inv-img-span");
+                var addClgInvsLinkSpan = $(addClgInvsRows[0]).find(".clg-inv-txt-span");
+                addClgInvsLinkImgSpan.html("<img src='imgs/clg-inv/" + imgClgInv + ".png' height='10' width='10'>")
+                addClgInvsLinkSpan.html("Collage involvement details");
+            }
+            var selectClgInvsRemoveOp = $("#select-clg-inv-remove option[value='" + $("#select-clg-inv-remove").val() + "']");
+            selectClgInvsRemoveOp.remove()
+
+
+        }
+
+        function addClgInvsRow() {
+
+
+            var addClgInvsFinalPath = "imgs/clg-inv/" + imgClgInv + ".png";
+            var addClgInvsText = $("#name-clg-inv-inp").val().trim()
+            var selectClgInvsRemoveOp = $("#select-clg-inv-remove option");
+            var selectClgInvsRemoveOpLength = selectClgInvsRemoveOp.length;
+            var addClgInvsRow = $(".clg-inv-row")
+            if (selectClgInvsRemoveOpLength == 1) {
+                var addClgInvsLinkImgSpan = $(addClgInvsRow[0]).find(".clg-inv-img-span");
+                var addClgInvsLinkSpan = $(addClgInvsRow[0]).find(".clg-inv-txt-span");
+                addClgInvsLinkImgSpan.html("<img src='" + addClgInvsFinalPath + "' height='10' width='10'>")
+                addClgInvsLinkSpan.html(addClgInvsText);
+                $("#select-clg-inv-remove").append("<option value='" + addClgInvsText + "-1'>" + addClgInvsText + "</option>")
+                $(addClgInvsRow[0]).addClass(addClgInvsText + "-1")
+            } else if (selectClgInvsRemoveOpLength > 1) {
+
+                addClgInvsText = $("#name-clg-inv-inp").val().trim()
+                var addClgInvsDiv = $(".clg-inv-div")
+                var row = $(".clg-inv-div .clg-inv-row:first-child")
+                $(addClgInvsDiv[0]).append(row.clone().wrap("<p>").parent().html())
+                var addClgInvsRows = $(".clg-inv-row")
+                var addClgInvsLinkImgSpan = $(addClgInvsRows[selectClgInvsRemoveOpLength - 1]).find(".clg-inv-img-span")
+                addClgInvsLinkSpan = $(addClgInvsRows[selectClgInvsRemoveOpLength - 1]).find(".clg-inv-txt-span")
+                // alert(expertiesLinkImgSpan.html() + " " + expertiesLinkSpan.html())
+                $("#select-clg-inv-remove").append("<option value='" + addClgInvsText + "-" + selectClgInvsRemoveOpLength + "'>" + addClgInvsText + "</option>")
+                addClgInvsLinkImgSpan.html("<img src='" + addClgInvsFinalPath + "' height='10' width='10'>")
+                addClgInvsLinkSpan.html(addClgInvsText)
+                $(addClgInvsRows[selectClgInvsRemoveOpLength - 1]).addClass(addClgInvsText + "-" + selectClgInvsRemoveOpLength)
+            }
+        }
+    });
+// ..........collage involvement end.................................................
+
+
+// ..........professional affiliation.................................................
+
+    var imgProAffi = "d1"
+    var folderPA = "pro-affi";
+
+    function changeAllProAffiImgs(alt)
+    {
+        var proAffiImg = $(".pro-affi-row img")
+        var proAffiAddedImgTags = $(".pro-affi-bar-img")
+
+        var i = 0
+        while (i < proAffiImg.length) {
+            finalPath = alt + ".png"
+            proAffiRateImgSrc = "imgs/pro-affi/" + finalPath
+            proAffiImg[i].src = proAffiRateImgSrc
+            proAffiImg[i].alt = alt
+            i++
+        }
+    }
+
+    $(document).ready(function () {
+
+        $("#pro_affi_d1").click(function () {
+
+            imgProAffi = $(this).attr("alt")
+            changeAllProAffiImgs(imgProAffi)
+
+        });
+        $("#pro_affi_d2").click(function () {
+            imgProAffi = $(this).attr("alt")
+            changeAllProAffiImgs(imgProAffi)
+        });
+        $("#pro_affi_r1").click(function () {
+            imgProAffi = $(this).attr("alt")
+            changeAllProAffiImgs(imgProAffi)
+        });
+        $("#pro_affi_r2").click(function () {
+            imgProAffi = $(this).attr("alt")
+            changeAllProAffiImgs(imgProAffi)
+        });
+
+        $("#add-pro-affi-btn").click(function (e) {
+            e.preventDefault();
+            addProAffisRow()
+        });
+        $("#remove-prof-aff-btn").click(function (e) {
+            e.preventDefault();
+            removeProAffisRow()
+        });
+
+        function removeProAffisRow() {
+            var addProAffisRows = $(".pro-affi-row")
+            var addProAffisEditSelVal = "." + $("#select-pro-affi-remove").val()
+            var addProAffisSelIndex = addProAffisEditSelVal.split("-")[1]
+//        alert(addProAffisSelIndex)
+            addProAffisSelIndex = parseInt(addProAffisSelIndex.trim()) - 1
+            if (addProAffisRows.length > 1) {
+
+
+                var addProAffisRow = $(addProAffisEditSelVal)[0]
+                $(addProAffisRow).remove()
+            } else if (addProAffisRows.length == 1) {
+                var addProAffisLinkImgSpan = $(addProAffisRows[0]).find(".pro-affi-img-span");
+                var addProAffisLinkSpan = $(addProAffisRows[0]).find(".pro-affi-txt-span");
+                addProAffisLinkImgSpan.html("<img src='imgs/pro-affi/" + imgProAffi + ".png' height='10' width='10'>")
+                addProAffisLinkSpan.html("Proffesional Affiliation details");
+            }
+            var selectClgInvsRemoveOp = $("#select-pro-affi-remove option[value='" + $("#select-pro-affi-remove").val() + "']");
+            selectClgInvsRemoveOp.remove()
+
+
+        }
+
+        function addProAffisRow() {
+
+
+            var addProAffisFinalPath = "imgs/pro-affi/" + imgProAffi + ".png";
+            var addProAffisText = $("#name-pro-affi-inp").val().trim()
+            var selectProAffisRemoveOp = $("#select-pro-affi-remove option");
+            var selectProAffisRemoveOpLength = selectProAffisRemoveOp.length;
+            var addProAffisRow = $(".pro-affi-row")
+            if (selectProAffisRemoveOpLength == 1) {
+                var addProAffisLinkImgSpan = $(addProAffisRow[0]).find(".pro-affi-img-span");
+                var addProAffisLinkSpan = $(addProAffisRow[0]).find(".pro-affi-txt-span");
+                addProAffisLinkImgSpan.html("<img src='" + addProAffisFinalPath + "' height='10' width='10'>")
+                addProAffisLinkSpan.html(addProAffisText);
+                $("#select-pro-affi-remove").append("<option value='" + addProAffisText + "-1'>" + addProAffisText + "</option>")
+                $(addProAffisRow[0]).addClass(addProAffisText + "-1")
+            } else if (selectProAffisRemoveOpLength > 1) {
+
+                addProAffisText = $("#name-pro-affi-inp").val().trim()
+                var addProAffisDiv = $(".pro-affi-div")
+                var row = $(".pro-affi-div .pro-affi-row:first-child")
+                $(addProAffisDiv[0]).append(row.clone().wrap("<p>").parent().html())
+                var addProAffisRows = $(".pro-affi-row")
+                var addProAffisLinkImgSpan = $(addProAffisRows[selectProAffisRemoveOpLength - 1]).find(".pro-affi-img-span")
+                addProAffisLinkSpan = $(addProAffisRows[selectProAffisRemoveOpLength - 1]).find(".pro-affi-txt-span")
+                // alert(expertiesLinkImgSpan.html() + " " + expertiesLinkSpan.html())
+                $("#select-pro-affi-remove").append("<option value='" + addProAffisText + "-" + selectProAffisRemoveOpLength + "'>" + addProAffisText + "</option>")
+                addProAffisLinkImgSpan.html("<img src='" + addProAffisFinalPath + "' height='10' width='10'>")
+                addProAffisLinkSpan.html(addProAffisText)
+                $(addProAffisRows[selectProAffisRemoveOpLength - 1]).addClass(addProAffisText + "-" + selectProAffisRemoveOpLength)
+            }
+        }
+    });
+// ..........professional affiliation end.................................................
+
+
+// ..........office involvement.................................................
+
+    var imgOffInv = "d1"
+    var folderOI = "off-inv";
+
+    function changeAllOffInvImgs(alt)
+    {
+        var offInvImg = $(".off-inv-row img")
+        var offInvAddedImgTags = $(".off-inv-bar-img")
+
+        var i = 0
+        while (i < offInvImg.length) {
+            finalPath = alt + ".png"
+            offInvRateImgSrc = "imgs/off-inv/" + finalPath
+            offInvImg[i].src = offInvRateImgSrc
+            offInvImg[i].alt = alt
+            i++
+        }
+    }
+
+    $(document).ready(function () {
+
+        $("#off_inv_d1").click(function () {
+
+            imgOffInv = $(this).attr("alt")
+            changeAllOffInvImgs(imgOffInv)
+
+        });
+        $("#off_inv_d2").click(function () {
+            imgOffInv = $(this).attr("alt")
+            changeAllOffInvImgs(imgOffInv)
+        });
+        $("#off_inv_r1").click(function () {
+            imgOffInv = $(this).attr("alt")
+            changeAllOffInvImgs(imgOffInv)
+        });
+        $("#off_inv_r2").click(function () {
+            imgOffInv = $(this).attr("alt")
+            changeAllOffInvImgs(imgOffInv)
+        });
+
+        $("#add-off-inv-btn").click(function (e) {
+            e.preventDefault();
+            addOffInvsRow()
+        });
+        $("#remove-off-inv-btn").click(function (e) {
+            e.preventDefault();
+            removeOffInvsRow()
+        });
+
+        function removeOffInvsRow() {
+            var addOffInvsRows = $(".off-inv-row")
+            var addOffInvsEditSelVal = "." + $("#select-off-inv-remove").val()
+            var addOffInvsSelIndex = addOffInvsEditSelVal.split("-")[1]
+//        alert(addOffInvsSelIndex)
+            addOffInvsSelIndex = parseInt(addOffInvsSelIndex.trim()) - 1
+            if (addOffInvsRows.length > 1) {
+
+
+                var addOffInvsRow = $(addOffInvsEditSelVal)[0]
+                $(addOffInvsRow).remove()
+            } else if (addOffInvsRows.length == 1) {
+                var addOffInvsLinkImgSpan = $(addOffInvsRows[0]).find(".off-inv-img-span");
+                var addOffInvsLinkSpan = $(addOffInvsRows[0]).find(".off-inv-txt-span");
+                addOffInvsLinkImgSpan.html("<img src='imgs/off-inv/" + imgOffInv + ".png' height='10' width='10'>")
+                addOffInvsLinkSpan.html("Office involvement details");
+            }
+            var selectOffInvsRemoveOp = $("#select-off-inv-remove option[value='" + $("#select-off-inv-remove").val() + "']");
+            selectOffInvsRemoveOp.remove()
+
+
+        }
+
+        function addOffInvsRow() {
+
+
+            var addOffInvsFinalPath = "imgs/off-inv/" + imgOffInv + ".png";
+            var addOffInvsText = $("#name-off-inv-inp").val().trim()
+            var selectOffInvsRemoveOp = $("#select-off-inv-remove option");
+            var selectOffInvsRemoveOpLength = selectOffInvsRemoveOp.length;
+            var addOffInvsRow = $(".off-inv-row")
+            if (selectOffInvsRemoveOpLength == 1) {
+                var addOffInvsLinkImgSpan = $(addOffInvsRow[0]).find(".off-inv-img-span");
+                var addOffInvsLinkSpan = $(addOffInvsRow[0]).find(".off-inv-txt-span");
+                addOffInvsLinkImgSpan.html("<img src='" + addOffInvsFinalPath + "' height='10' width='10'>")
+                addOffInvsLinkSpan.html(addOffInvsText);
+                $("#select-off-inv-remove").append("<option value='" + addOffInvsText + "-1'>" + addOffInvsText + "</option>")
+                $(addOffInvsRow[0]).addClass(addOffInvsText + "-1")
+            } else if (selectOffInvsRemoveOpLength > 1) {
+
+                addOffInvsText = $("#name-off-inv-inp").val().trim()
+                var addOffInvsDiv = $(".off-inv-div")
+                var row = $(".off-inv-div .off-inv-row:first-child")
+                $(addOffInvsDiv[0]).append(row.clone().wrap("<p>").parent().html())
+                var addOffInvsRows = $(".off-inv-row")
+                var addOffInvsLinkImgSpan = $(addOffInvsRows[selectOffInvsRemoveOpLength - 1]).find(".off-inv-img-span")
+                addOffInvsLinkSpan = $(addOffInvsRows[selectOffInvsRemoveOpLength - 1]).find(".off-inv-txt-span")
+                // alert(expertiesLinkImgSpan.html() + " " + expertiesLinkSpan.html())
+                $("#select-off-inv-remove").append("<option value='" + addOffInvsText + "-" + selectOffInvsRemoveOpLength + "'>" + addOffInvsText + "</option>")
+                addOffInvsLinkImgSpan.html("<img src='" + addOffInvsFinalPath + "' height='10' width='10'>")
+                addOffInvsLinkSpan.html(addOffInvsText)
+                $(addOffInvsRows[selectOffInvsRemoveOpLength - 1]).addClass(addOffInvsText + "-" + selectOffInvsRemoveOpLength)
+            }
+        }
+    });
+// ..........office involvement end.................................................
 
 
 
