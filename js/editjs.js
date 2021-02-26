@@ -30,21 +30,14 @@ $(document).ready(function () {
             $("#contact-h-edit").attr("contenteditable", "false")
 
         }
-//        $('#contact-h-edit').trigger('contentchanged');
+
     })
 
     $("body").on('DOMSubtreeModified', "#contact-h-edit", function () {
         $("#contact-head").html($("#contact-h-edit").html())
     });
 
-//$('#contact-h-edit').bind('contentchanged', function() {
-//  // do something after the div content has changed
-//  alert('woo contentchanged');
-//});
-//    $("#contact-h-edit").change(function () {
-//        alert("hello")
-//       
-//    })
+
 })
 
 
