@@ -29,7 +29,7 @@
     </head>
 
     <body>
-        <div class="container-fluid no-print">
+        <div class="container-fluid no-print m-0 p-0">
             <div class="alert alert-secondary rounded-0">
                 <div class="row">
                     <div class="col">
@@ -57,9 +57,9 @@
 
         </div>
 
-        <div class="container no-print">
+        <div class="container-fluid no-print m-0 p-0">
             <div class="alert alert-secondary rounded-0">
-                <div class="row">
+                <div class="row m-0 p-0">
                     <div class="col"></div>
                     <div class="col">
                         hello
@@ -69,21 +69,21 @@
             </div>
         </div>
 
-        <div class="container" ng-app="myApp">
-            <div class="alert rounded-0">
-                <div class="row">
-                    <div class="col-8 p-0" ng-view>
+        <div class="container-fluid m-0 p-0" ng-app="myApp" >
+            <div class="alert m-0 p-0">
+                <div class="row m-0">
+                    <div class="col-6 m-0 p-0" ng-view>
                     </div>
-                    <div class="col-4 pr-0 no-print">
+                    <div class="col-6 no-print m-0 px-3">
                         <section class="edit-cv-options">
                             <div id="accordion">
                                 <h3>Templates</h3>
                                 <div class="p-0 h-100">
                                     <section class="template-select text-center">
-                                        <div class="alert alert-success rounded-0 mb-0 select-template-head">
+                                        <div class="alert alert-success mb-0 select-template-head">
                                             <strong>Select Template</strong>
                                         </div>
-                                        <div class="alert alert-success rounded-0 select-template-main">
+                                        <div class="alert alert-success select-template-main">
                                             <div class="row nogutters">
                                                 <div class="col-md-6 col-sm-12 select-template-box">
                                                     <div class="card">
