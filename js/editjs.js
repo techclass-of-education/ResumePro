@@ -5,19 +5,18 @@
  */
 
 //hide show resume blocker
- $(document).ready(function() {
-        $("#socialBtnHideShow").click(function() {
-            $("#social-hide-show").toggle("fast");
-            if ($("#socialBtnHideShow").text() == "HIDE THIS SECTION") {
-                $("#socialBtnHideShow").text("SHOW THIS SECTION");
-            } else {
-                $("#socialBtnHideShow").text("HIDE THIS SECTION");
-            }
+$(document).ready(function () {
+    $("#socialBtnHideShow").click(function () {
+        $("#social-hide-show").toggle("fast");
+        if ($("#socialBtnHideShow").text() == "HIDE THIS SECTION") {
+            $("#socialBtnHideShow").text("SHOW THIS SECTION");
+        } else {
+            $("#socialBtnHideShow").text("HIDE THIS SECTION");
+        }
 
-        });
-  
-  
-  //    Accrodian new
+    });
+
+//    Accrodian new
     var acc = document.getElementsByClassName("ac-accordion");
     var i;
 
@@ -33,9 +32,6 @@
         });
     }
 });
-
-    });
-
 
 $(document).ready(function () {
 
