@@ -24,7 +24,11 @@ $(document).ready(function () {
     $("#btn-contact-edit").click(function () {
         if ($("#contact-h-edit").attr("contenteditable") == "false")
         {
-            $("#contact-h-edit").attr("contenteditable", "true")
+          
+            var f = $("#contact-h-edit")
+            $(f).attr("contenteditable", "true")
+            f.focus()
+
         } else
         {
             $("#contact-h-edit").attr("contenteditable", "false")
@@ -39,7 +43,6 @@ $(document).ready(function () {
 
 
 })
-
 
 
 
