@@ -45,7 +45,7 @@ $(document).ready(function () {
     $("#designation").keyup(function (e) {
         e.preventDefault();
         dsg[0] = $(this).val().trim()
-        setLocalStorage("dsg", dsg)
+//        setLocalStorage("dsg", dsg)
         $(".designationSpan").html(dsg[0])
 
 
@@ -55,7 +55,7 @@ $(document).ready(function () {
     $("#father-name").keyup(function (e) {
         e.preventDefault();
         personalInfo[0] = $(this).val().trim()
-        setLocalStorage("personalInfo", personalInfo)
+//        setLocalStorage("personalInfo", personalInfo)
         $(".father-name-span").html(personalInfo[0])
 
     });
@@ -63,7 +63,7 @@ $(document).ready(function () {
     $("#mother-name").keyup(function (e) {
         e.preventDefault();
         personalInfo[1] = $(this).val().trim()
-        setLocalStorage("personalInfo", personalInfo)
+//        setLocalStorage("personalInfo", personalInfo)
         $(".mother-name-span").html(personalInfo[1])
 
     });
@@ -1873,180 +1873,109 @@ $(document).ready(function () {
 //....................... Awards and Owners........................
 
 
+    var imgAward = "d1"
+    var folderAwd = "awards";
+
+    function changeAllAwardImgs(alt)
+    {
+        var awardImg = $(".award-row img")
+        var awardAddedImgTags = $(".award-bar-img")
+
+        var i = 0
+        while (i < awardImg.length) {
+            finalPath = alt + ".png"
+            awardRateImgSrc = "imgs/awards/" + finalPath
+            awardImg[i].src = awardRateImgSrc
+            awardImg[i].alt = alt
+            i++
+        }
+    }
+
     $(document).ready(function () {
-        $("#add-new-aw-btn").click(function (e) {
-            e.preventDefault();
-            addNewAwRows()
-        });
 
+        $("#award_d1").click(function () {
 
-
-        $('#edit-aw-btn').click(function (e) {
-            e.preventDefault();
-            editAwSelRow()
+            imgAward = $(this).attr("alt")
+            changeAllAwardImgs(imgAward)
 
         });
-
-        $('#rmv-aw-btn').click(function (e) {
-            e.preventDefault();
-            removeAwRow()
-
+        $("#award_d2").click(function () {
+            imgAward = $(this).attr("alt")
+            changeAllAwardImgs(imgAward)
         });
-        var awEditRowOptionVal = ""
-        $("#added-aw-sel").change(function (e) {
-            e.preventDefault();
-            awEditRowOptionVal = $(this).val()
-            setAwRowEdit()
+        $("#award_r1").click(function () {
+            imgaward = $(this).attr("alt")
+            changeAllAwardImgs(imgAward)
+        });
+        $("#award_r2").click(function () {
+            imgAward = $(this).attr("alt")
+            changeAllAwardImgs(imgAward)
         });
 
+        $("#add-award-btn").click(function (e) {
+            e.preventDefault();
+            addAwardsRow()
+        });
+        $("#remove-award-btn").click(function (e) {
+            e.preventDefault();
+            removeAwardsRow()
+        });
 
-        var awYearsSelEdit = document.getElementById("aw-year-edit");
-
-        var nowDate = new Date();
-        // alert(nowDate.getFullYear())
-        for (i = 1950; i <= nowDate.getFullYear(); i++) {
-            awYearsSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
-        }
-
-        var awYearsSel = document.getElementById("aw-year-sel");
-
-        nowDate = new Date();
-        // alert(nowEditDate.getFullYear())
-        for (i = 1950; i <= nowDate.getFullYear(); i++) {
-            awYearsSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
-        }
-
-
-        function addNewAwRows() {
-            var awNameTxt = $("#aw-name-inp").val()
-            var awYearTxt = $("#aw-year-sel").val()
-            var awCmpTxt = $("#aw-cmp-inp").val()
-            var awStatusTxt = $("#aw-status-inp").val()
-
-            var awRows = $(".aw-row");
-            var addedAwSel = $("#added-aw-sel")
-            var addedAwOp = addedAwSel.find("option")
-            // alert(addedEduOp.length)
-            var opLength = addedAwOp.length;
-            if (opLength == 1) {
-
-                var awNameSpan = $(awRows[0]).find(".aw-name-span");
-                var awYearSpan = $(awRows[0]).find(".aw-year-span");
-                var awCmpSpan = $(awRows[0]).find(".aw-cmp-span");
-                var awStatusSpan = $(awRows[0]).find(".aw-status-span");
+        function removeAwardsRow() {
+            var addAwardsRows = $(".award-row")
+            var addAwardsEditSelVal = "." + $("#select-award-remove").val()
+            var addAwardsSelIndex = addAwardsEditSelVal.split("-")[1]
+//        alert(addClgInvsSelIndex)
+            addAwardsSelIndex = parseInt(addAwardsSelIndex.trim()) - 1
+            if (addAwardsRows.length > 1) {
 
 
-                awNameSpan.html(awNameTxt)
-                awYearSpan.html(awYearTxt)
-                awCmpSpan.html(awCmpTxt)
-                awStatusSpan.html(awStatusTxt)
-
-
-                var addedAwSel = $("#added-aw-sel")
-                var awNameTxtDash = awNameTxt.replace(" ", "-")
-                addedAwSel.append("<option value='" + awNameTxtDash + "-1'> " + awNameTxt + "</option>")
-                $(awRows[0]).addClass(awNameTxtDash + "-1")
-
-            } else if (opLength > 1) {
-//                alert("above 1")
-                var awDiv = $(".aw-div");
-                var row = $(".aw-div .aw-row:first-child");
-                $(awDiv[0]).append(row.clone().wrap("<p>").parent().html())
-
-                awRows = $(".aw-row")
-//                alert(awRows)
-
-                var awNameSpan = $(awRows[opLength - 1]).find(".aw-name-span");
-                var awYearSpan = $(awRows[opLength - 1]).find(".aw-year-span");
-                var awCmpSpan = $(awRows[opLength - 1]).find(".aw-cmp-span");
-                var awStatusSpan = $(awRows[opLength - 1]).find(".aw-status-span");
-
-                awNameSpan.html(awNameTxt)
-                awYearSpan.html(awYearTxt)
-                awCmpSpan.html(awCmpTxt)
-                awStatusSpan.html(awStatusTxt)
-
-                awRows = $(".aw-row")
-                var awNameTxtDash = awNameTxt.replace(" ", "-")
-                var addedAwSelOpLength = $("#added-aw-sel option").length
-                $("#added-aw-sel").append("<option value='" + awNameTxtDash + "-" + addedAwSelOpLength + "'> " + awNameTxt + "</option>")
-                $(awRows[addedAwSelOpLength - 1]).addClass(awNameTxtDash + "-" + addedAwSelOpLength)
-
-            } else {
-                alert("something wrong")
+                var addAwardsRow = $(addAwardsEditSelVal)[0]
+                $(addAwardsRow).remove()
+            } else if (addAwardsRows.length == 1) {
+                var addAwardsLinkImgSpan = $(addAwardsRows[0]).find(".award-img-span");
+                var addAwardsLinkSpan = $(addAwardsRows[0]).find(".award-txt-span");
+                addAwardsLinkImgSpan.html("<img src='imgs/awards/" + imgAward + ".png' height='10' width='10'>")
+                addAwardsLinkSpan.html("Awards and Achievements details");
             }
+            var selectAwardsRemoveOp = $("#select-award-remove option[value='" + $("#select-award-remove").val() + "']");
+            selectAwardsRemoveOp.remove()
 
 
         }
 
-        function setAwRowEdit() {
-
-            var rowAwClass = awEditRowOptionVal
-            var awRow = $("." + rowAwClass)[0]
-
-            var awYearSpan = $(awRow).find(".aw-year-span");
-            var awCmpSpan = $(awRow).find(".aw-cmp-span");
-            var awStatusSpan = $(awRow).find(".aw-status-span");
-
-            $("#aw-year-edit").val(awYearSpan.html())
-            $("#aw-cmp-edit").val(awCmpSpan.html())
-            $("#aw-status-edit").val(awStatusSpan.html())
-
-        }
+        function addAwardsRow() {
 
 
-        function editAwSelRow() {
-            var rowAwClass = awEditRowOptionVal
-            var awRow = $("." + rowAwClass)[0]
+            var addAwardsFinalPath = "imgs/awards/" + imgAward + ".png";
+            var addAwardsText = $("#name-award-inp").val().trim()
+            var selectAwardsRemoveOp = $("#select-award-remove option");
+            var selectAwardsRemoveOpLength = selectAwardsRemoveOp.length;
+            var addAwardsRow = $(".award-row")
+            if (selectAwardsRemoveOpLength == 1) {
+                var addAwardsLinkImgSpan = $(addAwardsRow[0]).find(".award-img-span");
+                var addAwardsLinkSpan = $(addAwardsRow[0]).find(".award-txt-span");
+                addAwardsLinkImgSpan.html("<img src='" + addAwardsFinalPath + "' height='10' width='10'>")
+                addAwardsLinkSpan.html(addAwardsText);
+                $("#select-award-remove").append("<option value='" + addAwardsText + "-1'>" + addAwardsText + "</option>")
+                $(addAwardsRow[0]).addClass(addAwardsText + "-1")
+            } else if (selectAwardsRemoveOpLength > 1) {
 
-            var awYearSpan = $(awRow).find(".aw-year-span");
-            var awCmpSpan = $(awRow).find(".aw-cmp-span");
-            var awStatusSpan = $(awRow).find(".aw-status-span");
-
-            awYearSpan.html($("#aw-year-edit").val())
-            awCmpSpan.html($("#aw-cmp-edit").val())
-            awStatusSpan.html($("#aw-status-edit").val())
-        }
-
-
-
-        function removeAwRow() {
-            var rowAwClass = awEditRowOptionVal
-            var awRow = $("." + rowAwClass)[0]
-
-            var awRows = $(".aw-row")
-            if (awRows.length > 1) {
-
-
-                var awRowRemove = awRow
-                $(awRowRemove).remove()
-            } else if (awRows.length == 1) {
-
-                var awNameSpan = $(awRow).find(".aw-name-span");
-                var awYearSpan = $(awRow).find(".aw-year-span");
-                var awCmpSpan = $(awRow).find(".aw-cmp-span");
-                var awStatusSpan = $(awRow).find(".aw-status-span");
-
-                awNameSpan.html("Name")
-                awYearSpan.html("year")
-                awCmpSpan.html("Bost")
-                awStatusSpan.html("status")
-
+                addAwardsText = $("#name-award-inp").val().trim()
+                var addAwardsDiv = $(".award-div")
+                var row = $(".award-div .award-row:first-child")
+                $(addAwardsDiv[0]).append(row.clone().wrap("<p>").parent().html())
+                var addAwardsRows = $(".award-row")
+                var addAwardsLinkImgSpan = $(addAwardsRows[selectAwardsRemoveOpLength - 1]).find(".award-img-span")
+                addAwardsLinkSpan = $(addAwardsRows[selectAwardsRemoveOpLength - 1]).find(".award-txt-span")
+                // alert(expertiesLinkImgSpan.html() + " " + expertiesLinkSpan.html())
+                $("#select-award-remove").append("<option value='" + addAwardsText + "-" + selectAwardsRemoveOpLength + "'>" + addAwardsText + "</option>")
+                addAwardsLinkImgSpan.html("<img src='" + addAwardsFinalPath + "' height='10' width='10'>")
+                addAwardsLinkSpan.html(addAwardsText)
+                $(addAwardsRows[selectAwardsRemoveOpLength - 1]).addClass(addAwardsText + "-" + selectAwardsRemoveOpLength)
             }
-            var addedAwSelOpLength = $("#added-aw-sel option").length
-            var selectAwRemoveOp = $("#added-aw-sel option[value='" + rowAwClass + "']");
-            selectAwRemoveOp.remove()
-
-
         }
-
-
-
-
-
-
     });
-
 
 //....................... Awards and Owners End........................
 
@@ -2096,6 +2025,15 @@ $(document).ready(function () {
             e.preventDefault();
             addNewLanguageRows()
         });
+        
+        var selectedLanguageOp = ""
+        $("#added-language-sel").change(function (e) {
+            e.preventDefault();
+            selectedLanguageOp = $(this).find(":selected")
+            setSkillRowEdit()
+
+        });
+        
         $("#added-language-sel").change(function (e) {
             e.preventDefault();
             setLanguageRowEdit()
@@ -2104,6 +2042,11 @@ $(document).ready(function () {
         $("#edit-language-btn").click(function (e) {
             e.preventDefault();
             editLanguageSelRow()
+
+        });
+        $('#rmv-language-btn').click(function (e) {
+            e.preventDefault();
+            removeLanguageSelRow()
 
         });
         function addNewLanguageRows() {
@@ -2194,6 +2137,35 @@ $(document).ready(function () {
             var languageRateSpan = $(languageRows).find(".languages-rate-span");
             languageNameSpan.html(languageNameEditTxt)
             languageRateSpan.html(languageRateImgTag)
+        }
+        
+        function removeLanguageSelRow() {
+            var removeLanguageOp = selectedLanguageOp
+
+            var addedLanguageSel = $("#added-language-sel")
+            var addedLanguageOp = addedLanguageSel.find("option")
+            var opLength = addedLanguageOp.length;
+
+            if (opLength > 2)
+            {
+                var iLanguage = $(removeLanguageOp).index()
+//                alert($(removeSkillOp).index())
+//                alert($(removeSkillOp).text())
+                var languageRow = $(".languages-row:nth-child(" + (iLanguage) + ")")
+//                alert($(skillRow).html())
+                $(languageRow).remove()
+//            $(removeSkillOp).remove()
+            } else if (opLength == 2)
+            {
+                var iLanguage = $(removeLanguageOp).index()
+                var languageRow = $(".languages-row:nth-child(" + (iLanguage) + ")")
+                var languageNameSpan = $(languageRow).find(".languages-name-span");
+                var languageRateSpan = $(languageRow).find(".languages-rate-span");
+                languageNameSpan.html("Language name")
+                languageRateSpan.html("<img class='language-bar-img' src='imgs/bars/type1/r1.png' alt='type1'>")
+            }
+
+            $(removeLanguageOp).remove()
         }
 
 
