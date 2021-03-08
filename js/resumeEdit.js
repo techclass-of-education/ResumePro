@@ -1627,13 +1627,39 @@ $(document).ready(function () {
 //.......................Work and Company........................
 
 
-    $(document).ready(function () {
+     $(document).ready(function () {
         $("#add-wrk-btn").click(function (e) {
             e.preventDefault();
             addWrkRows()
         });
 
+        $("#wrk-skip-end-date").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#wrk-end-inp").prop("disabled", true)
+//                $(".wrk-end-span").text("Present")
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#wrk-end-inp").prop("disabled", false)
+//                $(".wrk-end-span").text("2006")
+            }
 
+        });
+//                ................. edit present............
+        $("#wrk-skip-end-date-edit").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#wrk-end-edit").prop("disabled", true)
+//                $(".wrk-end-span").text("Present")
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#wrk-end-edit").prop("disabled", false)
+//                $(".wrk-end-span").text("2006")
+            }
+
+        });
 
         $("#edit-wrk-btn").click(function (e) {
             e.preventDefault();
@@ -1696,7 +1722,9 @@ $(document).ready(function () {
             var wrkCityTxt = $("#wrk-city-inp").val()
             var wrkStateTxt = $("#wrk-state-inp").val()
             var wrkStartTxt = $("#wrk-start-inp").val()
+
             var wrkEndTxt = $("#wrk-end-inp").val()
+
             var wrkDescTxt = $("#wrk-desc-inp").val()
             var wrkPhrsTxt = $("#wrk-phrs-inp").val()
 
@@ -1711,7 +1739,9 @@ $(document).ready(function () {
                 var wrkCitySpan = $(wrkRows[0]).find(".wrk-city-span")
                 var wrkStateSpan = $(wrkRows[0]).find(".wrk-state-span")
                 var wrkStartSpan = $(wrkRows[0]).find(".wrk-start-span")
+
                 var wrkEndSpan = $(wrkRows[0]).find(".wrk-end-span")
+
                 var wrkDescSpan = $(wrkRows[0]).find(".wrk-desc-span")
                 var wrkPhrsSpan = $(wrkRows[0]).find(".wrk-phrs-span")
 
@@ -1720,7 +1750,13 @@ $(document).ready(function () {
                 wrkCitySpan.html(wrkCityTxt)
                 wrkStateSpan.html(wrkStateTxt)
                 wrkStartSpan.html(wrkStartTxt)
-                wrkEndSpan.html(wrkEndTxt)
+                if ($("#wrk-skip-end-date").prop("checked") == true)
+                {
+                    wrkEndSpan.html("Present")
+                } else
+                {
+                    wrkEndSpan.html(wrkEndTxt)
+                }
                 wrkDescSpan.html(wrkDescTxt)
                 wrkPhrsSpan.html(wrkPhrsTxt)
 
@@ -1750,7 +1786,13 @@ $(document).ready(function () {
                 wrkCitySpan.html(wrkCityTxt)
                 wrkStateSpan.html(wrkStateTxt)
                 wrkStartSpan.html(wrkStartTxt)
-                wrkEndSpan.html(wrkEndTxt)
+                if ($("#wrk-skip-end-date").prop("checked") == true)
+                {
+                    wrkEndSpan.html("Present")
+                } else
+                {
+                    wrkEndSpan.html(wrkEndTxt)
+                }
                 wrkDescSpan.html(wrkDescTxt)
                 wrkPhrsSpan.html(wrkPhrsTxt)
 
@@ -1786,7 +1828,10 @@ $(document).ready(function () {
             $("#wrk-city-edit").val(wrkCitySpan.html())
             $("#wrk-state-edit").val(wrkStateSpan.html())
             $("#wrk-start-edit").val(wrkStartSpan.html())
-            $("#wrk-end-edit").val(wrkEndSpan.html())
+            if (wrkEndSpan.html().trim() != "Present")
+            {
+                $("#wrk-end-edit").val(wrkEndSpan.html())
+            }
             $("#wrk-desc-edit").val(wrkDescSpan.html())
             $("#wrk-phrs-edit").val(wrkPhrsSpan.html())
 
@@ -1810,7 +1855,14 @@ $(document).ready(function () {
             wrkCitySpan.html($("#wrk-city-edit").val())
             wrkStateSpan.html($("#wrk-state-edit").val())
             wrkStartSpan.html($("#wrk-start-edit").val())
-            wrkEndSpan.html($("#wrk-end-edit").val())
+
+            if ($("#wrk-skip-end-date-edit").prop("checked") == true)
+            {
+                wrkEndSpan.html("Present")
+            } else
+            {
+                wrkEndSpan.html($("#wrk-end-edit").val())
+            }
             wrkDescSpan.html($("#wrk-desc-edit").val())
             wrkPhrsSpan.html($("#wrk-phrs-edit").val())
 
@@ -1862,7 +1914,6 @@ $(document).ready(function () {
 
 
     });
-
 
 //.......................Work and Company End........................
 
@@ -2607,3 +2658,79 @@ $(document).ready(function () {
 
 
 });
+
+// additional block code.................................................
+    $(document).ready(function () {
+
+        $("#add-adddi-btn").click(function () {
+
+            addAddiRow()
+
+        });
+        $("#remove-adddi-btn").click(function () {
+
+            removeAddiRow()
+
+        });
+
+        function addAddiRow() {
+
+            var addiSecNameText = $("#addi-sec-name").val().trim()
+            var addiDetailsText = $("#addi-sec-details").val().trim()
+            var addedAddiNameOp = $("#added-addi-name option");
+            var addedAddiNameOpLength = addedAddiNameOp.length;
+            var addiRows = $(".addi-row")
+            if (addedAddiNameOpLength == 1) {
+                var addiHeadingSpan = $(addiRows[0]).find(".addi-heading");
+                var addiDetailsSpan = $(addiRows[0]).find(".addi-details");
+                addiHeadingSpan.html(addiSecNameText)
+                addiDetailsSpan.html(addiDetailsText)
+                $("#added-addi-name").append("<option value='" + addiSecNameText.trim() + "-1'>" + addiSecNameText + "</option>")
+                $(addiRows[0]).addClass(addiSecNameText + "-1")
+            } else if (addedAddiNameOpLength > 1) {
+
+//                addOffInvsText = $("#name-off-inv-inp").val().trim()
+                var addiDiv = $(".addi-div")
+                var row = $(".addi-div .addi-row:first-child")
+                $(addiDiv[0]).append(row.clone().wrap("<p>").parent().html())
+                addiRows = $(".addi-row")
+                var addiHeadingSpan = $(addiRows[addedAddiNameOpLength - 1]).find(".addi-heading");
+                var addiDetailsSpan = $(addiRows[addedAddiNameOpLength - 1]).find(".addi-details");
+                addiHeadingSpan.html(addiSecNameText)
+                addiDetailsSpan.html(addiDetailsText)
+                var addiSecNameTextDash = addiSecNameText.replace(" ", "-")
+                $("#added-addi-name").append("<option value='" + addiSecNameTextDash + "-" + addedAddiNameOpLength + "'>" + addiSecNameText + "</option>")
+                $(addiRows[addedAddiNameOpLength - 1]).addClass(addiSecNameTextDash + "-" + addedAddiNameOpLength)
+            }
+        }
+
+
+
+        function removeAddiRow() {
+            var addiRows = $(".addi-row")
+            var addedAddiSelVal = "." + $("#added-addi-name").val()
+            var addedAddiSelIndex = addedAddiSelVal.split("-")[1]
+            addedAddiSelIndex = parseInt(addedAddiSelIndex.trim()) - 1
+            if (addiRows.length > 1) {
+
+
+                var addiRow = $(addedAddiSelVal)[0]
+                $(addiRow).remove()
+            } else if (addiRows.length == 1) {
+                var addiHeadingSpan = $(addiRows[0]).find(".addi-heading");
+                var addiDetailsSpan = $(addiRows[0]).find(".addi-details");
+                addiHeadingSpan.html("Additional Section")
+                addiDetailsSpan.html("Additional Section text")
+
+            }
+//            var addedAddiSelOp = $("#added-addi-name option[value='" + addedAddiSelVal + "']");
+//            var sel = $("#added-addi-name")
+
+            var selRemoveOp = $("#added-addi-name option[value='" + $("#added-addi-name").val() + "']");
+
+            selRemoveOp.remove()
+
+
+        }
+
+    });
