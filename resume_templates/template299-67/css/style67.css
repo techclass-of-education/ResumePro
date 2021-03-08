@@ -149,6 +149,11 @@
     text-transform: uppercase;
 }
 
+.edu-css{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 .educationRow {
     margin-right: 1px;
     margin-left: 2px;
@@ -260,7 +265,13 @@
 .internRow {
     margin-right: 1px;
     margin-left: 2px;
+    /*margin-top: 15px;*/
+}
+
+
+.intern-css{
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .internHeadingCol {
@@ -280,10 +291,10 @@
     width: 25px;
 }
 
-.intern-main-div{
+/*.intern-main-div{
     margin-top: 15px;
     margin-bottom: 15px; 
-}
+}*/
 
 .intern-details-row {
     margin-right: 1px;
@@ -790,7 +801,7 @@
 
 /* skill row */
 
-.skill-row {
+.skills-row {
     color: white;
 }
 
@@ -1158,88 +1169,56 @@
 
 
 /* Awards and Achievements  */
-
-.awards-header {
+.award-header {
     font-weight: bold;
     text-transform: uppercase;
 }
 
-.awardsRow {
+.awardRow {
     margin-right: 1px;
     margin-left: 2px;
     margin-top: 15px;
 }
 
-.awardsHeadingCol {
+.awardHeadingCol {
     padding-left: 0px;
     padding-top: 2px;
     padding-right: 0px;
 }
 
-.awardsIcon {
+.awardIcon {
     padding-left: 0px;
     padding-right: 0px;
     text-align: left;
 }
 
-.awardsIcon img {
+.awardIcon img {
     height: 20px;
     width: 25px;
 }
 
-.awards-details-row {
+.award-details-row {
     margin-right: 1px;
     margin-left: 2px;
-    /*margin-top: 15px;*/
-    /*margin-bottom: 15px;*/
-}
-
-.award-div-css{
     margin-top: 15px;
-
+    margin-bottom: 15px;
 }
 
-.awards-name {
+.award-name {
     font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 1.5;
+    line-height: 1.6;
+    padding-right: 30px;
 }
 
-.awards-company-name {
-    font-size: 12px;
-    /* font-weight: bold; */
-    /* text-transform: uppercase; */
-    line-height: 1.5;
-}
-
-.awards-status {
-    font-size: 12px;
-    line-height: 1.5;
-    /* padding-left: 0px; */
+.award-dot-img {
     padding-right: 0px;
 }
 
-.awards-year {
-    font-size: 12px;
-    text-align: justify;
-    padding-top: 7px;
-    padding-left: 0px;
-    padding-right: 0px;
-    line-height: 1.5;
-    text-align: end;
+.award-dot-img img {
+    width: 10px;
+    height: 10px;
 }
 
-.awards-div-detail {
-    padding-left: 0px;
-}
-
-.awards-div {
-    background-image: url("../images/vr-bar.png");
-    background-repeat: no-repeat;
-    text-align: end;
-    padding-right: 0px;
-}
 
 
 /* collage involvement  */
