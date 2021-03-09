@@ -67,6 +67,24 @@ $(document).ready(function () {
         $(".mother-name-span").html(personalInfo[1])
 
     });
+    
+    
+    $("#personal-address-sel").change(function (e) {
+        e.preventDefault();
+        var selVal = $("#personal-address-sel").val()
+        if (selVal == "per-add")
+        {
+            $("#personal-address-txt").prop("disabled", false)
+            $(".address-name-row").css("display", "block")
+            $(".address-personal-span-label").html($("#personal-address-sel option[value='" + selVal + "']").text())
+        } else if (selVal == "pre-add")
+        {
+            $("#personal-address-txt").prop("disabled", true)
+            $(".address-name-row").css("display", "none")
+        }
+
+    });
+    
     $("#personal-address-sel").change(function (e) {
         e.preventDefault();
         $(".address-personal-span-label").html($(this).val())
