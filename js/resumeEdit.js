@@ -1176,7 +1176,94 @@ $(document).ready(function () {
             addNewEduRows()
         });
 
+ $("#edu-marks-imp").keyup(function ()
+        {
+            var v = parseFloat($(this).val().trim())
+            v = v.toFixed(2)
+            switch ($("#edu-marks-sel").val().trim())
+            {
+                case "Percentage":
+                    checkDivision(v)
+                    break;
+                case "CGPA":
+                    v = v * 10.0;
+                    checkDivision(v)
+                    break;
+            }
 
+
+
+        });
+        
+        $("#edu-marks-imp-edit").keyup(function ()
+        {
+//            alert("hello")
+            var v = parseFloat($(this).val().trim())
+            v = v.toFixed(2)
+            switch ($("#edu-marks-sel-edit").val().trim())
+            {
+                case "Percentage":
+                    checkDivisionEdit(v)
+                    break;
+                case "CGPA":
+                    v = v * 10.0;
+                    checkDivisionEdit(v)
+                    break;
+            }
+
+
+
+        });
+
+        function checkDivision(imp)
+        {
+            if (imp >= 75.00 && imp <= 100.00)
+            {
+                $("#edu-division-sel :nth-child(2)").prop('selected', true);
+            } else if (imp >= 60.00 && imp <= 74.99)
+            {
+                $("#edu-division-sel :nth-child(3)").prop('selected', true);
+
+            } else if (imp >= 45.00 && imp <= 59.99)
+            {
+                $("#edu-division-sel :nth-child(4)").prop('selected', true);
+
+            } else if (imp >= 35.00)
+            {
+                $("#edu-division-sel :nth-child(5)").prop('selected', true);
+            } else
+            {
+                $("#edu-division-sel :nth-child(6)").prop('selected', true);
+
+            }
+        }
+        
+        
+        
+        
+        function checkDivisionEdit(imp)
+        {
+            if (imp >= 75.00 && imp <= 100.00)
+            {
+                $("#edu-division-sel-edit :nth-child(2)").prop('selected', true);
+            } else if (imp >= 60.00 && imp <= 74.99)
+            {
+                $("#edu-division-sel-edit :nth-child(3)").prop('selected', true);
+
+            } else if (imp >= 45.00 && imp <= 59.99)
+            {
+                $("#edu-division-sel-edit :nth-child(4)").prop('selected', true);
+
+            } else if (imp >= 35.00)
+            {
+                $("#edu-division-sel-edit :nth-child(5)").prop('selected', true);
+            } else
+            {
+                $("#edu-division-sel-edit :nth-child(6)").prop('selected', true);
+
+            }
+        }
+        
 
         $('#edit-edu-btn').click(function (e) {
             e.preventDefault();
