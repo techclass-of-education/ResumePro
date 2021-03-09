@@ -1513,3 +1513,16 @@
     line-height: 1.5;
     text-align: justify;
 }
+
+/*footer*/
+.footer-row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.footer-col{
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: justify;
+}

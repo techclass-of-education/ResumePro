@@ -257,7 +257,7 @@ $(document).ready(function () {
                 projectDetailsSpan.html(projectDetailsTxt)
 
                 var addedProjectSel = $("#added-project-sel")
-                var projectNameTxtDash = projectNameTxt.replace(" ", "-")
+                var projectNameTxtDash = projectNameTxt.replaceAll(" ", "-")
                 addedProjectSel.append("<option value='" + projectNameTxtDash + "-1'> " + projectNameTxt + "</option>")
                 $(projectRows[0]).addClass(projectNameTxtDash + "-1")
 
@@ -286,7 +286,7 @@ $(document).ready(function () {
 
                 projectRows = $(".project-row");
 
-                projectNameTxtDash = projectNameTxt.replace(" ", "-")
+                projectNameTxtDash = projectNameTxt.replaceAll(" ", "-")
                 var addedProjectSelOpLength = $("#added-project-sel option").length
                 $("#added-project-sel").append("<option value='" + projectNameTxtDash + "-" + addedProjectSelOpLength + "'> " + projectNameTxt + "</option>")
 //                //alert(addedProjectSelOpLength - 1 + "after== before==" + addedProjectSelOpLength)
@@ -966,6 +966,35 @@ $(document).ready(function () {
             e.preventDefault();
             addNewInternRows()
         });
+        
+        $("#intern-skip-end-date").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#date-intern-end-inp").prop("disabled", true)
+
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#date-intern-end-inp").prop("disabled", false)
+
+            }
+
+        });
+        
+        //                ................. edit present............
+        $("#intern-skip-end-date-edit").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#date-intern-end-inp-edit").prop("disabled", true)
+
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#date-intern-end-inp-edit").prop("disabled", false)
+
+            }
+
+        });
 
 
 
@@ -1016,12 +1045,19 @@ $(document).ready(function () {
                 internStateNameSpan.html(companyStateInternTxt)
                 internCityNameSpan.html(companyCityInternTxt)
                 internStrDateSpan.html(dateInternStrTxt)
-                internEndDateSpan.html(dateInternEndTxt)
+//                internEndDateSpan.html(dateInternEndTxt)
+                if ($("#intern-skip-end-date").prop("checked") == true)
+                {
+                    internEndDateSpan.html("Present")
+                } else
+                {
+                    internEndDateSpan.html(dateInternEndTxt)
+                }
                 internDescSpan.html(expDescInternTxt)
                 internPosSpan.html(companyPosInternNameTxt)
 
                 var addedInternSel = $("#added-intern-sel")
-                var companyInternNameTxtDash = companyInternNameTxt.replace(" ", "-")
+                var companyInternNameTxtDash = companyInternNameTxt.replaceAll(" ", "-")
                 addedInternSel.append("<option value='" + companyInternNameTxtDash + "-1'> " + companyInternNameTxt + "</option>")
                 $(internRows[0]).addClass(companyInternNameTxtDash + "-1")
 
@@ -1049,12 +1085,19 @@ $(document).ready(function () {
                 internStateNameSpan.html(companyStateInternTxt)
                 internCityNameSpan.html(companyCityInternTxt)
                 internStrDateSpan.html(dateInternStrTxt)
-                internEndDateSpan.html(dateInternEndTxt)
+//                internEndDateSpan.html(dateInternEndTxt)
+                if ($("#intern-skip-end-date").prop("checked") == true)
+                {
+                    internEndDateSpan.html("Present")
+                } else
+                {
+                    internEndDateSpan.html(dateInternEndTxt)
+                }
                 internDescSpan.html(expDescInternTxt)
                 internPosSpan.html(companyPosInternNameTxt)
 
                 internRows = $(".intern-row")
-                var companyInternNameTxtDash = companyInternNameTxt.replace(" ", "-")
+                var companyInternNameTxtDash = companyInternNameTxt.replaceAll(" ", "-")
                 var internEditSelOpLength = $("#added-intern-sel option").length
                 $("#added-intern-sel").append("<option value='" + companyInternNameTxtDash + "-" + internEditSelOpLength + "'> " + companyInternNameTxt + "</option>")
 //                alert(internEditSelOpLength - 1 + "after== before==" + internEditSelOpLength)
@@ -1069,8 +1112,8 @@ $(document).ready(function () {
         }
 
         function setInternRowEdit() {
-
             var rowInternClass = internEditRowOptionVal
+//            alert(internEditRowOptionVal)
             var internRow = $("." + rowInternClass)[0]
 
 //            var internCpnyNameSpan = $(internRow).find(".intern-company-name-span");
@@ -1085,7 +1128,11 @@ $(document).ready(function () {
             $("#state-intern-inp-edit").val(internStateNameSpan.html())
             $("#city-intern-inp-edit").val(internCityNameSpan.html())
             $("#date-intern-str-inp-edit").val(internStrDateSpan.html())
-            $("#date-intern-end-inp-edit").val(internEndDateSpan.html())
+//            $("#date-intern-end-inp-edit").val(internEndDateSpan.html())
+            if (internEndDateSpan.html().trim() != "Present")
+            {
+                $("#date-intern-end-inp-edit").val(internEndDateSpan.html())
+            }
             $("#exp-desc-intern-inp-edit").val(internDescSpan.html())
             $("#company-pos-name-inp-edit").val(internPosSpan.html())
 
@@ -1111,7 +1158,14 @@ $(document).ready(function () {
             internStateNameSpan.html($("#state-intern-inp-edit").val())
             internCityNameSpan.html($("#city-intern-inp-edit").val())
             internStrDateSpan.html($("#date-intern-str-inp-edit").val())
-            internEndDateSpan.html($("#date-intern-end-inp-edit").val())
+//            internEndDateSpan.html($("#date-intern-end-inp-edit").val())
+            if ($("#intern-skip-end-date-edit").prop("checked") == true)
+            {
+                internEndDateSpan.html("Present")
+            } else
+            {
+                internEndDateSpan.html($("#date-intern-end-inp-edit").val())
+            }
             internDescSpan.html($("#exp-desc-intern-inp-edit").val())
             internPosSpan.html($("#company-pos-name-inp-edit").val())
 
@@ -1175,8 +1229,37 @@ $(document).ready(function () {
             e.preventDefault();
             addNewEduRows()
         });
+        
+        $("#edu-skip-end-date").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#edu-y-date").prop("disabled", true)
+//                $(".wrk-end-span").text("Present")
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#edu-y-date").prop("disabled", false)
+//                $(".wrk-end-span").text("2006")
+            }
 
- $("#edu-marks-imp").keyup(function ()
+        });
+        
+        //                ................. edit present............
+        $("#edu-skip-end-date-edit").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#edu-date-y-edit").prop("disabled", true)
+//                $(".wrk-end-span").text("Present")
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#edu-date-y-edit").prop("disabled", false)
+//                $(".wrk-end-span").text("2006")
+            }
+
+        });
+
+        $("#edu-marks-imp").keyup(function ()
         {
             var v = parseFloat($(this).val().trim())
             v = v.toFixed(2)
@@ -1194,7 +1277,7 @@ $(document).ready(function () {
 
 
         });
-        
+
         $("#edu-marks-imp-edit").keyup(function ()
         {
 //            alert("hello")
@@ -1237,10 +1320,10 @@ $(document).ready(function () {
 
             }
         }
-        
-        
-        
-        
+
+
+
+
         function checkDivisionEdit(imp)
         {
             if (imp >= 75.00 && imp <= 100.00)
@@ -1263,7 +1346,7 @@ $(document).ready(function () {
 
             }
         }
-        
+
 
         $('#edit-edu-btn').click(function (e) {
             e.preventDefault();
@@ -1328,14 +1411,21 @@ $(document).ready(function () {
                 eduStateSpan.html(eduStateTxt)
                 eduStatusSpan.html(eduDegreeStatusTxt)
                 eduMDateSpan.html(eduMDateTxt)
-                eduYDateSpan.html(eduYDateTxt)
+//                eduYDateSpan.html(eduYDateTxt)
+                if ($("#edu-skip-end-date").prop("checked") == true)
+                {
+                    eduYDateSpan.html("Present")
+                } else
+                {
+                    eduYDateSpan.html(eduYDateTxt)
+                }
                 eduMarksSpan.html(eduMarksTxt)
                 eduMarksImpSpan.html(eduMarksImpTxt)
                 eduDivisionSpan.html(eduDivisionTxt)
                 eduMarksSymSpan.html(eduMarksSym)
 
                 var addedEduSel = $("#added-edu-sel")
-                var eduNameTxtDash = eduNameTxt.replace(" ", "-")
+                var eduNameTxtDash = eduNameTxt.replaceAll(" ", "-")
                 addedEduSel.append("<option value='" + eduNameTxtDash + "-1'> " + eduNameTxt + "</option>")
                 $(eduRows[0]).addClass(eduNameTxtDash + "-1")
 
@@ -1367,14 +1457,21 @@ $(document).ready(function () {
                 eduStateSpan.html(eduStateTxt)
                 eduStatusSpan.html(eduDegreeStatusTxt)
                 eduMDateSpan.html(eduMDateTxt)
-                eduYDateSpan.html(eduYDateTxt)
+//                eduYDateSpan.html(eduYDateTxt)
+                if ($("#edu-skip-end-date").prop("checked") == true)
+                {
+                    eduYDateSpan.html("Present")
+                } else
+                {
+                    eduYDateSpan.html(eduYDateTxt)
+                }
                 eduMarksSpan.html(eduMarksTxt)
                 eduMarksImpSpan.html(eduMarksImpTxt)
                 eduDivisionSpan.html(eduDivisionTxt)
 
 
                 eduRows = $(".edu-row")
-                var eduNameTxtDash = eduNameTxt.replace(" ", "-")
+                var eduNameTxtDash = eduNameTxt.replaceAll(" ", "-")
                 var eduEditSelOpLength = $("#added-edu-sel option").length
                 $("#added-edu-sel").append("<option value='" + eduNameTxtDash + "-" + eduEditSelOpLength + "'> " + eduNameTxt + "</option>")
 //                alert(eduEditSelOpLength - 1 + "after== before==" + eduEditSelOpLength)
@@ -1411,7 +1508,11 @@ $(document).ready(function () {
             $("#edu-city-edit").val(eduCitySpan.html())
             $("#edu-state-edit").val(eduStateSpan.html())
             $("#edu-degree-status-edit").val(eduStatusSpan.html())
-            $("#edu-date-y-edit").val(eduYDateSpan.html())
+//            $("#edu-date-y-edit").val(eduYDateSpan.html())
+            if (eduYDateSpan.html().trim() != "Present")
+            {
+                $("#edu-date-y-edit").val(eduYDateSpan.html())
+            }
             $("#edu-date-m-edit").val(eduMDateSpan.html())
             $("#edu-marks-sel-edit").val(eduMarksSpan.html())
             $("#edu-marks-imp-edit").val(eduMarksImpSpan.html())
@@ -1443,7 +1544,14 @@ $(document).ready(function () {
             eduCitySpan.html($("#edu-city-edit").val());
             eduStateSpan.html($("#edu-state-edit").val());
             eduStatusSpan.html($("#edu-degree-status-edit").val());
-            eduYDateSpan.html($("#edu-date-y-edit").val());
+//            eduYDateSpan.html($("#edu-date-y-edit").val());
+            if ($("#edu-skip-end-date-edit").prop("checked") == true)
+            {
+                eduYDateSpan.html("Present")
+            } else
+            {
+                eduYDateSpan.html($("#edu-date-y-edit").val())
+            }
             eduMDateSpan.html($("#edu-date-m-edit").val());
             eduMarksSpan.html($("#edu-marks-sel-edit").val());
             eduMarksImpSpan.html($("#edu-marks-imp-edit").val());
@@ -1587,7 +1695,7 @@ $(document).ready(function () {
 
 
                 var addedTCSel = $("#added-tc-sel")
-                var tcNameTxtDash = tcNameTxt.replace(" ", "-")
+                var tcNameTxtDash = tcNameTxt.replaceAll(" ", "-")
                 addedTCSel.append("<option value='" + tcNameTxtDash + "-1'> " + tcNameTxt + "</option>")
                 $(tcRows[0]).addClass(tcNameTxtDash + "-1")
 
@@ -1611,7 +1719,7 @@ $(document).ready(function () {
                 tcStatusSpan.html(tcStatusTxt)
 
                 tcRows = $(".tc-row")
-                var tcNameTxtDash = tcNameTxt.replace(" ", "-")
+                var tcNameTxtDash = tcNameTxt.replaceAll(" ", "-")
                 var addedTCSelOpLength = $("#added-tc-sel option").length
                 $("#added-tc-sel").append("<option value='" + tcNameTxtDash + "-" + addedTCSelOpLength + "'> " + tcNameTxt + "</option>")
 //                alert(addedTCSelOpLength - 1 + "after== before==" + addedTCSelOpLength)
@@ -1714,7 +1822,7 @@ $(document).ready(function () {
 //.......................Work and Company........................
 
 
-     $(document).ready(function () {
+    $(document).ready(function () {
         $("#add-wrk-btn").click(function (e) {
             e.preventDefault();
             addWrkRows()
@@ -1848,7 +1956,7 @@ $(document).ready(function () {
                 wrkPhrsSpan.html(wrkPhrsTxt)
 
                 var addedWrkSel = $("#added-wrk-sel")
-                var wrkNameTxtDash = wrkNameTxt.replace(" ", "-")
+                var wrkNameTxtDash = wrkNameTxt.replaceAll(" ", "-")
                 addedWrkSel.append("<option value='" + wrkNameTxtDash + "-1'> " + wrkNameTxt + "</option>")
                 $(wrkRows[0]).addClass(wrkNameTxtDash + "-1")
 
@@ -1884,7 +1992,7 @@ $(document).ready(function () {
                 wrkPhrsSpan.html(wrkPhrsTxt)
 
                 wrkRows = $(".wrk-row")
-                var wrkNameTxtDash = wrkNameTxt.replace(" ", "-")
+                var wrkNameTxtDash = wrkNameTxt.replaceAll(" ", "-")
                 var addedWrkSelOpLength = $("#added-wrk-sel option").length
                 $("#added-wrk-sel").append("<option value='" + wrkNameTxtDash + "-" + addedWrkSelOpLength + "'> " + wrkNameTxt + "</option>")
                 $(wrkRows[addedWrkSelOpLength - 1]).addClass(wrkNameTxtDash + "-" + addedWrkSelOpLength)
@@ -2163,7 +2271,7 @@ $(document).ready(function () {
             e.preventDefault();
             addNewLanguageRows()
         });
-        
+
         var selectedLanguageOp = ""
         $("#added-language-sel").change(function (e) {
             e.preventDefault();
@@ -2171,7 +2279,7 @@ $(document).ready(function () {
             setSkillRowEdit()
 
         });
-        
+
         $("#added-language-sel").change(function (e) {
             e.preventDefault();
             setLanguageRowEdit()
@@ -2276,7 +2384,7 @@ $(document).ready(function () {
             languageNameSpan.html(languageNameEditTxt)
             languageRateSpan.html(languageRateImgTag)
         }
-        
+
         function removeLanguageSelRow() {
             var removeLanguageOp = selectedLanguageOp
 
@@ -2747,77 +2855,77 @@ $(document).ready(function () {
 });
 
 // additional block code.................................................
-    $(document).ready(function () {
+$(document).ready(function () {
 
-        $("#add-adddi-btn").click(function () {
+    $("#add-adddi-btn").click(function () {
 
-            addAddiRow()
+        addAddiRow()
 
-        });
-        $("#remove-adddi-btn").click(function () {
+    });
+    $("#remove-adddi-btn").click(function () {
 
-            removeAddiRow()
+        removeAddiRow()
 
-        });
+    });
 
-        function addAddiRow() {
+    function addAddiRow() {
 
-            var addiSecNameText = $("#addi-sec-name").val().trim()
-            var addiDetailsText = $("#addi-sec-details").val().trim()
-            var addedAddiNameOp = $("#added-addi-name option");
-            var addedAddiNameOpLength = addedAddiNameOp.length;
-            var addiRows = $(".addi-row")
-            if (addedAddiNameOpLength == 1) {
-                var addiHeadingSpan = $(addiRows[0]).find(".addi-heading");
-                var addiDetailsSpan = $(addiRows[0]).find(".addi-details");
-                addiHeadingSpan.html(addiSecNameText)
-                addiDetailsSpan.html(addiDetailsText)
-                $("#added-addi-name").append("<option value='" + addiSecNameText.trim() + "-1'>" + addiSecNameText + "</option>")
-                $(addiRows[0]).addClass(addiSecNameText + "-1")
-            } else if (addedAddiNameOpLength > 1) {
+        var addiSecNameText = $("#addi-sec-name").val().trim()
+        var addiDetailsText = $("#addi-sec-details").val().trim()
+        var addedAddiNameOp = $("#added-addi-name option");
+        var addedAddiNameOpLength = addedAddiNameOp.length;
+        var addiRows = $(".addi-row")
+        if (addedAddiNameOpLength == 1) {
+            var addiHeadingSpan = $(addiRows[0]).find(".addi-heading");
+            var addiDetailsSpan = $(addiRows[0]).find(".addi-details");
+            addiHeadingSpan.html(addiSecNameText)
+            addiDetailsSpan.html(addiDetailsText)
+            $("#added-addi-name").append("<option value='" + addiSecNameText.trim() + "-1'>" + addiSecNameText + "</option>")
+            $(addiRows[0]).addClass(addiSecNameText + "-1")
+        } else if (addedAddiNameOpLength > 1) {
 
 //                addOffInvsText = $("#name-off-inv-inp").val().trim()
-                var addiDiv = $(".addi-div")
-                var row = $(".addi-div .addi-row:first-child")
-                $(addiDiv[0]).append(row.clone().wrap("<p>").parent().html())
-                addiRows = $(".addi-row")
-                var addiHeadingSpan = $(addiRows[addedAddiNameOpLength - 1]).find(".addi-heading");
-                var addiDetailsSpan = $(addiRows[addedAddiNameOpLength - 1]).find(".addi-details");
-                addiHeadingSpan.html(addiSecNameText)
-                addiDetailsSpan.html(addiDetailsText)
-                var addiSecNameTextDash = addiSecNameText.replace(" ", "-")
-                $("#added-addi-name").append("<option value='" + addiSecNameTextDash + "-" + addedAddiNameOpLength + "'>" + addiSecNameText + "</option>")
-                $(addiRows[addedAddiNameOpLength - 1]).addClass(addiSecNameTextDash + "-" + addedAddiNameOpLength)
-            }
+            var addiDiv = $(".addi-div")
+            var row = $(".addi-div .addi-row:first-child")
+            $(addiDiv[0]).append(row.clone().wrap("<p>").parent().html())
+            addiRows = $(".addi-row")
+            var addiHeadingSpan = $(addiRows[addedAddiNameOpLength - 1]).find(".addi-heading");
+            var addiDetailsSpan = $(addiRows[addedAddiNameOpLength - 1]).find(".addi-details");
+            addiHeadingSpan.html(addiSecNameText)
+            addiDetailsSpan.html(addiDetailsText)
+            var addiSecNameTextDash = addiSecNameText.replaceAll(" ", "-")
+            $("#added-addi-name").append("<option value='" + addiSecNameTextDash + "-" + addedAddiNameOpLength + "'>" + addiSecNameText + "</option>")
+            $(addiRows[addedAddiNameOpLength - 1]).addClass(addiSecNameTextDash + "-" + addedAddiNameOpLength)
         }
+    }
 
 
 
-        function removeAddiRow() {
-            var addiRows = $(".addi-row")
-            var addedAddiSelVal = "." + $("#added-addi-name").val()
-            var addedAddiSelIndex = addedAddiSelVal.split("-")[1]
-            addedAddiSelIndex = parseInt(addedAddiSelIndex.trim()) - 1
-            if (addiRows.length > 1) {
+    function removeAddiRow() {
+        var addiRows = $(".addi-row")
+        var addedAddiSelVal = "." + $("#added-addi-name").val()
+        var addedAddiSelIndex = addedAddiSelVal.split("-")[1]
+        addedAddiSelIndex = parseInt(addedAddiSelIndex.trim()) - 1
+        if (addiRows.length > 1) {
 
 
-                var addiRow = $(addedAddiSelVal)[0]
-                $(addiRow).remove()
-            } else if (addiRows.length == 1) {
-                var addiHeadingSpan = $(addiRows[0]).find(".addi-heading");
-                var addiDetailsSpan = $(addiRows[0]).find(".addi-details");
-                addiHeadingSpan.html("Additional Section")
-                addiDetailsSpan.html("Additional Section text")
+            var addiRow = $(addedAddiSelVal)[0]
+            $(addiRow).remove()
+        } else if (addiRows.length == 1) {
+            var addiHeadingSpan = $(addiRows[0]).find(".addi-heading");
+            var addiDetailsSpan = $(addiRows[0]).find(".addi-details");
+            addiHeadingSpan.html("Additional Section")
+            addiDetailsSpan.html("Additional Section text")
 
-            }
+        }
 //            var addedAddiSelOp = $("#added-addi-name option[value='" + addedAddiSelVal + "']");
 //            var sel = $("#added-addi-name")
 
-            var selRemoveOp = $("#added-addi-name option[value='" + $("#added-addi-name").val() + "']");
+        var selRemoveOp = $("#added-addi-name option[value='" + $("#added-addi-name").val() + "']");
 
-            selRemoveOp.remove()
+        selRemoveOp.remove()
 
 
-        }
+    }
 
-    });
+});

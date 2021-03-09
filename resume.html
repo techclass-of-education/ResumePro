@@ -30,7 +30,7 @@
     </head>
 
     <body>
-        <div class="container-fluid no-print">
+        <div class="container-fluid no-print p-0">
             <div class="alert alert-secondary rounded-0">
                 <div class="row">
                     <div class="col">
@@ -317,7 +317,11 @@
                                             <div class="form-group col-6 form-group-containt">
                                                 <label for="sel1" class="label-containt">Date YYYY:</label>
                                                 <input type="month" class="form-control form-control-sm" id="edu-y-date">
-
+                                                <div class="form-check p-0">
+                                                    <label class="form-check-label">
+                                                        <span class="pr-4 label-containt">Present :</span><input type="checkbox" class="form-check-input mt-2" id="edu-skip-end-date" value="">
+                                                    </label>
+                                                </div>
                                             </div>
 
                                             <div class="form-group col-6 form-group-containt">
@@ -339,7 +343,7 @@
 
                                             <div class="form-group col-12 form-group-containt">
                                                 <label for="sel1" class="label-containt">Division:</label>
-                                                 <select class="form-control" id="edu-division-sel" readonly> 
+                                                <select class="form-control form-control-sm" id="edu-division-sel" readonly> 
                                                     <option>Division</option>
                                                     <option>Division I with Distinction</option>
                                                     <option>Division I</option>
@@ -397,13 +401,18 @@
 
                                             <div class="form-group col-6 form-group-containt">
                                                 <label for="sel1" class="label-containt">Date Month:</label>
-                                                <input type="text" class="form-control form-control-sm" id="edu-date-m-edit">
+                                                <input type="month" class="form-control form-control-sm" id="edu-date-m-edit">
                                             </div>
 
 
                                             <div class="form-group col-6 form-group-containt">
                                                 <label for="sel1" class="label-containt">Date Year:</label>
-                                                <input type="text" class="form-control form-control-sm" id="edu-date-y-edit">
+                                                <input type="month" class="form-control form-control-sm" id="edu-date-y-edit">
+                                                <div class="form-check p-0">
+                                                    <label class="form-check-label">
+                                                        <span class="pr-4 label-containt">Present :</span><input type="checkbox" class="form-check-input mt-2" id="edu-skip-end-date-edit" value="">
+                                                    </label>
+                                                </div>
                                             </div>
 
 
@@ -427,7 +436,7 @@
 
                                             <div class="form-group col-12 form-group-containt">
                                                 <label for="sel1" class="label-containt">Division:</label>
-                                                 <select class="form-control" id="edu-division-sel-edit" readonly>
+                                                <select class="form-control form-control-sm" id="edu-division-sel-edit" readonly>
                                                     <option>Division</option>
                                                     <option>Division I with Distinction</option>
                                                     <option>Division I</option>
@@ -596,9 +605,9 @@
                                             <label for="usr" class="label-containt">End Date:</label>
                                             <select class="form-control form-control-sm" id="wrk-end-inp">
                                             </select>
-                                            <div class="form-check">
+                                            <div class="form-check p-0">
                                                 <label class="form-check-label">
-                                                    <span class="pr-5">Present :</span><input type="checkbox" class="form-check-input" id="wrk-skip-end-date" value="">
+                                                    <span class="pr-4 label-containt">Present :</span><input type="checkbox" class="form-check-input mt-2" id="wrk-skip-end-date" value="">
                                                 </label>
                                             </div>
                                         </div>
@@ -657,9 +666,9 @@
                                             <select class="form-control form-control-sm" id="wrk-end-edit">
                                             </select>
 
-                                            <div class="form-check">
+                                            <div class="form-check p-0">
                                                 <label class="form-check-label">
-                                                    <span class="pr-5">Present :</span><input type="checkbox" class="form-check-input" id="wrk-skip-end-date-edit" value="">
+                                                    <span class="pr-4 label-containt">Present :</span><input type="checkbox" class="form-check-input mt-2" id="wrk-skip-end-date-edit" value="">
                                                 </label>
                                             </div>
 
@@ -667,7 +676,7 @@
 
                                         <div class="form-group col-12 form-group-containt">
                                             <label for="usr" class="label-containt">Job Description:</label>
-                                            <textarea cols="20" rows="5 " class="form-control form-control-sm" id="wrk-desc-edit"></textarea>
+                                            <textarea cols="20" rows="5" class="form-control form-control-sm" id="wrk-desc-edit"></textarea>
                                         </div>
 
                                         <div class="form-group col-12 form-group-containt">
@@ -1370,6 +1379,11 @@
                                         <div class="form-group col-6 form-group-containt">
                                             <label for="ed" class="label-containt">End Date:</label>
                                             <input type="date" class="form-control form-control-sm" id="date-intern-end-inp">
+                                            <div class="form-check p-0">
+                                                <label class="form-check-label">
+                                                    <span class="pr-4 label-containt">Present :</span><input type="checkbox" class="form-check-input mt-2" id="intern-skip-end-date" value="">
+                                                </label>
+                                            </div>
                                         </div>
 
                                         <div class="form-group col-12 form-group-containt">
@@ -1413,6 +1427,11 @@
                                         <div class="form-group col-6 form-group-containt">
                                             <label for="ed" class="label-containt">End Date:</label>
                                             <input type="date" class="form-control form-control-sm" id="date-intern-end-inp-edit">
+                                            <div class="form-check p-0">
+                                                <label class="form-check-label">
+                                                    <span class="pr-4 label-containt">Present :</span><input type="checkbox" class="form-check-input mt-2" id="intern-skip-end-date-edit" value="">
+                                                </label>
+                                            </div>
                                         </div>
 
 
@@ -1891,7 +1910,7 @@
                             <button class="ac-accordion">
                                 <div class="row">
                                     <span class="col-1 m-0 p-0"> 
-                                        <i class="fa fa-list-ul" aria-hidden="true"></i>
+                                        <i class="fa fa-trophy" aria-hidden="true"></i>
                                     </span>
                                     <span class="col-10 p-0 m-0">
                                         Additional Section
@@ -1932,33 +1951,47 @@
 
                             <!--...................Additional section.................-->
 
-                            <button class="ac-accordion">Document's Footer</button>
-                            <div class="ac-panel">
+                            <button class="ac-accordion">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" id="df1" value="do-not" name="docf">DO NOT SHOW DATA PROTECTION CLAUSE
-                                            </label>
+                                    <span class="col-1 m-0 p-0"> 
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="col-10 p-0 m-0">
+                                        Document's Footer
+                                    </span>
+                                </div>
+                            </button>
+                            <div class="ac-panel">
+                                <div class="gap">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-check form-group col-12 form-group-containt">
+                                                <label class="form-check-label label-containt">
+                                                    <input type="radio" class="form-check-input" id="df1" value="do-not" name="docf">DO NOT SHOW DATA PROTECTION CLAUSE
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-group col-12 form-group-containt">
+                                                <label class="form-check-label label-containt">
+                                                    <input type="radio" class="form-check-input" id="df2" value="cu-da" name="docf">CURRENT DATA PROTECTION CLAUSE
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-group col-12 form-group-containt disabled">
+                                                <label class="form-check-label label-containt">
+                                                    <input type="radio" class="form-check-input" id="df3" value="cus-da" name="docf">CUSTOM DATA PROTECTION CLAUSE
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" id="df2" value="cu-da" name="docf">CURRENT DATA PROTECTION CLAUSE
-                                            </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" id="df3" value="cus-da" name="docf">CUSTOM DATA PROTECTION CLAUSE
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group m-0">
-                                            <hr>
-                                            <label for="abt">Footer Text</label>
-                                            <textarea cols="30" rows="10" class="form-control" id="footer-txt" disabled>
+                                        <!--<div class="col">-->
+
+                                        <!--<div class="col-12">-->
+
+                                        <div class="form-group col-12 form-group-containt">
+                                            <hr style="background-color: red;height: 2px;">
+                                            <label for="abt" class="label-containt">Footer Text</label>
+                                            <textarea cols="30" rows="5" class="form-control form-control-sm" id="footer-txt" disabled>
                                             </textarea>
                                         </div>
+                                        <!--</div>-->
                                     </div>
                                 </div>
                             </div>
