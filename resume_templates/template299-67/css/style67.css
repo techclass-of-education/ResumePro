@@ -4,10 +4,12 @@
 
 .resume_sec1 {
     background-color: #e6e6e6;
+    /*overflow-y: hidden;*/
 }
 
 .resume_sec2 {
     background-color: #e6e6e6;
+    /*overflow-y: hidden;*/
     /*margin-top: 70px;*/
 }
 
@@ -26,6 +28,7 @@
     margin-left: 15px;
     margin-top: 15px;
     margin-bottom: 15px;
+    /*height: 45px;*/
 }
 
 .full-name-row {
@@ -54,7 +57,8 @@
 .cv-card-name-col {
     padding-left: 0px;
     position: absolute;
-    top: 226px;
+    top: 225px;
+    height: 75px;
 }
 
 .cv-card-row {
@@ -103,7 +107,7 @@
 }
 
 .about-me-div {
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 .about-me-header {
@@ -114,6 +118,8 @@
 .aboutMeRow {
     margin-right: 1px;
     margin-left: 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .aboutMeHeadingCol {
@@ -135,7 +141,10 @@
 }
 
 .about-detail {
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
     font-size: 12px;
     line-height: 1.5;
     text-align: justify;
@@ -353,6 +362,8 @@
 .personalDetailsRow {
     margin-right: 1px;
     margin-left: 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .personalDetailsHeadingCol {
@@ -374,7 +385,10 @@
 }
 
 .personal-details {
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     font-size: 12px;
     line-height: 1.5;
     text-align: justify;
@@ -1149,7 +1163,7 @@
 .training-year {
     font-size: 12px;
     text-align: justify;
-    padding-top: 7px;
+    /*padding-top: 7px;*/
     padding-left: 0px;
     padding-right: 0px;
     line-height: 1.5;
@@ -1206,8 +1220,9 @@
 
 .award-name {
     font-size: 12px;
-    line-height: 1.6;
+    /*line-height: 1.6;*/
     padding-right: 30px;
+    padding-top: 5px;
 }
 
 .award-dot-img {
@@ -1260,8 +1275,9 @@
 
 .clg-involvement-name {
     font-size: 12px;
-    line-height: 1.6;
+    /*line-height: 1.6;*/
     padding-right: 30px;
+    padding-top: 5px;
 }
 
 .clg-involvement-dot-img {
@@ -1313,8 +1329,9 @@
 
 .pro-affiliation-name {
     font-size: 12px;
-    line-height: 1.6;
+    /*line-height: 1.6;*/
     padding-right: 30px;
+    padding-top: 5px;
 }
 
 .pro-affiliation-dot-img {
@@ -1454,8 +1471,9 @@
 
 .offi-involvement-name {
     font-size: 12px;
-    line-height: 1.6;
+    /*line-height: 1.6;*/
     padding-right: 30px;
+    padding-top: 5px;
 }
 
 .offi-involvement-dot-img {
@@ -1486,7 +1504,8 @@
 .addSecDetailRow{
     margin-right: 1px;
     margin-left: 2px;
-    /*margin-top: 15px;*/
+    margin-top: 15px;
+    padding-bottom: 15px;
 }
 
 .addSecHeadingCol {
@@ -1508,7 +1527,10 @@
 }
 
 .add-sec-detail {
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     font-size: 12px;
     line-height: 1.5;
     text-align: justify;
@@ -1524,5 +1546,5 @@
     padding: 10px;
     font-size: 12px;
     line-height: 1.5;
-    text-align: justify;
+    text-align: center;
 }

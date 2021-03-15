@@ -67,35 +67,55 @@ $(document).ready(function () {
         $(".mother-name-span").html(personalInfo[1])
 
     });
-    
-    
+
+
+     bkLib.onDomLoaded(function () {
+        var myNicEditor = new nicEditor();
+        myNicEditor.setPanel('personal-address-panel');
+        myNicEditor.addInstance('personal-address-txt');
+        $("#personal-address-txt").prop("contenteditable", false)
+    });
+
+
     $("#personal-address-sel").change(function (e) {
         e.preventDefault();
+
         var selVal = $("#personal-address-sel").val()
         if (selVal == "per-add")
         {
-            $("#personal-address-txt").prop("disabled", false)
-            $(".address-name-row").css("display", "block")
+            $("#personal-address-txt").prop("contenteditable", true)
+            $(".address-name-row").css("display", "flex")
             $(".address-personal-span-label").html($("#personal-address-sel option[value='" + selVal + "']").text())
         } else if (selVal == "pre-add")
         {
-            $("#personal-address-txt").prop("disabled", true)
+            $("#personal-address-txt").prop("contenteditable", false)
             $(".address-name-row").css("display", "none")
         }
 
     });
-    
-    $("#personal-address-sel").change(function (e) {
-        e.preventDefault();
-        $(".address-personal-span-label").html($(this).val())
 
-    });
-    $("#personal-address-txt").keyup(function (e) {
+
+
+//    
+
+
+    $("#personal-address-sel").change(function (e) {
         e.preventDefault();
         $(".address-personal-span").html($(this).val())
 
     });
+    $("#personal-address-txt").keyup(function (e) {
+        e.preventDefault();
+        $(".address-personal-span").html($(this).html())
 
+    });
+    $("#personal-address-txt").click(function (e) {
+        
+        e.preventDefault();
+        $(".address-personal-span").html($("#personal-address-txt").html())
+//        alert($(this).html())
+
+    });
     $("#marital-status").keyup(function (e) {
         e.preventDefault();
         $(".marital-status-span").html($(this).val())
@@ -170,9 +190,15 @@ $(document).ready(function () {
     });
 
 
-    $("#aboutMe").keyup(function (e) {
+ bkLib.onDomLoaded(function () {
+        var myNicEditor = new nicEditor();
+        myNicEditor.setPanel('about-me-panel');
+        myNicEditor.addInstance('about-me');
+    });
+
+    $("#about-me").keyup(function (e) {
         e.preventDefault();
-        $(".about-me-span").html($(this).val())
+        $(".about-me-span").html($(this).html())
 
     });
 
@@ -199,6 +225,39 @@ $(document).ready(function () {
             addNewProjectRows()
         });
 
+        $("#proj-skip-end-date").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#proj-end-m-date").prop("disabled", true)
+                $("#proj-end-y-date").prop("disabled", true)
+//                $(".wrk-end-span").text("Present")
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#proj-end-m-date").prop("disabled", false)
+                $("#proj-end-y-date").prop("disabled", false)
+//                $(".wrk-end-span").text("2006")
+            }
+
+        });
+
+        //                ................. edit present............
+        $("#proj-skip-end-date-edit").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#proj-end-m-date-edit").prop("disabled", true)
+                $("#proj-end-y-date-edit").prop("disabled", true)
+//                $(".wrk-end-span").text("Present")
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#proj-end-m-date-edit").prop("disabled", false)
+                $("#proj-end-y-date-edit").prop("disabled", false)
+//                $(".wrk-end-span").text("2006")
+            }
+
+        });
+
 
 
         $('#edit-pro-btn').click(function (e) {
@@ -218,39 +277,80 @@ $(document).ready(function () {
             //alert(projectEditRowOptionVal)
             setProjectRowEdit()
         });
+        
+        var projStartMonthsSel = document.getElementById("proj-start-m-date");
+        var projStartMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var projStartmonth = projStartMonthArr.length;
+        for (i = 0; i < projStartmonth; i++) {
+            projStartMonthsSel.innerHTML += "<option value='" + projStartMonthArr[i] + "'>" + projStartMonthArr[i] + "</option>"
+        }
 
-        $("#edu-marks-sel , #edu-marks-sel-edit").change(function (e) {
-            e.preventDefault();
-            if ($(this).val() == "Percentage")
-            {
-                $("#edu-marks-sym").html("%")
-            } else
-            {
-                $("#edu-marks-sym").html("(CGPA)")
+        var projStartYearSel = document.getElementById("proj-start-y-date");
 
-            }
-        });
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            projStartYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
 
-        $("#edu-marks-sel-edit").change(function (e) {
-            e.preventDefault();
-            if ($(this).val() == "Percentage")
-            {
-                $("#edu-marks-sym-edit").html("%")
-            } else
-            {
-                $("#edu-marks-sym-edit").html("(CGPA)")
+        var projEndMonthsSel = document.getElementById("proj-end-m-date");
+        var projEndMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var projEndMonth = projEndMonthArr.length;
+        for (i = 0; i < projEndMonth; i++) {
+            projEndMonthsSel.innerHTML += "<option value='" + projEndMonthArr[i] + "'>" + projEndMonthArr[i] + "</option>"
+        }
 
-            }
+        var projEndYearSel = document.getElementById("proj-end-y-date");
 
-        });
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            projEndYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+//        ...................edit...........
+
+        var projStartMonthsSelEdit = document.getElementById("proj-start-m-date-edit");
+        var projStartMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var projStartmonthEdit = projStartMonthEditArr.length;
+        for (i = 0; i < projStartmonthEdit; i++) {
+            projStartMonthsSelEdit.innerHTML += "<option value='" + projStartMonthEditArr[i] + "'>" + projStartMonthEditArr[i] + "</option>"
+        }
+
+        var projStartYearSelEdit = document.getElementById("proj-start-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            projStartYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+        var projEndMonthsSelEdit = document.getElementById("proj-end-m-date-edit");
+        var projEndMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var projEndMonthEdit = projEndMonthEditArr.length;
+        for (i = 0; i < projEndMonthEdit; i++) {
+            projEndMonthsSelEdit.innerHTML += "<option value='" + projEndMonthEditArr[i] + "'>" + projEndMonthEditArr[i] + "</option>"
+        }
+
+        var projEndYearSelEdit = document.getElementById("proj-end-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            projEndYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+
 
         function addNewProjectRows() {
             var projectNameTxt = $("#name-pro-inp").val()
             var projectLabelTxt = $("#pro-lable").val()
             var projectLabelAboutTxt = $("#lable-pro-about").val()
-            var projectStartYearTxt = $("#date-pro-str-inp").val()
-            var projectEndYearTxt = $("#date-pro-end-inp").val()
-            var projectDetailsTxt = $("#exp-desc-pro-inp").val()
+            var projectStartMTxt = $("#proj-start-m-date").val()
+            var projectStartYTxt = $("#proj-start-y-date").val()
+            var projectEndMTxt = $("#proj-end-m-date").val()
+            var projectEndYTxt = $("#proj-end-y-date").val()
+            var projectDetailsTxt = $("#exp-desc-pro-inp").html()
 
 
             var projectRows = $(".project-row");
@@ -263,15 +363,27 @@ $(document).ready(function () {
                 var projectNameSpan = $(projectRows[0]).find(".project-name-span");
                 var projectLabelSpan = $(projectRows[0]).find(".project-label-span");
                 var projectLabelAboutSpan = $(projectRows[0]).find(".project-label-about-span");
-                var projectStartYearSpan = $(projectRows[0]).find(".project-start-year-span");
-                var projectEndYearSpan = $(projectRows[0]).find(".project-end-year-span");
+                var projectStartMSpan = $(projectRows[0]).find(".proj-start-m-span");
+                var projectStartYSpan = $(projectRows[0]).find(".proj-start-y-span");
+                var projectEndMSpan = $(projectRows[0]).find(".proj-end-m-span");
+                var projectEndYSpan = $(projectRows[0]).find(".proj-end-y-span");
                 var projectDetailsSpan = $(projectRows[0]).find(".project-details-span");
 
                 projectNameSpan.html(projectNameTxt)
                 projectLabelSpan.html(projectLabelTxt)
                 projectLabelAboutSpan.html(projectLabelAboutTxt)
-                projectStartYearSpan.html(projectStartYearTxt)
-                projectEndYearSpan.html(projectEndYearTxt)
+                projectStartMSpan.html(projectStartMTxt)
+                projectStartYSpan.html(projectStartYTxt)
+//                projectEndYearSpan.html(projectEndYearTxt)
+                if ($("#proj-skip-end-date").prop("checked") == true)
+                {
+                    projectEndMSpan.html("")
+                    projectEndYSpan.html("Present")
+                } else
+                {
+                    projectEndMSpan.html(projectEndMTxt)
+                    projectEndYSpan.html(projectEndYTxt)
+                }
                 projectDetailsSpan.html(projectDetailsTxt)
 
                 var addedProjectSel = $("#added-project-sel")
@@ -291,15 +403,27 @@ $(document).ready(function () {
                 var projectNameSpan = $(projectRows[opLength - 1]).find(".project-name-span");
                 var projectLabelSpan = $(projectRows[opLength - 1]).find(".project-label-span");
                 var projectLabelAboutSpan = $(projectRows[opLength - 1]).find(".project-label-about-span");
-                var projectStartYearSpan = $(projectRows[opLength - 1]).find(".project-start-year-span");
-                var projectEndYearSpan = $(projectRows[opLength - 1]).find(".project-end-year-span");
+                var projectStartMSpan = $(projectRows[opLength - 1]).find(".proj-start-m-span");
+                var projectStartYSpan = $(projectRows[opLength - 1]).find(".proj-start-y-span");
+                var projectEndMSpan = $(projectRows[opLength - 1]).find(".proj-end-m-span");
+                var projectEndYSpan = $(projectRows[opLength - 1]).find(".proj-end-y-span");
                 var projectDetailsSpan = $(projectRows[opLength - 1]).find(".project-details-span");
 
                 projectNameSpan.html(projectNameTxt)
                 projectLabelSpan.html(projectLabelTxt)
                 projectLabelAboutSpan.html(projectLabelAboutTxt)
-                projectStartYearSpan.html(projectStartYearTxt)
-                projectEndYearSpan.html(projectEndYearTxt)
+                projectStartMSpan.html(projectStartMTxt)
+                projectStartYSpan.html(projectStartYTxt)
+//                projectEndYearSpan.html(projectEndYearTxt)
+                if ($("#proj-skip-end-date").prop("checked") == true)
+                {
+                    projectEndMSpan.html("")
+                    projectEndYSpan.html("Present")
+                } else
+                {
+                    projectEndMSpan.html(projectEndMTxt)
+                    projectEndYSpan.html(projectEndYTxt)
+                }
                 projectDetailsSpan.html(projectDetailsTxt)
 
                 projectRows = $(".project-row");
@@ -321,18 +445,25 @@ $(document).ready(function () {
             var rowProjectClass = projectEditRowOptionVal
             var projectRow = $("." + rowProjectClass)[0]
             var projectNameSpan = $(projectRow).find(".project-name-span");
-
             var projectLabelSpan = $(projectRow).find(".project-label-span");
             var projectLabelAboutSpan = $(projectRow).find(".project-label-about-span");
-            var projectStartYearSpan = $(projectRow).find(".project-start-year-span");
-            var projectEndYearSpan = $(projectRow).find(".project-end-year-span");
+            var projectStartMSpan = $(projectRow).find(".proj-start-m-span");
+            var projectStartYSpan = $(projectRow).find(".proj-start-y-span");
+            var projectEndMSpan = $(projectRow).find(".proj-end-m-span");
+            var projectEndYSpan = $(projectRow).find(".proj-end-y-span");
             var projectDetailsSpan = $(projectRow).find(".project-details-span");
 
             $("#pro-lable-edit").val($(projectLabelSpan).html())
             $("#lable-pro-about-edit").val($(projectLabelAboutSpan).html())
-            $("#date-pro-str-inp-edit").val($(projectStartYearSpan).html())
-            $("#date-pro-end-inp-edit").val($(projectEndYearSpan).html())
-            $("#exp-desc-pro-inp-edit").val($(projectDetailsSpan).html())
+            $("#proj-start-m-date-edit").val($(projectStartMSpan).html())
+            $("#proj-start-y-date-edit").val($(projectStartYSpan).html())
+//            $("#date-pro-end-inp-edit").val($(projectEndYearSpan).html())
+            if (projectEndMSpan.html().trim() != "" || projectEndYSpan.html().trim() != "Project")
+            {
+                $("#proj-end-m-date-edit").val(projectEndMSpan.html())
+                $("#proj-end-y-date-edit").val(projectEndYSpan.html())
+            }
+            $("#exp-desc-pro-inp-edit").html($(projectDetailsSpan).html())
         }
 
 
@@ -343,8 +474,10 @@ $(document).ready(function () {
 
             var projectLabelSpan = $(projectRow).find(".project-label-span");
             var projectLabelAboutSpan = $(projectRow).find(".project-label-about-span");
-            var projectStartYearSpan = $(projectRow).find(".project-start-year-span");
-            var projectEndYearSpan = $(projectRow).find(".project-end-year-span");
+            var projectStartMSpan = $(projectRow).find(".proj-start-m-span");
+            var projectStartYSpan = $(projectRow).find(".proj-start-y-span");
+            var projectEndMSpan = $(projectRow).find(".proj-end-m-span");
+            var projectEndYSpan = $(projectRow).find(".proj-end-y-span");
             var projectDetailsSpan = $(projectRow).find(".project-details-span");
 
 
@@ -352,9 +485,19 @@ $(document).ready(function () {
 
             projectLabelSpan.html($("#pro-lable-edit").val())
             projectLabelAboutSpan.html($("#lable-pro-about-edit").val())
-            projectStartYearSpan.html($("#date-pro-str-inp-edit").val())
-            projectEndYearSpan.html($("#date-pro-end-inp-edit").val())
-            projectDetailsSpan.html($("#exp-desc-pro-inp-edit").val())
+            projectStartMSpan.html($("#proj-start-m-date-edit").val())
+            projectStartYSpan.html($("#proj-start-y-date-edit").val())
+//            projectEndYearSpan.html($("#date-pro-end-inp-edit").val())
+            if ($("#proj-skip-end-date-edit").prop("checked") == true)
+            {
+                projectEndMSpan.html("")
+                projectEndYSpan.html("Present")
+            } else
+            {
+                projectEndMSpan.html($("#proj-end-m-date-edit").val())
+                projectEndYSpan.html($("#proj-end-y-date-edit").val())
+            }
+            projectDetailsSpan.html($("#exp-desc-pro-inp-edit").html())
 
 
 
@@ -377,16 +520,20 @@ $(document).ready(function () {
 
                 var projectLabelSpan = $(projectRow).find(".project-label-span");
                 var projectLabelAboutSpan = $(projectRow).find(".project-label-about-span");
-                var projectStartYearSpan = $(projectRow).find(".project-start-year-span");
-                var projectEndYearSpan = $(projectRow).find(".project-end-year-span");
+                var projectStartMSpan = $(projectRow).find(".proj-start-m-span");
+                var projectStartYSpan = $(projectRow).find(".proj-start-y-span");
+                var projectEndMSpan = $(projectRow).find(".proj-end-m-span");
+                var projectEndYSpan = $(projectRow).find(".proj-end-y-span");
                 var projectDetailsSpan = $(projectRow).find(".project-details-span");
                 var projectNameSpan = $(projectRow).find(".project-name-span");
 
 
                 projectLabelSpan.html("Add a Label")
                 projectLabelAboutSpan.html("About Label")
-                projectStartYearSpan.html("Start Date")
-                projectEndYearSpan.html("End Date")
+                projectStartMSpan.html("Mon-")
+                projectStartYSpan.html("Year")
+                projectEndMSpan.html("Mon-")
+                projectEndYSpan.html("year")
                 projectDetailsSpan.html("Details")
                 projectNameSpan.html("Project Name")
             }
@@ -399,6 +546,17 @@ $(document).ready(function () {
 
 
 
+bkLib.onDomLoaded(function() {
+          var myNicEditor = new nicEditor();
+          myNicEditor.setPanel('exp-desc-pro-inp-panel');
+          myNicEditor.addInstance('exp-desc-pro-inp');
+     });
+     
+ bkLib.onDomLoaded(function() {
+          var myNicEditor = new nicEditor();
+          myNicEditor.setPanel('exp-desc-pro-inp-edit-panel');
+          myNicEditor.addInstance('exp-desc-pro-inp-edit');
+     });
 
 
 
@@ -984,31 +1142,35 @@ $(document).ready(function () {
             e.preventDefault();
             addNewInternRows()
         });
-        
+
         $("#intern-skip-end-date").change(function () {
             if ($(this).prop("checked") == true)
             {
-                $("#date-intern-end-inp").prop("disabled", true)
+                $("#intern-end-m-date").prop("disabled", true)
+                $("#intern-end-y-date").prop("disabled", true)
 
             } else
             if ($(this).prop("checked") == false)
             {
-                $("#date-intern-end-inp").prop("disabled", false)
+                $("#intern-end-m-date").prop("disabled", false)
+                $("#intern-end-y-date").prop("disabled", false)
 
             }
 
         });
-        
+
         //                ................. edit present............
         $("#intern-skip-end-date-edit").change(function () {
             if ($(this).prop("checked") == true)
             {
-                $("#date-intern-end-inp-edit").prop("disabled", true)
+                $("#intern-end-m-date-edit").prop("disabled", true)
+                $("#intern-end-y-date-edit").prop("disabled", true)
 
             } else
             if ($(this).prop("checked") == false)
             {
-                $("#date-intern-end-inp-edit").prop("disabled", false)
+                $("#intern-end-m-date-edit").prop("disabled", false)
+                $("#intern-end-y-date-edit").prop("disabled", false)
 
             }
 
@@ -1033,15 +1195,79 @@ $(document).ready(function () {
             internEditRowOptionVal = $(this).val()
             setInternRowEdit()
         });
+        
+        var internStartMonthsSel = document.getElementById("intern-start-m-date");
+        var internStartMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var internStartmonth = internStartMonthArr.length;
+        for (i = 0; i < internStartmonth; i++) {
+            internStartMonthsSel.innerHTML += "<option value='" + internStartMonthArr[i] + "'>" + internStartMonthArr[i] + "</option>"
+        }
+
+        var internStartYearSel = document.getElementById("intern-start-y-date");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            internStartYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+        var internEndMonthsSel = document.getElementById("intern-end-m-date");
+        var internEndMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var internEndMonth = internEndMonthArr.length;
+        for (i = 0; i < internEndMonth; i++) {
+            internEndMonthsSel.innerHTML += "<option value='" + internEndMonthArr[i] + "'>" + internEndMonthArr[i] + "</option>"
+        }
+
+        var internEndYearSel = document.getElementById("intern-end-y-date");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            internEndYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+//        ...................edit...........
+
+        var internStartMonthsSelEdit = document.getElementById("intern-start-m-date-edit");
+        var internStartMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var internStartmonthEdit = internStartMonthEditArr.length;
+        for (i = 0; i < internStartmonthEdit; i++) {
+            internStartMonthsSelEdit.innerHTML += "<option value='" + internStartMonthEditArr[i] + "'>" + internStartMonthEditArr[i] + "</option>"
+        }
+
+        var internStartYearSelEdit = document.getElementById("intern-start-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            internStartYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+        var internEndMonthsSelEdit = document.getElementById("intern-end-m-date-edit");
+        var internEndMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var internEndMonthEdit = internEndMonthEditArr.length;
+        for (i = 0; i < internEndMonthEdit; i++) {
+            internEndMonthsSelEdit.innerHTML += "<option value='" + internEndMonthEditArr[i] + "'>" + internEndMonthEditArr[i] + "</option>"
+        }
+
+        var internEndYearSelEdit = document.getElementById("intern-end-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            internEndYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
 
         function addNewInternRows() {
             var companyInternNameTxt = $("#company-name-inp").val()
             var companyPosInternNameTxt = $("#company-pos-name-inp").val()
             var companyCityInternTxt = $("#city-intern-inp").val()
             var companyStateInternTxt = $("#state-intern-inp").val()
-            var dateInternStrTxt = $("#date-intern-str-inp").val()
-            var dateInternEndTxt = $("#date-intern-end-inp").val()
-            var expDescInternTxt = $("#exp-desc-intern-inp").val()
+            var internStartMTxt = $("#intern-start-m-date").val()
+            var internStartYTxt = $("#intern-start-y-date").val()
+            var internEndMTxt = $("#intern-end-m-date").val()
+            var internEndYTxt = $("#intern-end-y-date").val()
+            var expDescInternTxt = $("#exp-desc-intern-inp").html()
 
 
             var internRows = $(".intern-row");
@@ -1054,22 +1280,27 @@ $(document).ready(function () {
                 var internCpnyNameSpan = $(internRows[0]).find(".intern-company-name-span");
                 var internStateNameSpan = $(internRows[0]).find(".intern-state-name-span");
                 var internCityNameSpan = $(internRows[0]).find(".intern-city-name-span");
-                var internStrDateSpan = $(internRows[0]).find(".intern-str-date-span");
-                var internEndDateSpan = $(internRows[0]).find(".intern-end-date-span");
+                var internStrMDateSpan = $(internRows[0]).find(".intern-start-m-span");
+                var internStrYDateSpan = $(internRows[0]).find(".intern-start-y-span");
+                var internEndMDateSpan = $(internRows[0]).find(".intern-end-m-span");
+                var internEndYDateSpan = $(internRows[0]).find(".intern-end-y-span");
                 var internDescSpan = $(internRows[0]).find(".intern-desc-span");
                 var internPosSpan = $(internRows[0]).find(".intern-pos-name-span");
 
                 internCpnyNameSpan.html(companyInternNameTxt)
                 internStateNameSpan.html(companyStateInternTxt)
                 internCityNameSpan.html(companyCityInternTxt)
-                internStrDateSpan.html(dateInternStrTxt)
+                internStrMDateSpan.html(internStartMTxt)
+                internStrYDateSpan.html(internStartYTxt)
 //                internEndDateSpan.html(dateInternEndTxt)
                 if ($("#intern-skip-end-date").prop("checked") == true)
                 {
-                    internEndDateSpan.html("Present")
+                    internEndMDateSpan.html("")
+                    internEndYDateSpan.html("Present")
                 } else
                 {
-                    internEndDateSpan.html(dateInternEndTxt)
+                    internEndMDateSpan.html(internEndMTxt)
+                    internEndYDateSpan.html(internEndYTxt)
                 }
                 internDescSpan.html(expDescInternTxt)
                 internPosSpan.html(companyPosInternNameTxt)
@@ -1091,8 +1322,10 @@ $(document).ready(function () {
                 var internCpnyNameSpan = $(internRows[opLength - 1]).find(".intern-company-name-span");
                 var internStateNameSpan = $(internRows[opLength - 1]).find(".intern-state-name-span");
                 var internCityNameSpan = $(internRows[opLength - 1]).find(".intern-city-name-span");
-                var internStrDateSpan = $(internRows[opLength - 1]).find(".intern-str-date-span");
-                var internEndDateSpan = $(internRows[opLength - 1]).find(".intern-end-date-span");
+                var internStrMDateSpan = $(internRows[opLength - 1]).find(".intern-start-m-span");
+                var internStrYDateSpan = $(internRows[opLength - 1]).find(".intern-start-y-span");
+                var internEndMDateSpan = $(internRows[opLength - 1]).find(".intern-end-m-span");
+                var internEndYDateSpan = $(internRows[opLength - 1]).find(".intern-end-y-span");
                 var internDescSpan = $(internRows[opLength - 1]).find(".intern-desc-span");
                 var internPosSpan = $(internRows[opLength - 1]).find(".intern-pos-name-span");
 
@@ -1102,14 +1335,17 @@ $(document).ready(function () {
                 internCpnyNameSpan.html(companyInternNameTxt)
                 internStateNameSpan.html(companyStateInternTxt)
                 internCityNameSpan.html(companyCityInternTxt)
-                internStrDateSpan.html(dateInternStrTxt)
+                internStrMDateSpan.html(internStartMTxt)
+                internStrYDateSpan.html(internStartYTxt)
 //                internEndDateSpan.html(dateInternEndTxt)
                 if ($("#intern-skip-end-date").prop("checked") == true)
                 {
-                    internEndDateSpan.html("Present")
+                    internEndMDateSpan.html("")
+                    internEndYDateSpan.html("Present")
                 } else
                 {
-                    internEndDateSpan.html(dateInternEndTxt)
+                    internEndMDateSpan.html(internEndMTxt)
+                    internEndYDateSpan.html(internEndYTxt)
                 }
                 internDescSpan.html(expDescInternTxt)
                 internPosSpan.html(companyPosInternNameTxt)
@@ -1137,21 +1373,25 @@ $(document).ready(function () {
 //            var internCpnyNameSpan = $(internRow).find(".intern-company-name-span");
             var internStateNameSpan = $(internRow).find(".intern-state-name-span");
             var internCityNameSpan = $(internRow).find(".intern-city-name-span");
-            var internStrDateSpan = $(internRow).find(".intern-str-date-span");
-            var internEndDateSpan = $(internRow).find(".intern-end-date-span");
+            var internStrMDateSpan = $(internRow).find(".intern-start-m-span");
+            var internStrYDateSpan = $(internRow).find(".intern-start-y-span");
+            var internEndMDateSpan = $(internRow).find(".intern-end-m-span");
+            var internEndYDateSpan = $(internRow).find(".intern-end-y-span");
             var internDescSpan = $(internRow).find(".intern-desc-span");
             var internPosSpan = $(internRow).find(".intern-pos-name-span");
 
 
             $("#state-intern-inp-edit").val(internStateNameSpan.html())
             $("#city-intern-inp-edit").val(internCityNameSpan.html())
-            $("#date-intern-str-inp-edit").val(internStrDateSpan.html())
+            $("#intern-start-m-date-edit").val(internStrMDateSpan.html())
+            $("#intern-start-y-date-edit").val(internStrYDateSpan.html())
 //            $("#date-intern-end-inp-edit").val(internEndDateSpan.html())
-            if (internEndDateSpan.html().trim() != "Present")
+            if (internEndMDateSpan.html().trim() != "" || internEndYDateSpan.html().trim() != "Present")
             {
-                $("#date-intern-end-inp-edit").val(internEndDateSpan.html())
+                $("#intern-end-m-date-edit").val(internEndMDateSpan.html())
+                $("#intern-end-y-date-edit").val(internEndYDateSpan.html())
             }
-            $("#exp-desc-intern-inp-edit").val(internDescSpan.html())
+            $("#exp-desc-intern-inp-edit").html(internDescSpan.html())
             $("#company-pos-name-inp-edit").val(internPosSpan.html())
 
 
@@ -1165,8 +1405,10 @@ $(document).ready(function () {
 
             var internStateNameSpan = $(internRow).find(".intern-state-name-span");
             var internCityNameSpan = $(internRow).find(".intern-city-name-span");
-            var internStrDateSpan = $(internRow).find(".intern-str-date-span");
-            var internEndDateSpan = $(internRow).find(".intern-end-date-span");
+            var internStrMDateSpan = $(internRow).find(".intern-start-m-span");
+            var internStrYDateSpan = $(internRow).find(".intern-start-y-span");
+            var internEndMDateSpan = $(internRow).find(".intern-end-m-span");
+            var internEndYDateSpan = $(internRow).find(".intern-end-y-span");
             var internDescSpan = $(internRow).find(".intern-desc-span");
             var internPosSpan = $(internRow).find(".intern-pos-name-span");
 
@@ -1175,16 +1417,19 @@ $(document).ready(function () {
 
             internStateNameSpan.html($("#state-intern-inp-edit").val())
             internCityNameSpan.html($("#city-intern-inp-edit").val())
-            internStrDateSpan.html($("#date-intern-str-inp-edit").val())
+            internStrMDateSpan.html($("#intern-start-m-date-edit").val())
+            internStrYDateSpan.html($("#intern-start-y-date-edit").val())
 //            internEndDateSpan.html($("#date-intern-end-inp-edit").val())
             if ($("#intern-skip-end-date-edit").prop("checked") == true)
             {
-                internEndDateSpan.html("Present")
+                internEndMDateSpan.html("")
+                internEndYDateSpan.html("Present")
             } else
             {
-                internEndDateSpan.html($("#date-intern-end-inp-edit").val())
+                internEndMDateSpan.html($("#intern-end-m-date-edit").val())
+                internEndYDateSpan.html($("#intern-end-y-date-edit").val())
             }
-            internDescSpan.html($("#exp-desc-intern-inp-edit").val())
+            internDescSpan.html($("#exp-desc-intern-inp-edit").html())
             internPosSpan.html($("#company-pos-name-inp-edit").val())
 
 
@@ -1208,8 +1453,10 @@ $(document).ready(function () {
                 var internCpnyNameSpan = $(internRow).find(".intern-company-name-span");
                 var internStateNameSpan = $(internRow).find(".intern-state-name-span");
                 var internCityNameSpan = $(internRow).find(".intern-city-name-span");
-                var internStrDateSpan = $(internRow).find(".intern-str-date-span");
-                var internEndDateSpan = $(internRow).find(".intern-end-date-span");
+                var internStrMDateSpan = $(internRow).find(".intern-start-m-span");
+                var internStrYDateSpan = $(internRow).find(".intern-start-y-span");
+                var internEndMDateSpan = $(internRow).find(".intern-end-m-span");
+                var internEndYDateSpan = $(internRow).find(".intern-end-y-span");
                 var internDescSpan = $(internRow).find(".intern-desc-span");
                 var internPosSpan = $(internRow).find(".intern-pos-name-span");
 
@@ -1217,8 +1464,10 @@ $(document).ready(function () {
                 internCpnyNameSpan.html("Company / Institute Name")
                 internStateNameSpan.html("State")
                 internCityNameSpan.html("City")
-                internStrDateSpan.html("Start Date")
-                internEndDateSpan.html("End Date")
+                internStrMDateSpan.html("Mon-")
+                internStrYDateSpan.html("Year")
+                internEndMDateSpan.html("Mon-")
+                internEndYDateSpan.html("Year")
                 internDescSpan.html("Experience")
                 internPosSpan.html("Position")
             }
@@ -1229,7 +1478,17 @@ $(document).ready(function () {
 
         }
 
-
+ bkLib.onDomLoaded(function() {
+          var myNicEditor = new nicEditor();
+          myNicEditor.setPanel('exp-desc-intern-inp-panel');
+          myNicEditor.addInstance('exp-desc-intern-inp');
+     });
+     
+ bkLib.onDomLoaded(function() {
+          var myNicEditor = new nicEditor();
+          myNicEditor.setPanel('exp-desc-intern-inp-edit-panel');
+          myNicEditor.addInstance('exp-desc-intern-inp-edit');
+     });
 
 
 
@@ -1247,32 +1506,61 @@ $(document).ready(function () {
             e.preventDefault();
             addNewEduRows()
         });
-        
+
         $("#edu-skip-end-date").change(function () {
             if ($(this).prop("checked") == true)
             {
-                $("#edu-y-date").prop("disabled", true)
+                $("#edu-end-m-date").prop("disabled", true)
+                $("#edu-end-y-date").prop("disabled", true)
 //                $(".wrk-end-span").text("Present")
             } else
             if ($(this).prop("checked") == false)
             {
-                $("#edu-y-date").prop("disabled", false)
+                $("#edu-end-m-date").prop("disabled", false)
+                $("#edu-end-y-date").prop("disabled", false)
 //                $(".wrk-end-span").text("2006")
             }
 
         });
-        
+
         //                ................. edit present............
         $("#edu-skip-end-date-edit").change(function () {
             if ($(this).prop("checked") == true)
             {
-                $("#edu-date-y-edit").prop("disabled", true)
+                $("#edu-end-m-date-edit").prop("disabled", true)
+                $("#edu-end-y-date-edit").prop("disabled", true)
 //                $(".wrk-end-span").text("Present")
             } else
             if ($(this).prop("checked") == false)
             {
-                $("#edu-date-y-edit").prop("disabled", false)
+                $("#edu-end-m-date-edit").prop("disabled", false)
+                $("#edu-end-y-date-edit").prop("disabled", false)
 //                $(".wrk-end-span").text("2006")
+            }
+
+        });
+
+        $("#edu-marks-sel , #edu-marks-sel-edit").change(function (e) {
+            e.preventDefault();
+            if ($(this).val() == "Percentage")
+            {
+                $("#edu-marks-sym").html("%")
+            } else
+            {
+                $("#edu-marks-sym").html("(CGPA)")
+
+            }
+        });
+
+        $("#edu-marks-sel-edit").change(function (e) {
+            e.preventDefault();
+            if ($(this).val() == "Percentage")
+            {
+                $("#edu-marks-sym-edit").html("%")
+            } else
+            {
+                $("#edu-marks-sym-edit").html("(CGPA)")
+
             }
 
         });
@@ -1384,6 +1672,69 @@ $(document).ready(function () {
             setEduRowEdit()
         });
 
+
+        var eduStartMonthsSel = document.getElementById("edu-start-m-date");
+        var startMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var eduStartmonth = startMonthArr.length;
+        for (i = 0; i < eduStartmonth; i++) {
+            eduStartMonthsSel.innerHTML += "<option value='" + startMonthArr[i] + "'>" + startMonthArr[i] + "</option>"
+        }
+
+        var eduStartYearSel = document.getElementById("edu-start-y-date");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            eduStartYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+        var eduEndMonthsSel = document.getElementById("edu-end-m-date");
+        var endMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var eduEndMonth = endMonthArr.length;
+        for (i = 0; i < eduEndMonth; i++) {
+            eduEndMonthsSel.innerHTML += "<option value='" + endMonthArr[i] + "'>" + endMonthArr[i] + "</option>"
+        }
+
+        var eduEndYearSel = document.getElementById("edu-end-y-date");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            eduEndYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+//        ...................edit...........
+
+        var eduStartMonthsSelEdit = document.getElementById("edu-start-m-date-edit");
+        var startMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var eduStartmonthEdit = startMonthEditArr.length;
+        for (i = 0; i < eduStartmonthEdit; i++) {
+            eduStartMonthsSelEdit.innerHTML += "<option value='" + startMonthEditArr[i] + "'>" + startMonthEditArr[i] + "</option>"
+        }
+
+        var eduStartYearSelEdit = document.getElementById("edu-start-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            eduStartYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+        var eduEndMonthsSelEdit = document.getElementById("edu-end-m-date-edit");
+        var endMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var eduEndMonthEdit = endMonthEditArr.length;
+        for (i = 0; i < eduEndMonthEdit; i++) {
+            eduEndMonthsSelEdit.innerHTML += "<option value='" + endMonthEditArr[i] + "'>" + endMonthEditArr[i] + "</option>"
+        }
+
+        var eduEndYearSelEdit = document.getElementById("edu-end-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            eduEndYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
         function addNewEduRows() {
             var eduNameTxt = $("#edu-name").val()
             var eduAffilTxt = $("#edu-affil").val()
@@ -1391,8 +1742,10 @@ $(document).ready(function () {
             var eduCityTxt = $("#edu-city").val()
             var eduStateTxt = $("#edu-state").val()
             var eduDegreeStatusTxt = $("#edu-degree-status").val()
-            var eduMDateTxt = $("#edu-m-date").val()
-            var eduYDateTxt = $("#edu-y-date").val()
+            var eduStartMDateTxt = $("#edu-start-m-date").val()
+            var eduStartYDateTxt = $("#edu-start-y-date").val()
+            var eduEndMDateTxt = $("#edu-end-m-date").val()
+            var eduEndYDateTxt = $("#edu-end-y-date").val()
             var eduMarksTxt = $("#edu-marks-sel").val()
             var eduMarksImpTxt = $("#edu-marks-imp").val()
             var eduDivisionTxt = $("#edu-division-sel").val()
@@ -1415,8 +1768,10 @@ $(document).ready(function () {
                 var eduCitySpan = $(eduRows[0]).find(".edu-city-span");
                 var eduStateSpan = $(eduRows[0]).find(".edu-state-span");
                 var eduStatusSpan = $(eduRows[0]).find(".edu-status-span");
-                var eduYDateSpan = $(eduRows[0]).find(".edu-y-span");
-                var eduMDateSpan = $(eduRows[0]).find(".edu-m-span");
+                var eduStartMDateSpan = $(eduRows[0]).find(".edu-start-m-span");
+                var eduStartYDateSpan = $(eduRows[0]).find(".edu-start-y-span");
+                var eduEndMDateSpan = $(eduRows[0]).find(".edu-end-m-span");
+                var eduEndYDateSpan = $(eduRows[0]).find(".edu-end-y-span");
                 var eduMarksSpan = $(eduRows[0]).find(".edu-marks-sel-span");
                 var eduMarksImpSpan = $(eduRows[0]).find(".edu-imp-span");
                 var eduDivisionSpan = $(eduRows[0]).find(".edu-division-sel-span");
@@ -1428,14 +1783,16 @@ $(document).ready(function () {
                 eduCitySpan.html(eduCityTxt)
                 eduStateSpan.html(eduStateTxt)
                 eduStatusSpan.html(eduDegreeStatusTxt)
-                eduMDateSpan.html(eduMDateTxt)
-//                eduYDateSpan.html(eduYDateTxt)
+                eduStartMDateSpan.html(eduStartMDateTxt)
+                eduStartYDateSpan.html(eduStartYDateTxt)
                 if ($("#edu-skip-end-date").prop("checked") == true)
                 {
-                    eduYDateSpan.html("Present")
+                    eduEndMDateSpan.html("")
+                    eduEndYDateSpan.html("Present")
                 } else
                 {
-                    eduYDateSpan.html(eduYDateTxt)
+                    eduEndMDateSpan.html(eduEndMDateTxt)
+                    eduEndYDateSpan.html(eduEndYDateTxt)
                 }
                 eduMarksSpan.html(eduMarksTxt)
                 eduMarksImpSpan.html(eduMarksImpTxt)
@@ -1461,8 +1818,10 @@ $(document).ready(function () {
                 var eduCitySpan = $(eduRows[opLength - 1]).find(".edu-city-span");
                 var eduStateSpan = $(eduRows[opLength - 1]).find(".edu-state-span");
                 var eduStatusSpan = $(eduRows[opLength - 1]).find(".edu-status-span");
-                var eduYDateSpan = $(eduRows[opLength - 1]).find(".edu-y-span");
-                var eduMDateSpan = $(eduRows[opLength - 1]).find(".edu-m-span");
+                var eduStartMDateSpan = $(eduRows[opLength - 1]).find(".edu-start-m-span");
+                var eduStartYDateSpan = $(eduRows[opLength - 1]).find(".edu-start-y-span");
+                var eduEndMDateSpan = $(eduRows[opLength - 1]).find(".edu-end-m-span");
+                var eduEndYDateSpan = $(eduRows[opLength - 1]).find(".edu-end-y-span");
                 var eduMarksSpan = $(eduRows[opLength - 1]).find(".edu-marks-sel-span");
                 var eduMarksImpSpan = $(eduRows[opLength - 1]).find(".edu-imp-span");
                 var eduDivisionSpan = $(eduRows[opLength - 1]).find(".edu-division-sel-span");
@@ -1474,14 +1833,16 @@ $(document).ready(function () {
                 eduCitySpan.html(eduCityTxt)
                 eduStateSpan.html(eduStateTxt)
                 eduStatusSpan.html(eduDegreeStatusTxt)
-                eduMDateSpan.html(eduMDateTxt)
-//                eduYDateSpan.html(eduYDateTxt)
+                eduStartMDateSpan.html(eduStartMDateTxt)
+                eduStartYDateSpan.html(eduStartYDateTxt)
                 if ($("#edu-skip-end-date").prop("checked") == true)
                 {
-                    eduYDateSpan.html("Present")
+                    eduEndMDateSpan.html("")
+                    eduEndYDateSpan.html("Present")
                 } else
                 {
-                    eduYDateSpan.html(eduYDateTxt)
+                    eduEndMDateSpan.html(eduEndMDateTxt)
+                    eduEndYDateSpan.html(eduEndYDateTxt)
                 }
                 eduMarksSpan.html(eduMarksTxt)
                 eduMarksImpSpan.html(eduMarksImpTxt)
@@ -1512,8 +1873,10 @@ $(document).ready(function () {
             var eduCitySpan = $(eduRow).find(".edu-city-span");
             var eduStateSpan = $(eduRow).find(".edu-state-span");
             var eduStatusSpan = $(eduRow).find(".edu-status-span");
-            var eduYDateSpan = $(eduRow).find(".edu-y-span");
-            var eduMDateSpan = $(eduRow).find(".edu-m-span");
+            var eduStartMDateSpan = $(eduRow).find(".edu-start-m-span");
+            var eduStartYDateSpan = $(eduRow).find(".edu-start-y-span");
+            var eduEndMDateSpan = $(eduRow).find(".edu-end-m-span");
+            var eduEndYDateSpan = $(eduRow).find(".edu-end-y-span");
             var eduMarksSpan = $(eduRow).find(".edu-marks-sel-span");
             var eduMarksImpSpan = $(eduRow).find(".edu-imp-span");
             var eduMarksSymSpan = $(eduRow).find(".edu-marks-sym-span");
@@ -1526,12 +1889,13 @@ $(document).ready(function () {
             $("#edu-city-edit").val(eduCitySpan.html())
             $("#edu-state-edit").val(eduStateSpan.html())
             $("#edu-degree-status-edit").val(eduStatusSpan.html())
-//            $("#edu-date-y-edit").val(eduYDateSpan.html())
-            if (eduYDateSpan.html().trim() != "Present")
+            $("#edu-start-m-date-edit").val(eduStartMDateSpan.html())
+            $("#edu-start-y-date-edit").val(eduStartYDateSpan.html())
+            if (eduEndMDateSpan.html().trim() != "" || eduEndYDateSpan.html().trim() != "Present")
             {
-                $("#edu-date-y-edit").val(eduYDateSpan.html())
+                $("#edu-end-m-date-edit").val(eduEndMDateSpan.html())
+                $("#edu-end-y-date-edit").val(eduEndYDateSpan.html())
             }
-            $("#edu-date-m-edit").val(eduMDateSpan.html())
             $("#edu-marks-sel-edit").val(eduMarksSpan.html())
             $("#edu-marks-imp-edit").val(eduMarksImpSpan.html())
             $("#edu-division-sel-edit").val(eduDivisionSpan.html())
@@ -1550,8 +1914,10 @@ $(document).ready(function () {
             var eduCitySpan = $(eduRow).find(".edu-city-span");
             var eduStateSpan = $(eduRow).find(".edu-state-span");
             var eduStatusSpan = $(eduRow).find(".edu-status-span");
-            var eduYDateSpan = $(eduRow).find(".edu-y-span");
-            var eduMDateSpan = $(eduRow).find(".edu-m-span");
+            var eduStartMDateSpan = $(eduRow).find(".edu-start-m-span");
+            var eduStartYDateSpan = $(eduRow).find(".edu-start-y-span");
+            var eduEndMDateSpan = $(eduRow).find(".edu-end-m-span");
+            var eduEndYDateSpan = $(eduRow).find(".edu-end-y-span");
             var eduMarksSpan = $(eduRow).find(".edu-marks-sel-span");
             var eduMarksImpSpan = $(eduRow).find(".edu-imp-span");
             var eduDivisionSpan = $(eduRow).find(".edu-division-sel-span");
@@ -1562,15 +1928,17 @@ $(document).ready(function () {
             eduCitySpan.html($("#edu-city-edit").val());
             eduStateSpan.html($("#edu-state-edit").val());
             eduStatusSpan.html($("#edu-degree-status-edit").val());
-//            eduYDateSpan.html($("#edu-date-y-edit").val());
+            eduStartMDateSpan.html($("#edu-start-m-date-edit").val());
+            eduStartYDateSpan.html($("#edu-start-y-date-edit").val());
             if ($("#edu-skip-end-date-edit").prop("checked") == true)
             {
-                eduYDateSpan.html("Present")
+                eduEndMDateSpan.html("")
+                eduEndYDateSpan.html("Present")
             } else
             {
-                eduYDateSpan.html($("#edu-date-y-edit").val())
+                eduEndMDateSpan.html($("#edu-end-m-date-edit").val())
+                eduEndYDateSpan.html($("#edu-end-y-date-edit").val())
             }
-            eduMDateSpan.html($("#edu-date-m-edit").val());
             eduMarksSpan.html($("#edu-marks-sel-edit").val());
             eduMarksImpSpan.html($("#edu-marks-imp-edit").val());
             eduDivisionSpan.html($("#edu-division-sel-edit").val());
@@ -1598,8 +1966,10 @@ $(document).ready(function () {
                 var eduCitySpan = $(eduRow).find(".edu-city-span");
                 var eduStateSpan = $(eduRow).find(".edu-state-span");
                 var eduStatusSpan = $(eduRow).find(".edu-status-span");
-                var eduYDateSpan = $(eduRow).find(".edu-y-span");
-                var eduMDateSpan = $(eduRow).find(".edu-m-span");
+                var eduStartMDateSpan = $(eduRow).find(".edu-start-m-span");
+                var eduStartYDateSpan = $(eduRow).find(".edu-start-y-span");
+                var eduEndMDateSpan = $(eduRow).find(".edu-end-m-span");
+                var eduEndYDateSpan = $(eduRow).find(".edu-end-y-span");
                 var eduMarksSpan = $(eduRow).find(".edu-marks-sel-span");
                 var eduMarksImpSpan = $(eduRow).find(".edu-imp-span");
                 var eduMarksSymSpan = $(eduRow).find(".edu-marks-sym-span");
@@ -1608,16 +1978,18 @@ $(document).ready(function () {
 
                 eduNameSpan.html("Education Name");
                 eduAffilSpan.html("Education Affiliation");
-                eduDegreeSpan.html("Education Degree");
-                eduCitySpan.html("Education City");
-                eduStateSpan.html("Education State");
-                eduStatusSpan.html("Education Status");
-                eduYDateSpan.html("Education year");
-                eduMDateSpan.html("Education Month");
-                eduMarksSpan.html("Education Marks");
-                eduMarksImpSpan.html("Education Imp");
-                eduMarksSymSpan.html("Education Symbol");
-                eduDivisionSpan.html("Education Division");
+                eduDegreeSpan.html("Degree Type");
+                eduCitySpan.html("City");
+                eduStateSpan.html("State");
+                eduStatusSpan.html("Status");
+                eduStartMDateSpan.html("Mon-");
+                eduStartYDateSpan.html("Year");
+                eduEndMDateSpan.html("Mon-");
+                eduEndYDateSpan.html("Year");
+                eduMarksSpan.html("Marks");
+                eduMarksImpSpan.html("Imp");
+                eduMarksSymSpan.html("Symbol");
+                eduDivisionSpan.html("Division");
             }
             var eduEditSelOpLength = $("#added-edu-sel option").length
             var selectEduRemoveOp = $("#added-edu-sel option[value='" + rowEduClass + "']");
@@ -1646,6 +2018,37 @@ $(document).ready(function () {
             addNewTCRows()
         });
 
+        $("#training-skip-end-date").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#training-end-m-date").prop("disabled", true)
+                $("#training-end-y-date").prop("disabled", true)
+//                $(".wrk-end-span").text("Present")
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#training-end-m-date").prop("disabled", false)
+                $("#training-end-y-date").prop("disabled", false)
+//                $(".wrk-end-span").text("2006")
+            }
+
+        });
+//                ................. edit present............
+        $("#training-skip-end-date-edit").change(function () {
+            if ($(this).prop("checked") == true)
+            {
+                $("#training-end-m-date-edit").prop("disabled", true)
+                $("#training-end-y-date-edit").prop("disabled", true)
+//                $(".wrk-end-span").text("Present")
+            } else
+            if ($(this).prop("checked") == false)
+            {
+                $("#training-end-m-date-edit").prop("disabled", false)
+                $("#training-end-y-date-edit").prop("disabled", false)
+//                $(".wrk-end-span").text("2006")
+            }
+
+        });
 
 
         $('#edit-tc-btn').click(function (e) {
@@ -1667,27 +2070,76 @@ $(document).ready(function () {
         });
 
 
-        var tcYearsSelEdit = document.getElementById("tc-year-sel-edit");
+        var trainingStartMonthsSel = document.getElementById("training-start-m-date");
+        var trainingStartMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var trainingStartmonth = trainingStartMonthArr.length;
+        for (i = 0; i < trainingStartmonth; i++) {
+            trainingStartMonthsSel.innerHTML += "<option value='" + trainingStartMonthArr[i] + "'>" + trainingStartMonthArr[i] + "</option>"
+        }
+
+        var trainingStartYearSel = document.getElementById("training-start-y-date");
 
         var nowDate = new Date();
         // alert(nowDate.getFullYear())
         for (i = 1950; i <= nowDate.getFullYear(); i++) {
-            tcYearsSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+            trainingStartYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
         }
 
-        var tcYearsSel = document.getElementById("tc-year-sel");
+        var trainingEndMonthsSel = document.getElementById("training-end-m-date");
+        var trainingEndMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var trainingEndMonth = trainingEndMonthArr.length;
+        for (i = 0; i < trainingEndMonth; i++) {
+            trainingEndMonthsSel.innerHTML += "<option value='" + trainingEndMonthArr[i] + "'>" + trainingEndMonthArr[i] + "</option>"
+        }
 
-        nowDate = new Date();
-        // alert(nowEditDate.getFullYear())
+        var trainingEndYearSel = document.getElementById("training-end-y-date");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
         for (i = 1950; i <= nowDate.getFullYear(); i++) {
-            tcYearsSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+            trainingEndYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+//        ...................edit...........
+
+        var trainingStartMonthsSelEdit = document.getElementById("training-start-m-date-edit");
+        var trainingStartMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var trainingStartmonthEdit = trainingStartMonthEditArr.length;
+        for (i = 0; i < trainingStartmonthEdit; i++) {
+            trainingStartMonthsSelEdit.innerHTML += "<option value='" + trainingStartMonthEditArr[i] + "'>" + trainingStartMonthEditArr[i] + "</option>"
+        }
+
+        var trainingStartYearSelEdit = document.getElementById("training-start-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            trainingStartYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+        var trainingEndMonthsSelEdit = document.getElementById("training-end-m-date-edit");
+        var trainingEndMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var trainingEndMonthEdit = trainingEndMonthEditArr.length;
+        for (i = 0; i < trainingEndMonthEdit; i++) {
+            trainingEndMonthsSelEdit.innerHTML += "<option value='" + trainingEndMonthEditArr[i] + "'>" + trainingEndMonthEditArr[i] + "</option>"
+        }
+
+        var trainingEndYearSelEdit = document.getElementById("training-end-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            trainingEndYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
         }
 
 
         function addNewTCRows() {
 //            alert("Add TC")
             var tcNameTxt = $("#tc-name-inp").val()
-            var tcYearTxt = $("#tc-year-sel").val()
+            var tcStartMTxt = $("#training-start-m-date").val()
+            var tcStartYTxt = $("#training-start-y-date").val()
+            var tcEndMTxt = $("#training-end-m-date").val()
+            var tcEndYTxt = $("#training-end-y-date").val()
             var tcBostTxt = $("#tc-bost-inp").val()
             var tcStatusTxt = $("#tc-status-sel").val()
 
@@ -1701,13 +2153,28 @@ $(document).ready(function () {
             if (opLength == 1) {
 
                 var tcNameSpan = $(tcRows[0]).find(".tc-name-span");
-                var tcYearSpan = $(tcRows[0]).find(".tc-year-span");
+                var tcStartMSpan = $(tcRows[0]).find(".training-start-m-span");
+                var tcStartYSpan = $(tcRows[0]).find(".training-start-y-span");
+                var tcEndMSpan = $(tcRows[0]).find(".training-end-m-span");
+                var tcEndYSpan = $(tcRows[0]).find(".training-end-y-span");
                 var tcBostSpan = $(tcRows[0]).find(".tc-bost-span");
                 var tcStatusSpan = $(tcRows[0]).find(".tc-status-span");
 
 
                 tcNameSpan.html(tcNameTxt)
-                tcYearSpan.html(tcYearTxt)
+                tcStartMSpan.html(tcStartMTxt)
+                tcStartYSpan.html(tcStartYTxt)
+//                tcEndMSpan.html(tcEndMTxt)
+//                tcEndYSpan.html(tcEndYTxt)
+                if ($("#training-skip-end-date").prop("checked") == true)
+                {
+                    tcEndMSpan.html("")
+                    tcEndYSpan.html("Present")
+                } else
+                {
+                    tcEndMSpan.html(tcEndMTxt)
+                    tcEndYSpan.html(tcEndYTxt)
+                }
                 tcBostSpan.html(tcBostTxt)
                 tcStatusSpan.html(tcStatusTxt)
 
@@ -1726,13 +2193,26 @@ $(document).ready(function () {
 
                 tcRows = $(".tc-row")
                 var tcNameSpan = $(tcRows[opLength - 1]).find(".tc-name-span");
-                var tcYearSpan = $(tcRows[opLength - 1]).find(".tc-year-span");
+                var tcStartMSpan = $(tcRows[opLength - 1]).find(".training-start-m-span");
+                var tcStartYSpan = $(tcRows[opLength - 1]).find(".training-start-y-span");
+                var tcEndMSpan = $(tcRows[opLength - 1]).find(".training-end-m-span");
+                var tcEndYSpan = $(tcRows[opLength - 1]).find(".training-end-y-span");
                 var tcBostSpan = $(tcRows[opLength - 1]).find(".tc-bost-span");
                 var tcStatusSpan = $(tcRows[opLength - 1]).find(".tc-status-span");
 
 
                 tcNameSpan.html(tcNameTxt)
-                tcYearSpan.html(tcYearTxt)
+                tcStartMSpan.html(tcStartMTxt)
+                tcStartYSpan.html(tcStartYTxt)
+                if ($("#training-skip-end-date").prop("checked") == true)
+                {
+                    tcEndMSpan.html("")
+                    tcEndYSpan.html("Present")
+                } else
+                {
+                    tcEndMSpan.html(tcEndMTxt)
+                    tcEndYSpan.html(tcEndYTxt)
+                }
                 tcBostSpan.html(tcBostTxt)
                 tcStatusSpan.html(tcStatusTxt)
 
@@ -1757,17 +2237,26 @@ $(document).ready(function () {
             var tcRow = $("." + rowTCClass)[0]
 
 
-            var tcYearSpan = $(tcRow).find(".tc-year-span");
+            var tcStartMSpan = $(tcRow).find(".training-start-m-span");
+            var tcStartYSpan = $(tcRow).find(".training-start-y-span");
+            var tcEndMSpan = $(tcRow).find(".training-end-m-span");
+            var tcEndYSpan = $(tcRow).find(".training-end-y-span");
             var tcBostSpan = $(tcRow).find(".tc-bost-span");
             var tcStatusSpan = $(tcRow).find(".tc-status-span");
 
 
-            var tcYearTxt = $("#tc-year-sel").val()
-            var tcBostTxt = $("#tc-bost-inp").val()
-            var tcStatusTxt = $("#tc-status-sel").val()
+//            var tcYearTxt = $("#tc-year-sel").val()
+//            var tcBostTxt = $("#tc-bost-inp").val()
+//            var tcStatusTxt = $("#tc-status-sel").val()
 
 
-            $("#tc-year-sel-edit").val(tcYearSpan.html())
+            $("#training-start-m-date-edit").val(tcStartMSpan.html())
+            $("#training-start-y-date-edit").val(tcStartYSpan.html())
+            if (tcEndMSpan.html().trim() != "" || tcEndYSpan.html().trim() != "Present")
+            {
+                $("#training-end-m-date-edit").val(tcEndMSpan.html())
+                $("#training-end-y-date-edit").val(tcEndYSpan.html())
+            }
             $("#tc-bost-inp-edit").val(tcBostSpan.html())
             $("#tc-status-sel-edit").val(tcStatusSpan.html())
 
@@ -1780,11 +2269,24 @@ $(document).ready(function () {
             var rowTCClass = tcEditRowOptionVal
             var tcRow = $("." + rowTCClass)[0]
 
-            var tcYearSpan = $(tcRow).find(".tc-year-span");
+            var tcStartMSpan = $(tcRow).find(".training-start-m-span");
+            var tcStartYSpan = $(tcRow).find(".training-start-y-span");
+            var tcEndMSpan = $(tcRow).find(".training-end-m-span");
+            var tcEndYSpan = $(tcRow).find(".training-end-y-span");
             var tcBostSpan = $(tcRow).find(".tc-bost-span");
             var tcStatusSpan = $(tcRow).find(".tc-status-span");
 
-            tcYearSpan.html($("#tc-year-sel-edit").val())
+            tcStartMSpan.html($("#training-start-m-date-edit").val())
+            tcStartYSpan.html($("#training-start-y-date-edit").val())
+            if ($("#training-skip-end-date-edit").prop("checked") == true)
+            {
+                tcEndMSpan.html("")
+                tcEndYSpan.html("Present")
+            } else
+            {
+                tcEndMSpan.html($("#training-end-m-date-edit").val())
+                tcEndYSpan.html($("#training-end-y-date-edit").val())
+            }
             tcBostSpan.html($("#tc-bost-inp-edit").val())
             tcStatusSpan.html($("#tc-status-sel-edit").val())
         }
@@ -1804,7 +2306,10 @@ $(document).ready(function () {
             } else if (tcRows.length == 1) {
 //                alert("remove 1")
                 var tcNameSpan = $(tcRow).find(".tc-name-span");
-                var tcYearSpan = $(tcRow).find(".tc-year-span");
+                var tcStartMSpan = $(tcRow).find(".training-start-m-date-span");
+                var tcStartYSpan = $(tcRow).find(".training-start-y-date-span");
+                var tcEndMSpan = $(tcRow).find(".training-end-m-date-span");
+                var tcEndYSpan = $(tcRow).find(".training-end-y-date-span");
                 var tcBostSpan = $(tcRow).find(".tc-bost-span");
                 var tcStatusSpan = $(tcRow).find(".tc-status-span");
 
@@ -1812,7 +2317,10 @@ $(document).ready(function () {
 
 
                 tcNameSpan.html("Name")
-                tcYearSpan.html("year")
+                tcStartMSpan.html("Mon-")
+                tcStartYSpan.html("year")
+                tcEndMSpan.html("Mon-")
+                tcEndYSpan.html("year")
                 tcBostSpan.html("Bost")
                 tcStatusSpan.html("status")
 
@@ -1846,29 +2354,33 @@ $(document).ready(function () {
             addWrkRows()
         });
 
-        $("#wrk-skip-end-date").change(function () {
+        $("#work-skip-end-date").change(function () {
             if ($(this).prop("checked") == true)
             {
-                $("#wrk-end-inp").prop("disabled", true)
+                $("#work-end-m-date").prop("disabled", true)
+                $("#work-end-y-date").prop("disabled", true)
 //                $(".wrk-end-span").text("Present")
             } else
             if ($(this).prop("checked") == false)
             {
-                $("#wrk-end-inp").prop("disabled", false)
+                $("#work-end-m-date").prop("disabled", false)
+                $("#work-end-y-date").prop("disabled", false)
 //                $(".wrk-end-span").text("2006")
             }
 
         });
 //                ................. edit present............
-        $("#wrk-skip-end-date-edit").change(function () {
+        $("#work-skip-end-date-edit").change(function () {
             if ($(this).prop("checked") == true)
             {
-                $("#wrk-end-edit").prop("disabled", true)
+                $("#work-end-m-date-edit").prop("disabled", true)
+                $("#work-end-y-date-edit").prop("disabled", true)
 //                $(".wrk-end-span").text("Present")
             } else
             if ($(this).prop("checked") == false)
             {
-                $("#wrk-end-edit").prop("disabled", false)
+                $("#work-end-m-date-edit").prop("disabled", false)
+                $("#work-end-y-date-edit").prop("disabled", false)
 //                $(".wrk-end-span").text("2006")
             }
 
@@ -1893,37 +2405,66 @@ $(document).ready(function () {
         });
 
 
-        var wrkStartSelEdit = document.getElementById("wrk-start-edit");
-
-        var nowDate = new Date();
-        // alert(nowDate.getFullYear())
-        for (i = 1950; i <= nowDate.getFullYear(); i++) {
-            wrkStartSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        var workStartMonthsSel = document.getElementById("work-start-m-date");
+        var workStartMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var workStartmonth = workStartMonthArr.length;
+        for (i = 0; i < workStartmonth; i++) {
+            workStartMonthsSel.innerHTML += "<option value='" + workStartMonthArr[i] + "'>" + workStartMonthArr[i] + "</option>"
         }
 
-        var wrkEndSelEdit = document.getElementById("wrk-end-edit");
+        var workStartYearSel = document.getElementById("work-start-y-date");
 
         var nowDate = new Date();
         // alert(nowDate.getFullYear())
         for (i = 1950; i <= nowDate.getFullYear(); i++) {
-            wrkEndSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+            workStartYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
         }
 
-
-        wrkStartSelEdit = document.getElementById("wrk-start-inp");
-
-        var nowDate = new Date();
-        // alert(nowDate.getFullYear())
-        for (i = 1950; i <= nowDate.getFullYear(); i++) {
-            wrkStartSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        var workEndMonthsSel = document.getElementById("work-end-m-date");
+        var workEndMonthArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var workEndMonth = workEndMonthArr.length;
+        for (i = 0; i < workEndMonth; i++) {
+            workEndMonthsSel.innerHTML += "<option value='" + workEndMonthArr[i] + "'>" + workEndMonthArr[i] + "</option>"
         }
 
-        wrkEndSelEdit = document.getElementById("wrk-end-inp");
+        var workEndYearSel = document.getElementById("work-end-y-date");
 
         var nowDate = new Date();
         // alert(nowDate.getFullYear())
         for (i = 1950; i <= nowDate.getFullYear(); i++) {
-            wrkEndSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+            workEndYearSel.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+//        ...................edit...........
+
+        var workStartMonthsSelEdit = document.getElementById("work-start-m-date-edit");
+        var workStartMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var workStartmonthEdit = workStartMonthEditArr.length;
+        for (i = 0; i < workStartmonthEdit; i++) {
+            workStartMonthsSelEdit.innerHTML += "<option value='" + workStartMonthEditArr[i] + "'>" + workStartMonthEditArr[i] + "</option>"
+        }
+
+        var workStartYearSelEdit = document.getElementById("work-start-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            workStartYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
+        }
+
+        var workEndMonthsSelEdit = document.getElementById("work-end-m-date-edit");
+        var workEndMonthEditArr = ["JAN-", "FEB-", "MAR-", "APR-", "MAY-", "JUN-", "JUL-", "AUG-", "SEP-", "OCT-", "NOV-", "DEC-"];
+        var workEndMonthEdit = workEndMonthEditArr.length;
+        for (i = 0; i < workEndMonthEdit; i++) {
+            workEndMonthsSelEdit.innerHTML += "<option value='" + workEndMonthEditArr[i] + "'>" + workEndMonthEditArr[i] + "</option>"
+        }
+
+        var workEndYearSelEdit = document.getElementById("work-end-y-date-edit");
+
+        var nowDate = new Date();
+        // alert(nowDate.getFullYear())
+        for (i = 1950; i <= nowDate.getFullYear(); i++) {
+            workEndYearSelEdit.innerHTML += "<option value='" + i + "'>" + i + "</option>"
         }
 
 
@@ -1934,12 +2475,12 @@ $(document).ready(function () {
             var wrkJobTxt = $("#wrk-job-inp").val()
             var wrkCityTxt = $("#wrk-city-inp").val()
             var wrkStateTxt = $("#wrk-state-inp").val()
-            var wrkStartTxt = $("#wrk-start-inp").val()
-
-            var wrkEndTxt = $("#wrk-end-inp").val()
-
-            var wrkDescTxt = $("#wrk-desc-inp").val()
-            var wrkPhrsTxt = $("#wrk-phrs-inp").val()
+            var wrkStartMTxt = $("#work-start-m-date").val()
+            var wrkStartYTxt = $("#work-start-y-date").val()
+            var wrkEndMTxt = $("#work-end-m-date").val()
+            var wrkEndYTxt = $("#work-end-y-date").val()
+            var wrkDescTxt = $("#wrk-desc-inp").html()
+            var wrkPhrsTxt = $("#wrk-phrs-inp").html()
 
             var wrkRows = $(".wrk-row");
             var addedWrkSel = $("#added-wrk-sel")
@@ -1951,10 +2492,10 @@ $(document).ready(function () {
                 var wrkJobSpan = $(wrkRows[0]).find(".wrk-job-span")
                 var wrkCitySpan = $(wrkRows[0]).find(".wrk-city-span")
                 var wrkStateSpan = $(wrkRows[0]).find(".wrk-state-span")
-                var wrkStartSpan = $(wrkRows[0]).find(".wrk-start-span")
-
-                var wrkEndSpan = $(wrkRows[0]).find(".wrk-end-span")
-
+                var wrkStartMSpan = $(wrkRows[0]).find(".work-start-m-span")
+                var wrkStartYSpan = $(wrkRows[0]).find(".work-start-y-span")
+                var wrkEndMSpan = $(wrkRows[0]).find(".work-end-m-span")
+                var wrkEndYSpan = $(wrkRows[0]).find(".work-end-y-span")
                 var wrkDescSpan = $(wrkRows[0]).find(".wrk-desc-span")
                 var wrkPhrsSpan = $(wrkRows[0]).find(".wrk-phrs-span")
 
@@ -1962,13 +2503,16 @@ $(document).ready(function () {
                 wrkJobSpan.html(wrkJobTxt)
                 wrkCitySpan.html(wrkCityTxt)
                 wrkStateSpan.html(wrkStateTxt)
-                wrkStartSpan.html(wrkStartTxt)
-                if ($("#wrk-skip-end-date").prop("checked") == true)
+                wrkStartMSpan.html(wrkStartMTxt)
+                wrkStartYSpan.html(wrkStartYTxt)
+                if ($("#work-skip-end-date").prop("checked") == true)
                 {
-                    wrkEndSpan.html("Present")
+                    wrkEndMSpan.html("")
+                    wrkEndYSpan.html("Present")
                 } else
                 {
-                    wrkEndSpan.html(wrkEndTxt)
+                    wrkEndMSpan.html(wrkEndMTxt)
+                    wrkEndYSpan.html(wrkEndYTxt)
                 }
                 wrkDescSpan.html(wrkDescTxt)
                 wrkPhrsSpan.html(wrkPhrsTxt)
@@ -1989,8 +2533,10 @@ $(document).ready(function () {
                 var wrkJobSpan = $(wrkRows[opLength - 1]).find(".wrk-job-span")
                 var wrkCitySpan = $(wrkRows[opLength - 1]).find(".wrk-city-span")
                 var wrkStateSpan = $(wrkRows[opLength - 1]).find(".wrk-state-span")
-                var wrkStartSpan = $(wrkRows[opLength - 1]).find(".wrk-start-span")
-                var wrkEndSpan = $(wrkRows[opLength - 1]).find(".wrk-end-span")
+                var wrkStartMSpan = $(wrkRows[opLength - 1]).find(".work-start-m-span")
+                var wrkStartYSpan = $(wrkRows[opLength - 1]).find(".work-start-y-span")
+                var wrkEndMSpan = $(wrkRows[opLength - 1]).find(".work-end-m-span")
+                var wrkEndYSpan = $(wrkRows[opLength - 1]).find(".work-end-y-span")
                 var wrkDescSpan = $(wrkRows[opLength - 1]).find(".wrk-desc-span")
                 var wrkPhrsSpan = $(wrkRows[opLength - 1]).find(".wrk-phrs-span")
 
@@ -1998,13 +2544,16 @@ $(document).ready(function () {
                 wrkJobSpan.html(wrkJobTxt)
                 wrkCitySpan.html(wrkCityTxt)
                 wrkStateSpan.html(wrkStateTxt)
-                wrkStartSpan.html(wrkStartTxt)
-                if ($("#wrk-skip-end-date").prop("checked") == true)
+                wrkStartMSpan.html(wrkStartMTxt)
+                wrkStartYSpan.html(wrkStartYTxt)
+                if ($("#work-skip-end-date").prop("checked") == true)
                 {
-                    wrkEndSpan.html("Present")
+                    wrkEndMSpan.html("")
+                    wrkEndYSpan.html("Present")
                 } else
                 {
-                    wrkEndSpan.html(wrkEndTxt)
+                    wrkEndMSpan.html(wrkEndMTxt)
+                    wrkEndYSpan.html(wrkEndYTxt)
                 }
                 wrkDescSpan.html(wrkDescTxt)
                 wrkPhrsSpan.html(wrkPhrsTxt)
@@ -2030,8 +2579,10 @@ $(document).ready(function () {
             var wrkJobSpan = $(wrkRow).find(".wrk-job-span")
             var wrkCitySpan = $(wrkRow).find(".wrk-city-span")
             var wrkStateSpan = $(wrkRow).find(".wrk-state-span")
-            var wrkStartSpan = $(wrkRow).find(".wrk-start-span")
-            var wrkEndSpan = $(wrkRow).find(".wrk-end-span")
+            var wrkStartMSpan = $(wrkRow).find(".work-start-m-span")
+            var wrkStartYSpan = $(wrkRow).find(".work-start-y-span")
+            var wrkEndMSpan = $(wrkRow).find(".work-end-m-span")
+            var wrkEndYSpan = $(wrkRow).find(".work-end-y-span")
             var wrkDescSpan = $(wrkRow).find(".wrk-desc-span")
             var wrkPhrsSpan = $(wrkRow).find(".wrk-phrs-span")
 
@@ -2040,13 +2591,15 @@ $(document).ready(function () {
             $("#wrk-job-edit").val(wrkJobSpan.html())
             $("#wrk-city-edit").val(wrkCitySpan.html())
             $("#wrk-state-edit").val(wrkStateSpan.html())
-            $("#wrk-start-edit").val(wrkStartSpan.html())
-            if (wrkEndSpan.html().trim() != "Present")
+            $("#work-start-m-date-edit").val(wrkStartMSpan.html())
+            $("#work-start-y-date-edit").val(wrkStartYSpan.html())
+            if (wrkEndMSpan.html().trim() != "" || wrkEndYSpan.html().trim() != "Present")
             {
-                $("#wrk-end-edit").val(wrkEndSpan.html())
+                $("#work-end-m-date-edit").val(wrkEndMSpan.html())
+                $("#work-end-y-date-edit").val(wrkEndYSpan.html())
             }
-            $("#wrk-desc-edit").val(wrkDescSpan.html())
-            $("#wrk-phrs-edit").val(wrkPhrsSpan.html())
+            $("#wrk-desc-edit").html(wrkDescSpan.html())
+            $("#wrk-phrs-edit").html(wrkPhrsSpan.html())
 
         }
 
@@ -2059,25 +2612,30 @@ $(document).ready(function () {
             var wrkJobSpan = $(wrkRow).find(".wrk-job-span")
             var wrkCitySpan = $(wrkRow).find(".wrk-city-span")
             var wrkStateSpan = $(wrkRow).find(".wrk-state-span")
-            var wrkStartSpan = $(wrkRow).find(".wrk-start-span")
-            var wrkEndSpan = $(wrkRow).find(".wrk-end-span")
+            var wrkStartMSpan = $(wrkRow).find(".work-start-m-span")
+            var wrkStartYSpan = $(wrkRow).find(".work-start-y-span")
+            var wrkEndMSpan = $(wrkRow).find(".work-end-m-span")
+            var wrkEndYSpan = $(wrkRow).find(".work-end-y-span")
             var wrkDescSpan = $(wrkRow).find(".wrk-desc-span")
             var wrkPhrsSpan = $(wrkRow).find(".wrk-phrs-span")
 
             wrkJobSpan.html($("#wrk-job-edit").val())
             wrkCitySpan.html($("#wrk-city-edit").val())
             wrkStateSpan.html($("#wrk-state-edit").val())
-            wrkStartSpan.html($("#wrk-start-edit").val())
+            wrkStartMSpan.html($("#work-start-m-date-edit").val())
+            wrkStartYSpan.html($("#work-start-y-date-edit").val())
 
-            if ($("#wrk-skip-end-date-edit").prop("checked") == true)
+            if ($("#work-skip-end-date-edit").prop("checked") == true)
             {
-                wrkEndSpan.html("Present")
+                wrkEndMSpan.html("")
+                wrkEndYSpan.html("Present")
             } else
             {
-                wrkEndSpan.html($("#wrk-end-edit").val())
+                wrkEndMSpan.html($("#work-end-m-date-edit").val())
+                wrkEndYSpan.html($("#work-end-y-date-edit").val())
             }
-            wrkDescSpan.html($("#wrk-desc-edit").val())
-            wrkPhrsSpan.html($("#wrk-phrs-edit").val())
+            wrkDescSpan.html($("#wrk-desc-edit").html())
+            wrkPhrsSpan.html($("#wrk-phrs-edit").html())
 
 
         }
@@ -2100,8 +2658,10 @@ $(document).ready(function () {
                 var wrkJobSpan = $(wrkRow).find(".wrk-job-span")
                 var wrkCitySpan = $(wrkRow).find(".wrk-city-span")
                 var wrkStateSpan = $(wrkRow).find(".wrk-state-span")
-                var wrkStartSpan = $(wrkRow).find(".wrk-start-span")
-                var wrkEndSpan = $(wrkRow).find(".wrk-end-span")
+                var wrkStartMSpan = $(wrkRow).find(".work-start-m-span")
+                var wrkStartYSpan = $(wrkRow).find(".work-start-y-span")
+                var wrkEndMSpan = $(wrkRow).find(".work-end-m-span")
+                var wrkEndYSpan = $(wrkRow).find(".work-end-y-span")
                 var wrkDescSpan = $(wrkRow).find(".wrk-desc-span")
                 var wrkPhrsSpan = $(wrkRow).find(".wrk-phrs-span")
 
@@ -2109,8 +2669,10 @@ $(document).ready(function () {
                 wrkJobSpan.html("Job")
                 wrkCitySpan.html("City")
                 wrkStateSpan.html("State")
-                wrkStartSpan.html("1950")
-                wrkEndSpan.html("1970")
+                wrkStartMSpan.html("Mon-")
+                wrkStartYSpan.html("Year")
+                wrkEndMSpan.html("Mon-")
+                wrkEndYSpan.html("Year")
                 wrkDescSpan.html("Description")
                 wrkPhrsSpan.html("Phrsase")
             }
@@ -2123,7 +2685,31 @@ $(document).ready(function () {
 
 
 
-
+ bkLib.onDomLoaded(function () {
+        var myNicEditor = new nicEditor();
+        myNicEditor.setPanel('wrk-desc-inp-panel');
+        myNicEditor.addInstance('wrk-desc-inp');
+      
+    });
+    
+ bkLib.onDomLoaded(function () {
+        var myNicEditor = new nicEditor();
+        myNicEditor.setPanel('wrk-phrs-edit-panel');
+        myNicEditor.addInstance('wrk-phrs-edit');
+       
+    });
+ bkLib.onDomLoaded(function () {
+        var myNicEditor = new nicEditor();
+        myNicEditor.setPanel('wrk-phrs-inp-panel');
+        myNicEditor.addInstance('wrk-phrs-inp');
+       
+    });
+ bkLib.onDomLoaded(function () {
+        var myNicEditor = new nicEditor();
+        myNicEditor.setPanel('wrk-desc-edit-panel');
+        myNicEditor.addInstance('wrk-desc-edit');
+       
+    });
 
 
     });
@@ -2168,7 +2754,7 @@ $(document).ready(function () {
             changeAllAwardImgs(imgAward)
         });
         $("#award_r1").click(function () {
-            imgaward = $(this).attr("alt")
+            imgAward = $(this).attr("alt")
             changeAllAwardImgs(imgAward)
         });
         $("#award_r2").click(function () {
@@ -2889,7 +3475,7 @@ $(document).ready(function () {
     function addAddiRow() {
 
         var addiSecNameText = $("#addi-sec-name").val().trim()
-        var addiDetailsText = $("#addi-sec-details").val().trim()
+        var addiDetailsText = $("#addi-sec-details").html().trim()
         var addedAddiNameOp = $("#added-addi-name option");
         var addedAddiNameOpLength = addedAddiNameOp.length;
         var addiRows = $(".addi-row")
@@ -2945,5 +3531,154 @@ $(document).ready(function () {
 
 
     }
+    
+    bkLib.onDomLoaded(function() {
+          var myNicEditor = new nicEditor();
+          myNicEditor.setPanel('addi-sec-details-panel');
+          myNicEditor.addInstance('addi-sec-details');
+     });
 
 });
+
+var addedHFont = ""
+var addedTFont = ""
+function  setHeadFonts(obj)
+{
+
+    if ($(".head-font").hasClass(addedHFont))
+    {
+        $(".head-font").removeClass(addedHFont)
+    }
+
+    $(".head-font").addClass($(obj).prop("value"));
+    addedHFont = $(obj).prop("value")
+
+}
+
+function  setTextFonts(obj)
+{
+
+    if ($(".text-font").hasClass(addedTFont))
+    {
+        $(".text-font").removeClass(addedTFont)
+    }
+
+    $(".text-font").addClass($(obj).prop("value"));
+    addedTFont = $(obj).prop("value")
+
+}
+function  setDfTextFonts()
+{
+
+    if ($(".text-font").hasClass(addedTFont))
+    {
+        $(".text-font").removeClass(addedTFont)
+    }
+
+
+}
+function  setDfHeadTextFonts()
+{
+
+    if ($(".head-font").hasClass(addedHFont))
+    {
+        $(".head-font").removeClass(addedHFont)
+    }
+
+
+}
+
+$(document).ready(function () {
+
+    $(".set-df-hfont-btn").click(function () {
+        setDfHeadTextFonts()
+    });
+
+    $(".set-df-tfont-btn").click(function () {
+        setDfTextFonts()
+    });
+
+
+    $(".set-hfont-btn").click(function () {
+        setHeadFonts(this)
+    });
+
+
+    $(".set-tfont-btn").click(function () {
+        setTextFonts(this)
+    });
+
+})
+
+$(document).ready(function () {
+    $(".set-hsize-btn").click(function () {
+        $(".head-font").css("font-size", $(this).prop("value") + "px")
+    });
+
+
+    $(".set-tsize-btn").click(function () {
+        $(".text-font").css("font-size", $(this).prop("value") + "px")
+    });
+
+    $(".set-df-hsize-btn").click(function () {
+        $(".head-font").css("font-size", "")
+    });
+
+
+    $(".set-df-tsize-btn").click(function () {
+        $(".text-font").css("font-size", "")
+    });
+
+})
+
+$(document).ready(function () {
+    $(".set-hspace-btn").click(function () {
+        $(".head-space").css("margin-top", $(this).prop("value") + "px")
+    });
+
+
+    $(".set-tspace-btn").click(function () {
+        $(".text-font").css("line-height", $(this).prop("value"))
+    });
+
+    $(".set-df-hspace-btn").click(function () {
+        $(".head-space").css("margin-top", "")
+    });
+
+
+    $(".set-df-tspace-btn").click(function () {
+        $(".text-font").css("line-height", "")
+    });
+
+})
+
+
+$(document).ready(function () {
+    $("#color1").click(function () {
+        $(".col-5-back").css("background-color", "red")
+        $(".col-7-back").css("background-color", "blue")
+        $(".text-font").css("color", "green")
+        $(".head-font").css("color", "pink")
+    });
+
+
+    $("#color2").click(function () {
+        $(".col-5-back").css("background-color", "orange")
+        $(".col-7-back").css("background-color", "navyblue")
+        $(".text-font").css("color", "lightgreen")
+        $(".head-font").css("color", "grey")
+
+    });
+
+
+    $("#default-color").click(function () {
+        $(".col-5-back").css("background-color", "")
+        $(".col-7-back").css("background-color", "")
+        $(".text-font").css("color", "")
+        $(".head-font").css("color", "")
+    });
+
+})
+
+
+

@@ -1,17 +1,154 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 body {
-    background-color: gray;
+    background-color: #e5e5e5;
 }
 
 @page {
     size: A4;
 }
 
+@font-face
+{
+  font-family: "hf1";
+  src: url("../fonts/AuthenticSignature.ttf");
+}
+@font-face
+{
+  font-family: "hf2";
+  src: url("../fonts/PlayfairDisplay-Bold.ttf");
+}
+
+.head-font1
+{
+    font-family: 'hf1', sans-serif;
+}
+.head-font2
+{
+    font-family: 'hf2', serif;
+}
+
+.text-font1
+{
+    font-family: 'hf1', sans-serif;
+}
+.text-font2
+{
+    font-family: 'hf2', serif;
+}
+
+
+.resume-btn-div-css{
+    position: relative;
+    top: 70px;
+    /*bottom: 70px;*/
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    float: left;
+}
+
+.resume-btn-div-css button {
+    font-size: 30px;
+    padding: 10px 65px;
+    margin-bottom: 50px;
+}
+
+.pdf-d-btn{
+    color: #003E6D;
+    background-color: #F6D709;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 0;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.pdf-d-btn:hover{
+    background-color: #003E6D;
+    color: #F6D709;
+}
+
+.aftr-lgn-d-div{
+   position: relative;
+    top: 200px;
+    /*bottom: 70px;*/
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    float: left;
+/*    display: flex;*/
+/*    align-items: center;*/
+}
+
+.aftr-lgn-d-div button {
+    font-size: 30px;
+    padding: 10px 65px;
+    margin-bottom: 50px;
+}
+
+.aftr-lgn-d-btn{
+    color: #003E6D;
+    background-color: #F6D709;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 0;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.aftr-lgn-d-btn:hover{
+    background-color: #003E6D;
+    color: #F6D709;
+}
+
+.download-containt{
+   font-size: 25px;
+   font-weight: bold;
+   color: #003E6D;
+   margin: 15px;
+}
+
+.temp-name-header{
+    background-color: #08B9D4;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 3px 3px 10px #444;
+}
+
+.hello-path{
+    background-color: #003E6D;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.header-btn{
+    border: 2px solid #003E6D;
+    font-size: 15px;
+    font-weight: 600;
+    color: #003E6D;
+    background-color: transparent;
+}
+
+.header-btn:hover{
+    /*border: 2px solid #003E6D;*/
+    /*color: #003E6D;*/
+    background-color: #eee;
+}
+
+
 /*....................custom scrollbar......................*/
 
 /* Let's get this party started */
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 5px;
 }
 
 /* Track */
@@ -25,11 +162,11 @@ body {
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 0px;
     border-radius: 0px;
-    background: lightgray; 
+    background: #444; 
     -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.5); 
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-    background: lightgray; 
+    background: #444; 
 }
 
 /*....................custom scrollbar end......................*/
@@ -46,12 +183,14 @@ body {
 }
 
 .template-preview{
-    height: 1100px;
+    height: 1120px;
+    box-shadow: 3px 3px 10px #444;
     overflow-y: auto;
+    background-color: #fff;
 }
 
 .hobby-scroll{
-    height: 300px;
+    height: 500px;
     overflow-y: auto;
 }
 
@@ -78,6 +217,7 @@ body {
 
 .select-template-box:hover {
     box-shadow: 2px 2px 5px black;
+
     /* border: 1px solid goldenrod; */
 }
 
@@ -100,12 +240,12 @@ body {
 .page1{
     height: 1080px;
     border: red solid 2px;
-    overflow: auto;
+    overflow: hidden;
 }
 .page2{
     height: 1080px;
     border: red solid 2px;
-    overflow: auto;
+    overflow: hidden;
 }
 
 #page1
@@ -247,20 +387,21 @@ body {
 }*/
 
 .gap{
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 
 .ac-accordion {
-    background-color: #eee;
-    color: #444;
+    background-color: #003E6D;
+    color: #fff;
+    font-weight: 600;
     cursor: pointer;
     padding: 10px;
     width: 100%;
     border: none;
     text-align: left;
     outline: none !important;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     transition: 0.1s ease-in-out;
     box-shadow: 3px 3px 5px #444; 
@@ -268,27 +409,61 @@ body {
 }
 
 .ac-active, .ac-accordion:hover {
-    background-color: #ccc;
+    background-color: #F6D709;
+    color: #003E6D;
     transform: scale(1.02);
 }
 
 .ac-accordion:before {
     content: '\002B';
-    color: #777;
+    color: #fff;
     font-weight: bold;
     float: right;
     margin-left: 5px;
 }
 
+
+
 .ac-active:before {
     content: "\2212";
+    color: #003E6D;
 }
 
 .ac-panel {
     margin-bottom: 5px;
     padding: 0 15px;
-    background-color: white;
+    background-color: transparent;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+.color-box
+{
+    height: 30px;
+    width: 30px;
+    background-color: grey;
+    border: 1px white solid;
+    margin: 1px;
+}
+
+.color-box-wrap
+{
+    width: 150px;
+    margin: 0 auto;
+    
+}
+.color-box-wrap:hover
+{
+    border: 3px red solid;
+}
+
+.editor-css{
+    font-size: 13px !important;
+    background-color: #fff !important;
+    color: #000 !important;
+    padding: 2px !important;
+    max-width: 400px !important;
+    height: 100px !important;
+    overflow: auto !important;
 }

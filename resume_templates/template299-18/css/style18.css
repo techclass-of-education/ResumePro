@@ -1,6 +1,6 @@
-* {
+/** {
     line-height: 1;
-}
+}*/
 
 .resume_secTop {
     background-color: #ffffff;
@@ -32,6 +32,28 @@
 .top-border-right {
     height: 30px;
     background-color: #000000;
+}
+
+.border-div-1 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.border-hr-1 {
+    margin-top: 4px;
+    margin-bottom: 0px;
+    height: 1px;
+    background: #858585;
+}
+
+.containt-border-div{
+    padding-left: 0px;
+    /*padding-right: 0px;*/
+}
+
+.other-containt-border-div{
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .row-div {
@@ -117,8 +139,6 @@
 /* left side details about me */
 
 .about-me-header {
-    display: block;
-    height: 36px;
     font-size: 15px;
     letter-spacing: 2px;
     font-weight: bold;
@@ -126,33 +146,33 @@
 }
 
 .aboutMeRow {
-    margin-right: 1px;
+   margin-right: 1px;
     margin-left: 2px;
+    margin-top: 10px;
 }
 
 .aboutMeHeadingCol {
     padding-left: 0px;
-    line-height: 2;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    padding-top: 2px;
+    padding-right: 0px;
 }
 
 .aboutMeIcon {
     padding-left: 0px;
     padding-right: 0px;
     text-align: end;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
 }
 
 .aboutMeIcon img {
     height: 20px;
     width: 20px;
-    margin-top: 3px;
 }
 
 .about-detail {
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     font-size: 12px;
     line-height: 1.5;
     text-align: justify;
@@ -162,9 +182,6 @@
 /* left side education */
 
 .education-header {
-    margin-bottom: 15px;
-    display: block;
-    height: 36px;
     font-size: 15px;
     letter-spacing: 2px;
     font-weight: bold;
@@ -174,33 +191,34 @@
 .educationRow {
     margin-right: 1px;
     margin-left: 2px;
-    margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 .educationHeadingCol {
     padding-left: 0px;
-    line-height: 2;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    padding-top: 2px;
+    padding-right: 0px;
 }
 
 .educationIcon {
     padding-left: 0px;
     padding-right: 0px;
     text-align: end;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
 }
 
 .educationIcon img {
     height: 20px;
     width: 20px;
-    margin-top: 3px;
 }
 
 .education-details-row {
     margin-right: 1px;
     margin-left: 2px;
+    line-height: 1;
+}
+
+.edu-div-css{
+    margin-top: 15px;
 }
 
 .year-div {
@@ -218,56 +236,66 @@
 
 .education-degree-type {
     font-size: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    /*padding-right: 0px;*/
 }
 
 .education-graduation-status {
     font-size: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 3px;
     padding-left: 0px;
-    padding-right: 0px;
-    line-height: 1.2;
+    padding-right: 15px;
+    /*line-height: 1.2;*/
 }
 
 .education-collage-name {
     font-size: 12px;
     font-weight: bold;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .education-board {
     font-size: 12px;
     font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    /*padding-right: 0px;*/
 }
 
 .education-city {
     font-size: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    /*padding-right: 0px;*/
 }
 
 .education-state {
     font-size: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 3px;
     padding-left: 0px;
 }
 
 .education-percentage {
     font-size: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    /*padding-right: 0px;*/
 }
 
 .education-division {
     font-size: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 3px;
     padding-left: 0px;
 }
 
@@ -275,9 +303,6 @@
 /* left side internship */
 
 .intern-header {
-    margin-top: 15px;
-    display: block;
-    height: 36px;
     font-size: 15px;
     letter-spacing: 2px;
     font-weight: bold;
@@ -287,27 +312,24 @@
 .internRow {
     margin-right: 1px;
     margin-left: 2px;
+    margin-top: 10px;
 }
 
 .internHeadingCol {
     padding-left: 0px;
-    line-height: 2;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    padding-top: 2px;
+    padding-right: 0px;
 }
 
 .internIcon {
     padding-left: 0px;
     padding-right: 0px;
     text-align: end;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
 }
 
 .internIcon img {
     height: 20px;
     width: 20px;
-    margin-top: 3px;
 }
 
 .intern-details-row {
@@ -326,17 +348,22 @@
     font-weight: bold;
     text-transform: uppercase;
     line-height: 1.5;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .intern-company-name {
     font-size: 12px;
     line-height: 2;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .intern-year {
     font-size: 12px;
     text-align: justify;
     padding-left: 0px;
+    padding-right: 0px;
     line-height: 1.5;
     padding-top: 0px;
 }
@@ -346,6 +373,8 @@
     text-align: justify;
     line-height: 1.5;
     margin-top: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .intern-div-detail {
@@ -360,9 +389,6 @@
 /* left side project */
 
 .project-header {
-    margin-top: 15px;
-    display: block;
-    height: 36px;
     font-size: 15px;
     letter-spacing: 2px;
     font-weight: bold;
@@ -372,53 +398,59 @@
 .projectRow {
     margin-right: 1px;
     margin-left: 2px;
+    margin-top: 10px;
 }
 
 .projectHeadingCol {
     padding-left: 0px;
-    line-height: 2;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    padding-top: 2px;
+    padding-right: 0px;
 }
 
 .projectIcon {
     padding-left: 0px;
     padding-right: 0px;
     text-align: end;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
 }
 
-.internIcon img {
+.projectIcon img {
     height: 20px;
     width: 20px;
-    margin-top: 3px;
 }
 
-.intern-details-row {
+.project-details-row {
     margin-right: 1px;
     margin-left: 2px;
     /*margin-top: 15px;*/
     /*margin-bottom: 15px;*/
 }
 
-.intern-div-css{
+.project-div-css{
     margin-top: 15px;
 }
 
-.intern-job-position {
+.project-name {
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
     line-height: 1.5;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
-.intern-company-name {
+/*.intern-company-name {
     font-size: 12px;
     line-height: 2;
+}*/
+
+.project-lable {
+    font-size: 12px;
+    line-height: 2;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
-.intern-year {
+.project-year {
     font-size: 12px;
     text-align: justify;
     padding-left: 0px;
@@ -426,18 +458,20 @@
     padding-top: 0px;
 }
 
-.intern-details {
+.project-details {
     font-size: 12px;
     text-align: justify;
     line-height: 1.5;
     margin-top: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
-.intern-div-detail {
+.project-div-detail {
     padding-left: 0px;
 }
 
-.intern-div {
+.project-div {
     padding-top: 2px;
     background-image: url("../images/vr-bar.png");
 }
@@ -449,33 +483,27 @@
     padding-left: 0px;
     padding-right: 0px;
     text-align: end;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
 }
 
 .contactMeIcon img {
     height: 20px;
     width: 20px;
-    margin-top: 3px;
 }
 
 .contactMeHeadingCol {
     padding-left: 0px;
-    line-height: 2;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    padding-top: 2px;
+    padding-right: 0px;
 }
 
 .contactMeRow {
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
 }
 
 .contact-me-header {
-    display: block;
-    background-color: lightgray;
-    height: 36px;
-    font-size: 15px;
+   font-size: 15px;
     letter-spacing: 2px;
     font-weight: bold;
     text-transform: uppercase;
@@ -485,7 +513,7 @@
     background-color: lightgray;
     background-repeat: no-repeat;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
 
 .col-img-div {
@@ -498,7 +526,7 @@
 }
 
 .contactDetailsSpan {
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     margin-right: 5px;
 }
 
@@ -551,32 +579,26 @@
     padding-left: 0px;
     padding-right: 0px;
     text-align: end;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
 }
 
 .skillIcon img {
     height: 20px;
     width: 20px;
-    margin-top: 3px;
 }
 
 .skillHeadingCol {
     padding-left: 0px;
-    line-height: 2;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    padding-top: 2px;
+    padding-right: 0px;
 }
 
 .skillRow {
-    margin-right: 5px;
-    margin-left: 5px;
+   margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
 }
 
 .skill-header {
-    display: block;
-    background-color: lightgray;
-    height: 36px;
     font-size: 15px;
     letter-spacing: 2px;
     font-weight: bold;
@@ -588,7 +610,7 @@
     background-repeat: no-repeat;
     padding-top: 10px;
     /* padding-left: 20px; */
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
 
 .skillDetailsSpan {
@@ -601,7 +623,7 @@
 .skill-dot {
     padding-left: 5px;
     padding-right: 0px;
-    padding-top: 2px;
+    padding-top: 0px;
 }
 
 .skill-dot img {
@@ -613,7 +635,8 @@
 
 .skill-name {
     font-size: 12px;
-    line-height: 2;
+    /*line-height: 2;*/
+    padding-top: 5px;
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -627,7 +650,7 @@
 .skill-star img {
     width: 70px;
     height: 8px;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 
 
@@ -637,33 +660,27 @@
     padding-left: 0px;
     padding-right: 0px;
     text-align: end;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
 }
 
 .expertiseIcon img {
     height: 20px;
     width: 20px;
-    margin-top: 3px;
 }
 
 .expertiseHeadingCol {
     padding-left: 0px;
-    line-height: 2;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    padding-top: 2px;
+    padding-right: 0px;
 }
 
 .expertiseRow {
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
 }
 
 .expertise-header {
-    display: block;
-    background-color: lightgray;
-    height: 36px;
-    font-size: 15px;
+   font-size: 15px;
     letter-spacing: 2px;
     font-weight: bold;
     text-transform: uppercase;
@@ -671,8 +688,8 @@
 
 .expertise-details {
     background-color: lightgray;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 0px;
     /* padding-left: 20px; */
 }
 
@@ -710,32 +727,26 @@
     padding-left: 0px;
     padding-right: 0px;
     text-align: end;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
 }
 
 .intrestIcon img {
     height: 20px;
     width: 20px;
-    margin-top: 3px;
 }
 
 .intrestHeadingCol {
     padding-left: 0px;
-    line-height: 2;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    padding-top: 2px;
+    padding-right: 0px;
 }
 
 .intrestRow {
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
 }
 
 .intrest-header {
-    display: block;
-    background-color: lightgray;
-    height: 36px;
     font-size: 15px;
     letter-spacing: 2px;
     font-weight: bold;
@@ -746,7 +757,7 @@
     background-color: lightgray;
     background-repeat: no-repeat;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
 
 .intrest-details-row {
@@ -801,7 +812,7 @@
 .col-div-second {
     border: 5px solid;
     border-right: 0;
-    top: 30px;
+    top: 15px;
     padding-left: 0px;
 }
 
@@ -815,13 +826,13 @@
 .text-col-second {
     border: 5px solid;
     border-left: 0;
-    top: 30px;
+    top: 15px;
     padding-left: 0px;
 }
 
 .first-name-second {
     background-color: lightgray;
-    margin-top: -10px;
+    margin-top: -15px;
     position: absolute;
     padding: 0 5px;
     font-size: 20px;
@@ -834,7 +845,7 @@
 .last-name-second {
     position: absolute;
     padding: 0 5px;
-    padding-top: 15px;
+    padding-top: 10px;
     font-size: 20px;
     font-weight: 900;
     left: 0px;
@@ -848,7 +859,7 @@
     margin-left: 5px;
     position: absolute;
     padding-left: 0px;
-    padding-top: 5px;
+    padding-top: 3px;
     font-size: 15px;
     left: 0px;
     right: -15px;
@@ -859,8 +870,361 @@
 }
 
 .cv-card-name-col-second{
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     padding-left: 0px;
     padding-right: 0px;
     background-color: lightgray;
 }
+
+/* left side training */
+
+.training-header {
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.trainingRow {
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.trainingHeadingCol {
+    padding-left: 0px;
+    padding-top: 2px;
+    padding-right: 0px;
+}
+
+.trainingIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+}
+
+.trainingIcon img {
+    height: 20px;
+    width: 20px;
+}
+
+.training-details-row {
+    margin-right: 1px;
+    margin-left: 2px;
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
+}
+
+.training-div-css{
+    margin-top: 15px;
+}
+
+.training-name {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.training-year {
+    font-size: 12px;
+    text-align: justify;
+    padding-left: 0px;
+    line-height: 2;
+    padding-top: 1px;
+}
+
+.bost-details {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.5;
+    margin-top: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.training-status{
+    font-size: 12px;
+    line-height: 1.5;
+     padding-left: 0px; 
+    padding-right: 0px;
+}
+
+.training-div-detail {
+    padding-left: 0px;
+}
+
+.training-div {
+    padding-top: 2px;
+    background-image: url("../images/vr-bar.png");
+}
+
+/* left side collage involvement */
+
+.clg-inv-header {
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.clgInvRow {
+   margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.clgInvHeadingCol {
+    padding-left: 0px;
+    padding-top: 2px;
+    padding-right: 0px;
+}
+
+.clgIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+}
+
+.clgIcon img {
+    height: 20px;
+    width: 20px;
+}
+
+.clg-involvement-details-row {
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.clg-involvement-dot-img {
+    padding-right: 0px;
+}
+
+.clg-involvement-dot-img img {
+    width: 10px;
+    height: 10px;
+}
+
+.clg-involvement-name {
+    font-size: 12px;
+    line-height: 2;
+    padding-top: 2px;
+    padding-right: 15px;
+}
+
+/* left side office involvement */
+
+.off-inv-header {
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.offInvolvementRow{
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+
+
+.offHeadingCol {
+    padding-left: 0px;
+    padding-top: 2px;
+    padding-right: 0px;
+}
+
+.offIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+}
+
+.offIcon img {
+    height: 20px;
+    width: 20px;
+}
+
+.off-involvement-details-row {
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.off-involvement-dot-img {
+    padding-right: 0px;
+}
+
+.off-involvement-dot-img img {
+    width: 10px;
+    height: 10px;
+}
+
+.off-involvement-name {
+    font-size: 12px;
+    line-height: 2;
+    padding-top: 2px;
+    padding-right: 15px;
+}
+
+
+
+
+/* Professional affiliation  */
+
+.pro-affiliation-header {
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.proAffiliationRow {
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.proAffiliationHeadingCol {
+    padding-left: 0px;
+    padding-top: 2px;
+    padding-right: 0px;
+}
+
+.proAffiliationIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+}
+
+.proAffiliationIcon img {
+    height: 20px;
+    width: 20px;
+}
+
+.pro-affiliation-details-row {
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.pro-affiliation-name {
+    font-size: 12px;
+    line-height: 2.3;
+    padding-right: 30px;
+
+}
+
+.pro-affiliation-dot-img {
+    padding-right: 0px;
+}
+
+.pro-affiliation-dot-img img {
+    width: 10px;
+    height: 10px;
+}
+
+/* work experience  */
+
+.work-exp-header {
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.workExpRow {
+    margin-right: 1px;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.workExpHeadingCol {
+    padding-left: 0px;
+    padding-top: 2px;
+    padding-right: 0px;
+}
+
+.workExpIcon {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: end;
+}
+
+.workExpIcon img {
+    height: 20px;
+    width: 20px;
+}
+
+.work-exp-details-row {
+    margin-right: 1px;
+    margin-left: 2px;
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
+}
+
+.work-exp-css{
+    margin-top: 15px;
+}
+
+.work-exp-job-position {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+    padding-left: 0px;
+    padding-right: 0px
+}
+
+.work-exp-company-name {
+    font-size: 12px;
+    line-height: 2;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.work-exp-year {
+    font-size: 12px;
+    text-align: justify;
+    padding-left: 0px;
+    padding-right: 0px;
+    line-height: 1.5;
+    padding-top: 0px;
+}
+
+.work-exp-job-dis {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.5;
+    margin-top: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.work-exp-pre-ph {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.5;
+    margin-top: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.work-exp-div-detail {
+    padding-left: 0px;
+}
+
+.work-exp-div {
+    background-image: url("../images/vr-bar.png");
+    background-repeat: no-repeat;
+    /*text-align: end;*/
+    padding-right: 0px;
+}
+

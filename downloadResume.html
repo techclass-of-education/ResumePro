@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="js/jquery-ui.css" rel="stylesheet">
-    <script src="external/jquery/jquery.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.min.js"></script>
-    <link href="css/style.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="js/jquery-ui.css" rel="stylesheet">
+        <script src="external/jquery/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <script src="js/bootstrap.min.js"></script>
+        <link href="css/style.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-route.js"></script>
-    <script src="js/resume.js"></script>
-    <script src="js/jspdf.min.js"></script>
-    <script src="js/html2canvas.min.js"></script>
-    <script src="js/html2pdf.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-route.js"></script>
+        <script src="js/resume.js"></script>
+        <script src="js/jspdf.min.js"></script>
+        <script src="js/html2canvas.min.js"></script>
+        <script src="js/html2pdf.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     </script>
     <title>Resume Builder</title>
@@ -25,35 +27,36 @@
 <!-- <embed type="application/pdf" src="path_to_pdf_document.pdf" id="pdfDocument" width="100%" height="100%" /> -->
 
 <body>
-    <div class="container-fluid no-print">
-        <div class="alert alert-secondary rounded-0">
-            <div class="row">
-                <div class="col">
+    <div class="container-fluid no-print p-0">
+            <div class="alert alert-light rounded-0">
+                <div class="row">
+                    <div class="col-1 p-0">
+
+                    </div>
+                    <div class="col-2 p-0">
+                        <button type="button" class="btn rounded-0 ml-5 pt-1 header-btn"><img src="images/pricing.png" width="20" height="20" alt="alt"> PRICING</button>
+
+                        <!--<button type="button" class="btn btn-outline-primary rounded-0">Primary</button>-->
+
+                    </div>
+                    <div class="col-5 p-0">
+                        
+
+                    </div>
+                    <div class="col-3 p-0 ">
+                        <button type="button" class="btn rounded-0 ml-0 pt-1 header-btn"><img src="images/cv.png" width="20" height="20" alt="alt"> CV</button>
+                        <button type="button" class="btn rounded-0 ml-3 pt-1 header-btn"><img src="images/preview.png" width="20" height="20" alt="alt"> PRIVEIW</button>
+                        <button type="button" class="btn rounded-0 ml-3 pt-1 header-btn"><img src="images/signin.png" width="20" height="20" alt="alt"> SIGN OUT</button>
+                    </div>
+                    <div class="col-1"></div>
 
                 </div>
-                <div class="col">
-                    <button type="button" class="btn btn-outline-primary rounded-0">Primary</button>
-
-                    <button type="button" class="btn btn-outline-primary rounded-0">Primary</button>
-
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-outline-warning rounded-0">Primary</button>
-                    <button type="button" class="btn btn-outline-danger rounded-0">Primary</button>
-                    <button type="button" class="btn btn-outline-secondary rounded-0">Primary</button>
-
-                </div>
-                <div class="col">
-
-                </div>
-
             </div>
+
+
         </div>
 
-
-    </div>
-
-    <div class="container no-print">
+<!--    <div class="container no-print">
         <div class="alert alert-secondary rounded-0">
             <div class="row">
                 <div class="col"></div>
@@ -67,104 +70,108 @@
         </div>
 
 
-    </div>
+    </div>-->
 
     <div class="container" ng-app="myApp">
         <div class="alert rounded-0">
             <div class="row">
-                <div class="col-8 p-0">
+                <div class="col-12 aftr-lgn-d-div">
                     <!-- <button ></button> -->
-                    <button type="button" onclick="downloadPdf()" class="btn btn-outline-primary rounded-0">Download</button>
+                    <div class="download-containt">YOUR RESUME READY FOR DOWNLOAD CLICK ON DOWNLOAD BUTTON</div>
+                    <button type="button" onclick="downloadPdf()" class="btn aftr-lgn-d-btn">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        &nbsp; DOWNLOAD YOUR CV
+                    </button>
 
                 </div>
-                <div class="col-4 pr-0 no-print">
-                    <div class="alert alert-success text-center rounded-0">
-                        <strong>Resume CV Templates</strong>
-                    </div>
-
-                    <section class="template-select text-center">
-                        <div class="alert alert-success rounded-0 mb-0 select-template-head">
-                            <strong>Select Template</strong>
-                        </div>
-                        <div class="alert alert-success rounded-0 select-template-main">
-                            <div class="row nogutters">
-                                <div class="col-md-6 col-sm-12 select-template-box">
-                                    <div class="card">
-                                        <div class="card-header p-0">Template 1</div>
-                                        <div class="card-body p-0">
-                                            <a href="#/!"> <img src="imgs/resume_select_img1.jpg" class="template-select-img"></a>
-                                        </div>
+                <!--                <div class="col-4 pr-0 no-print">
+                                    <div class="alert alert-success text-center rounded-0">
+                                        <strong>Resume CV Templates</strong>
                                     </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12 select-template-box">
-                                    <div class="card">
-                                        <div class="card-header p-0">Template 2 </div>
-                                        <div class="card-body p-0">
-                                            <a href="#!template2"> <img src="imgs/resume_select_img1.jpg" class="template-select-img"></a>
+                
+                                    <section class="template-select text-center">
+                                        <div class="alert alert-success rounded-0 mb-0 select-template-head">
+                                            <strong>Select Template</strong>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ................................ -->
-                            <div class="row nogutters">
-                                <div class="col-md-6 col-sm-12 select-template-box">
-                                    <div class="card">
-                                        <div class="card-header p-0">Template 1</div>
-                                        <div class="card-body p-0">
-                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                        <div class="alert alert-success rounded-0 select-template-main">
+                                            <div class="row nogutters">
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <a href="#/!"> <img src="imgs/resume_select_img1.jpg" class="template-select-img"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 2 </div>
+                                                        <div class="card-body p-0">
+                                                            <a href="#!template2"> <img src="imgs/resume_select_img1.jpg" class="template-select-img"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             ................................ 
+                                            <div class="row nogutters">
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             .............................. 
+                                            <div class="row nogutters">
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             ................................ 
+                                            <div class="row nogutters">
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 select-template-box">
+                                                    <div class="card">
+                                                        <div class="card-header p-0">Template 1</div>
+                                                        <div class="card-body p-0">
+                                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12 select-template-box">
-                                    <div class="card">
-                                        <div class="card-header p-0">Template 1</div>
-                                        <div class="card-body p-0">
-                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .............................. -->
-                            <div class="row nogutters">
-                                <div class="col-md-6 col-sm-12 select-template-box">
-                                    <div class="card">
-                                        <div class="card-header p-0">Template 1</div>
-                                        <div class="card-body p-0">
-                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12 select-template-box">
-                                    <div class="card">
-                                        <div class="card-header p-0">Template 1</div>
-                                        <div class="card-body p-0">
-                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ................................ -->
-                            <div class="row nogutters">
-                                <div class="col-md-6 col-sm-12 select-template-box">
-                                    <div class="card">
-                                        <div class="card-header p-0">Template 1</div>
-                                        <div class="card-body p-0">
-                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12 select-template-box">
-                                    <div class="card">
-                                        <div class="card-header p-0">Template 1</div>
-                                        <div class="card-body p-0">
-                                            <img src="imgs/resume_select_img1.jpg" class="template-select-img">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+                                    </section>
+                                </div>-->
 
             </div>
 

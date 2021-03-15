@@ -527,18 +527,18 @@ $(document).ready(function () {
         } else if (this.value.trim() == "cu-da")
         {
             $(footTxt).css("display", "block")
-            $("#footer-txt").prop('disabled', true);
-            footTxt.val("I agree that my personal data \n\
+            $("#footer-txt").prop('contenteditable', false);
+            footTxt.html("I agree that my personal data \n\
 will be processed in order to recruit for the position I \n\
 am applying for.")
             $(".foot-data").css("display", "block")
-            $(".foot-data").html($("#footer-txt").val())
+            $(".foot-data").html($("#footer-txt").html())
 
         } else if (this.value.trim() == "cus-da")
         {
             $(footTxt).css("display", "block")
 
-            $("#footer-txt").prop('disabled', false);
+            $("#footer-txt").prop('contenteditable', true);
 
             $(".foot-data").css("display", "inline-block")
         }
@@ -547,12 +547,25 @@ am applying for.")
 
     $("#footer-txt").keyup(function ()
     {
-        $(".foot-data").html($("#footer-txt").val())
+        $(".foot-data").html($("#footer-txt").html())
+    });
+    $("#footer-txt").click(function ()
+    {
+        $(".foot-data").html($("#footer-txt").html())
     });
 
     $("body").on('DOMSubtreeModified', "#contact-h-edit", function () {
         $("#contact-head").html($("#contact-h-edit").html())
     });
+
+
+bkLib.onDomLoaded(function() {
+          var myNicEditor = new nicEditor();
+          myNicEditor.setPanel('footer-txt-panel');
+          myNicEditor.addInstance('footer-txt');
+           $("#footer-txt").prop('contenteditable', false);
+     });
+
 
 });
 
